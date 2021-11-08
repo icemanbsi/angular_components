@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: date.proto
 //
-// @dart = 2.12
+// @dart = 2.7
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
@@ -41,9 +41,9 @@ class Date extends $pb.GeneratedMessage {
 
   Date._() : super();
   factory Date({
-    $core.int? year,
-    $core.int? month,
-    $core.int? day,
+    $core.int year,
+    $core.int month,
+    $core.int day,
   }) {
     final _result = create();
     if (year != null) {
@@ -81,7 +81,7 @@ class Date extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static Date getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Date>(create);
-  static Date? _defaultInstance;
+  static Date _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get year => $_getIZ(0);

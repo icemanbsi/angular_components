@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:html';
 
 /// Return a string representing the encapsulated classes from [classes]
@@ -15,17 +13,21 @@ import 'dart:html';
 /// to style the popup without that style leaking to the whole application.
 ///
 /// For example:
+/// ```css
 ///  .myPopup {
-///    // Mixin uses ::ng-deep but won't make all inputs blue. Instead just the
-///    // popups that originate from this component that the `myPopup` class
-///    // were added to.
+///    /* Mixin uses ::ng-deep but won't make all inputs blue. Instead just the
+///     * popups that originate from this component that the `myPopup` class
+///     * were added to. */
 ///    @include mat-input-bg-color($mat-blue);
 ///  }
+/// ```
 ///
 /// Dart Code:
+/// ```dart
 ///  final popupClass =
 ///      constructEncapsulatedCss('myPopup', _hostElement.classes);
-String constructEncapsulatedCss(String className, CssClassSet classes) {
+/// ```
+String constructEncapsulatedCss(String? className, CssClassSet classes) {
   var result = className ?? '';
   for (final i in classes) {
     // Add encapsulation classes from host

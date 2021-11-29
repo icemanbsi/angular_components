@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:math' as math;
 
 /// Generator generates ids that are probably unique.
@@ -20,20 +18,52 @@ class SequentialIdGenerator implements IdGenerator {
   int _seq = 0;
 
   /// Initializes sequential generator with prefix.
+  ///
   /// Please don't use in any other way that creating and binding it
   /// at the top level of app, otherwise it does not provide guarantees
-  /// of uniqueness if code is used in multiple apps
-  /// advantage of using this one - shorter ids
-  /// disadvantage - user's mistake can cause clashes
+  /// of uniqueness if code is used in multiple apps. If this is your use case,
+  /// check out [SequentialIdGenerator.fromUUID]
+  ///
+  /// Advantage: shorter ids.
+  ///
+  /// Disadvantage: user's mistake can cause clashes
+  ///
+  /// Example:
+  /// ```dart
+  /// final sq = SequentialIdGenerator('hello');
+  /// sq.nextId(); // hello--0
+  /// sq.nextId(); // hello--1
+  /// ```
   SequentialIdGenerator(this._prefix);
 
-  /// Initializes sequential generator with UUID v4 prefix
-  /// https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
-  /// These are probably unique
-  /// (you need to generate 2^36 to have clash with 4*10^-16 probability)
-  /// so it can be freely used anywhere across the app
-  /// advantage: very likely to be unique without extra restrictions
-  /// disadvantage: long ids
+  /// Initializes sequential generator with UUID v4 prefix.
+  ///
+  /// See https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
+  /// for reference.
+  /// These are probably unique (you need to generate 2^36 to have clash with
+  /// 4*10^-16 probability), so it can be freely used anywhere across the app.
+  /// If you need to generate shorter IDs, consider using the default
+  /// [SequentialIdGenerator]
+  ///
+  /// **NOTE:** this doesn't generate a unique UUID everytime [nextId] is
+  /// called. It merely appends `--<times you have called nextId()` to the end.
+  /// It only generates a new UUID everytime a **new** generator is constructed.
+  /// See the small example below for details.
+  ///
+  /// Advantage: very likely to be unique without extra restrictions.
+  ///
+  /// Disadvantage: long ids.
+  ///
+  /// Example:
+  /// ```dart
+  /// final squ = SequentialIdGenerator.fromUUID();
+  /// squ.nextId(); // C597AD89-7F17-4BE3-8D55-21A9989B8B65--0
+  /// squ.nextId(); // C597AD89-7F17-4BE3-8D55-21A9989B8B65--1
+  ///
+  /// final squ2 = SequentialIdGenerator.fromUUID();
+  /// squ2.nextId(); // 8FE6C7C2-6D0A-4923-8459-2053439D3731--0
+  /// squ2.nextId(); // 8FE6C7C2-6D0A-4923-8459-2053439D3731--1
+  /// ```
   SequentialIdGenerator.fromUUID() : this(_createUuid());
 
   @override

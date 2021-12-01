@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'package:angular/angular.dart';
 import 'package:angular_components/utils/id_generator/id_generator.dart';
 
@@ -11,7 +9,9 @@ import 'package:angular_components/utils/id_generator/id_generator.dart';
 ///
 /// To access this id in the template, do the following
 ///
+/// ```html
 /// <div autoId #idRef="autoId"></div>
+/// ```
 ///
 /// Then idRef.id can be used to read the assigned id
 @Directive(
@@ -23,7 +23,7 @@ class AutoIdDirective {
   final String id;
 
   AutoIdDirective(
-      @Optional() IdGenerator idGenerator, @Attribute('id') String existingId)
+      @Optional() IdGenerator? idGenerator, @Attribute('id') String? existingId)
       : id = existingId ??
             ((idGenerator ?? SequentialIdGenerator.fromUUID()).nextId());
 }

@@ -31,6 +31,7 @@ dependencies:
   sass_builder: ^2.0.2
 
 dev_dependencies:
+  angular_test: ^4.0.1
   build_runner: ^2.1.4
   build_test: ^2.1.4
   build_web_compilers: ^3.2.1

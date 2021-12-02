@@ -3,7 +3,7 @@
 # Only run externally during presubmits on Travis.
 
 set -ev
-PROTOC_PLUGIN_VERSION="20.0.0"
+PROTOC_PLUGIN_VERSION="19.3.1"
 PROTOC_VERSION="3.13.0"
 
 if type protoc > /dev/null; then

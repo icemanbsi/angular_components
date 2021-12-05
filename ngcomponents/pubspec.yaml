@@ -20,7 +20,7 @@ dependencies:
   js: ^0.6.1
   logging: ^1.0.2
   meta: ^1.0.4
-  observable: ^0.23.0
+  observable: ^0.24.0
   protobuf: ^2.0.0
   quiver: ^3.0.1
   sass_builder: ^2.0.2

@@ -4,12 +4,13 @@ stages:
     - group:
         - format
         - analyze: --fatal-infos .
-      dart:
+      sdk:
         - dev
     - group:
         - analyze: .
-      dart:
+      sdk:
         - 2.14.2
+        - stable
 
 cache:
   directories:

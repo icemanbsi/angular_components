@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 import 'dart:html';
 import 'dart:math' show max, min;
@@ -11,6 +9,7 @@ import 'dart:math' show max, min;
 import 'package:angular/angular.dart';
 import 'package:angular_components/utils/async/async.dart';
 import 'package:angular_components/utils/disposer/disposable_callback.dart';
+
 // TODO(google): Consolidate this with RenderSync /Angular.
 
 import 'package:angular_components/utils/disposer/disposer.dart';
@@ -25,6 +24,19 @@ typedef RequestAnimationFrame = Future<num> Function();
 /// Utility class to synchronize DOM operations across components, e.g. to check
 /// changes in the layout after a UI update or application event.
 class DomService {
+  /// Whether to execute functions scheduled within [Zone.current].
+  ///
+  /// This is the expected behavior and contract of Dart applications, but is
+  /// not applied automatically to every callback (only to Futures and Streams).
+  /// Eventually, this flag will be flipped to `true`, and deleted (all code
+  /// must use this behavior).
+  ///
+  /// By flipping this to `false`, it means:
+  /// * [Zone.current] will be not be restored when the callbacks are executed.
+  /// * AngularDart (or any parent zone) will not know about the change.
+  @Deprecated('For legacy reasons. DO NOT USE unless you talk to AngularDart.')
+  static bool maintainZoneOnCallbacks = true;
+
   static const _TURN_DONE_EVENT_TYPE = 'doms-turn';
 
   /// The maximum time the idle scheduler waits between events.
@@ -43,21 +55,21 @@ class DomService {
 
   Zone _rootZone = Zone.root;
   bool _insideDigest = false;
-  Disposable _layoutObserveRead;
+  Disposable? _layoutObserveRead;
   bool _scheduledProcessQueue = false;
-  StreamController<DomService> _onLayoutChangedController;
-  Stream<DomService> _onLayoutChangedStream;
-  StreamController<DomService> _onQueuesProcessedController;
-  Stream<DomService> _onQueuesProcessedStream;
+  StreamController<DomService>? _onLayoutChangedController;
+  Stream<DomService>? _onLayoutChangedStream;
+  StreamController<DomService>? _onQueuesProcessedController;
+  Stream<DomService>? _onQueuesProcessedStream;
   int _nextFrameId = -1;
-  Completer<num> _nextFrameCompleter;
-  Future<num> _nextFrameFuture;
+  Completer<num>? _nextFrameCompleter;
+  Future<num>? _nextFrameFuture;
   DomServiceState _state = DomServiceState.Idle;
   bool _crossAppInitialized = false;
-  StreamController<Null> _onIdleController;
-  Stream<Null> _onIdleStream;
+  StreamController<Null>? _onIdleController;
+  Stream<Null>? _onIdleStream;
   int _idleTimerMillis = _MAX_IDLE_TIMER_MILLIS;
-  Timer _idleTimer;
+  Timer? _idleTimer;
   bool _inDispatchTurnDoneEvent = false;
 
   /// Optional callback to check if DOM has been mutated by angular in
@@ -68,10 +80,10 @@ class DomService {
   ///
   /// isDomMutatedPredicate should return true if DOM has been modified since
   /// last call to resetIsDomMutated.
-  IsDomMutatedPredicate isDomMutatedPredicate;
+  IsDomMutatedPredicate? isDomMutatedPredicate;
 
   /// Optional callback to reset dom mutation state for predicate.
-  Function resetIsDomMutated;
+  Function? resetIsDomMutated;
   bool _writeQueueChangedLayout = false;
 
   /// Creates an instance that automatically runs outside of [ngZone], and
@@ -86,7 +98,7 @@ class DomService {
     _crossAppInitialized = true;
     _ngZone.runOutsideAngular(() {
       _ngZone.onEventDone.listen((_) {
-        if (isDomMutatedPredicate == null || isDomMutatedPredicate()) {
+        if (isDomMutatedPredicate == null || isDomMutatedPredicate!()) {
           // Sending an event to DomService in other apps on the same page.
           _inDispatchTurnDoneEvent = true;
           _window.dispatchEvent(Event(_TURN_DONE_EVENT_TYPE));
@@ -94,11 +106,11 @@ class DomService {
           // If dom has been mutated by angular, mark [_writeQueueChangedLayout]
           // to true. So that [_scheduleOnLayoutChanged] will be called normally
           // when there is a request to change layout.
-          if (isDomMutatedPredicate != null && isDomMutatedPredicate()) {
+          if (isDomMutatedPredicate != null && isDomMutatedPredicate!()) {
             _writeQueueChangedLayout = true;
           }
           if (resetIsDomMutated != null) {
-            resetIsDomMutated();
+            resetIsDomMutated!();
           }
         }
       });
@@ -140,7 +152,7 @@ class DomService {
   /// ONLY FOR TESTING!
   /// DO NOT CALL THIS METHOD IN PRODUCTION CODE!
   @visibleForTesting
-  void leap({num highResTimer, steps = 1}) {
+  void leap({num? highResTimer, steps = 1}) {
     // Force a angular turn to make sure layout calls are scheduled.
     _ngZone.run(() {});
     while (steps > 0) {
@@ -149,7 +161,7 @@ class DomService {
         highResTimer = DateTime.now().millisecondsSinceEpoch;
       }
       assert(_nextFrameCompleter != null);
-      final completer = _nextFrameCompleter;
+      final completer = _nextFrameCompleter!;
       _window.cancelAnimationFrame(_nextFrameId);
       _nextFrameFuture = null;
       _nextFrameCompleter = null;
@@ -162,7 +174,7 @@ class DomService {
   ///
   /// Unlike the browser's animation frame, if there is one already scheduled,
   /// it reuses that one, avoiding creating multiple frames across components.
-  Future<num> get nextFrame {
+  Future<num>? get nextFrame {
     if (_nextFrameFuture == null) {
       assert(_nextFrameCompleter == null);
       final completer = Completer<num>.sync();
@@ -193,13 +205,13 @@ class DomService {
   /// **NOTE**:
   ///   - This is an EXPERIMENTAL feature, and should be used with extreme care.
   ///   - Subscriptions to the stream should be cancelled as soon as possible.
-  Stream<Null> get onIdle {
+  Stream<Null>? get onIdle {
     if (_onIdleStream == null) {
       _onIdleController = StreamController.broadcast(
           sync: true, onListen: _resetIdleTimer, onCancel: _resetIdleTimer);
       // TODO(google): consider scoping it to be inside the managed zone:
       _onIdleStream =
-          ZonedStream(_onIdleController.stream, _ngZone.runOutsideAngular);
+          ZonedStream(_onIdleController!.stream, _ngZone.runOutsideAngular);
       // TODO(google): integrate with Chrome's new idle detection API
     }
     return _onIdleStream;
@@ -243,12 +255,10 @@ class DomService {
     return callback;
   }
 
-  void _scheduleInQueue(DomReadWriteFn fn, List<DomReadWriteFn> queue,
-      {bool maintainZoneOnCallbacks = true}) {
+  void _scheduleInQueue(DomReadWriteFn fn, List<DomReadWriteFn> queue) {
     if (maintainZoneOnCallbacks) {
       fn = Zone.current.bindCallback(fn);
     }
-
     queue.add(fn);
     _scheduleProcessQueue();
   }
@@ -299,7 +309,7 @@ class DomService {
     if (_domReadQueue.isNotEmpty || _domWriteQueue.isNotEmpty) {
       _scheduleProcessQueue();
     } else if (_onQueuesProcessedController != null) {
-      _onQueuesProcessedController.add(this);
+      _onQueuesProcessedController!.add(this);
     }
   }
 
@@ -307,7 +317,7 @@ class DomService {
     final int previousLength = queue.length;
     for (int i = 0; i < queue.length; i++) {
       DomReadWriteFn fn = queue[i];
-      if (fn == null) continue;
+      //if (fn == null) continue;
       fn();
     }
     // Because we execute any other dom reads or writes synchronously, we
@@ -318,11 +328,11 @@ class DomService {
   }
 
   /// A stream that fires when the queues have been processed and are now empty.
-  Stream<DomService> get onQueuesProcessed {
+  Stream<DomService>? get onQueuesProcessed {
     if (_onQueuesProcessedStream == null) {
       _onQueuesProcessedController = StreamController.broadcast(sync: true);
       _onQueuesProcessedStream = ZonedStream(
-          _onQueuesProcessedController.stream, _ngZone.runOutsideAngular);
+          _onQueuesProcessedController!.stream, _ngZone.runOutsideAngular);
     }
     return _onQueuesProcessedStream;
   }
@@ -333,11 +343,11 @@ class DomService {
   /// - The stream fires *outside* of a framework managed zone
   /// - The stream fires *within* a scheduled DOM read queue, making it safe
   ///   to openly check elements size or positioning in this callback.
-  Stream<DomService> get onLayoutChanged {
+  Stream<DomService>? get onLayoutChanged {
     if (_onLayoutChangedStream == null) {
       _onLayoutChangedController = StreamController.broadcast(sync: true);
       _onLayoutChangedStream = ZonedStream(
-          _onLayoutChangedController.stream, _ngZone.runOutsideAngular);
+          _onLayoutChangedController!.stream, _ngZone.runOutsideAngular);
       _ngZone.runOutsideAngular(() {
         // Capture events from Angular
         _ngZone.onTurnStart.listen((_) {
@@ -350,7 +360,7 @@ class DomService {
           _insideDigest = false;
           // Reduce layout checks to only those zone turns that mutated DOM.
           if (isDomMutatedPredicate == null ||
-              isDomMutatedPredicate() ||
+              isDomMutatedPredicate!() ||
               _writeQueueChangedLayout) {
             _scheduleOnLayoutChanged();
             _writeQueueChangedLayout = false;
@@ -370,7 +380,7 @@ class DomService {
     return _onLayoutChangedStream;
   }
 
-  void _listenOnLayoutEvents(Stream<Object> events) {
+  void _listenOnLayoutEvents(Stream<Object>? events) {
     if (events == null) return; // happens only in tests with mocked window
     events.listen((_) => _scheduleOnLayoutChanged());
   }
@@ -403,7 +413,7 @@ class DomService {
       };
     }
     var tracker = _ChangeTracker(this, fn, trackerCallback, framesToStabilize);
-    return onLayoutChanged.listen((_) => tracker._onLayoutObserve());
+    return onLayoutChanged!.listen((_) => tracker._onLayoutObserve());
   }
 
   /// Adds a new callback to the layout observer heartbeat.
@@ -419,7 +429,7 @@ class DomService {
   /// observer.
   @Deprecated("Use onLayoutChanged instead")
   StreamSubscription<DomService> addLayoutObserver(void domReadCallback()) =>
-      onLayoutChanged.listen((_) => domReadCallback());
+      onLayoutChanged!.listen((_) => domReadCallback());
 
   String describeStability() {
     return {
@@ -447,7 +457,7 @@ class DomService {
   void _scheduleProcessQueue() {
     if (!_scheduledProcessQueue) {
       _scheduledProcessQueue = true;
-      nextFrame.then((_) => _processQueues());
+      nextFrame!.then((_) => _processQueues());
     }
   }
 
@@ -475,7 +485,7 @@ class DomService {
     _layoutObserveRead = scheduleRead(() {
       _layoutObserveRead = null;
       if (_onLayoutChangedController != null) {
-        _onLayoutChangedController.add(this);
+        _onLayoutChangedController!.add(this);
       }
       _resetIdleTimer();
     });
@@ -489,7 +499,7 @@ class DomService {
     _idleTimerMillis += _IDLE_TIMER_INC_MILLIS;
     _idleTimerMillis = min(_MAX_IDLE_TIMER_MILLIS, _idleTimerMillis);
     _cancelIdleTimer();
-    if (!_onIdleController.hasListener) return;
+    if (!_onIdleController!.hasListener) return;
     // running in root zone, in order to go outside of the activity tracking
     // TODO(google): implement proper activity tracking integration
     _rootZone.run(() {
@@ -500,7 +510,7 @@ class DomService {
       _idleTimer = Timer(Duration(milliseconds: _idleTimerMillis), () {
         _idleTimer = null;
         _idleTimerMillis = _idleTimerMillis ~/ 2;
-        _onIdleController.add(null);
+        _onIdleController!.add(null);
         _scheduleOnLayoutChanged();
       });
     });
@@ -508,7 +518,7 @@ class DomService {
 
   void _cancelIdleTimer() {
     if (_idleTimer != null) {
-      _idleTimer.cancel();
+      _idleTimer!.cancel();
       _idleTimer = null;
     }
   }
@@ -537,7 +547,7 @@ class _ChangeTracker<T> {
   final void Function(T) _callback;
   final int _framesToStabilize;
 
-  T _lastValue;
+  T? _lastValue;
   int _stableFrameCounter = 0;
 
   _ChangeTracker(
@@ -557,7 +567,9 @@ class _ChangeTracker<T> {
     if (_stableFrameCounter == 0) {
       // just got down to zero, need to invoke callback
       _domService.scheduleRead(() {
-        _callback(_lastValue);
+        if (_lastValue != null) {
+          _callback(_lastValue!);
+        }
       });
     } else {
       // we need more frames to stabilize the value

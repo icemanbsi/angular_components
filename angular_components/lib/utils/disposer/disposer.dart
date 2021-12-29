@@ -143,7 +143,8 @@ class Disposer implements Disposable {
 
   /// Registers [disposable].
   DisposeFunction addFunction(DisposeFunction disposable) {
-    assert(disposable != null);
+    // TODO(GZGavinZhao): not sure why it's here... Maybe future needs this.
+    // assert(disposable != null);
     _disposeFunctions ??= [];
     _disposeFunctions!.add(disposable);
     _checkIfAlreadyDisposed();

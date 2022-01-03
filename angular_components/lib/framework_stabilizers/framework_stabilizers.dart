@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 @JS()
 library angular_components.framework_stabilizers.framework_stabilizers;
 
@@ -35,7 +33,7 @@ class FrameworkStabilizers {
   static int _nextId = 0;
 
   static List get _frameworkStabilizers {
-    return _frameworkStabilizersJs ??= [];
+    return _frameworkStabilizersJs;
   }
 
   /// Add a stabilize function for a framework.

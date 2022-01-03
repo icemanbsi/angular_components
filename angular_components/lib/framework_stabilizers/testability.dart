@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 @JS()
 library angular_components.framework_stabilizers.testability;
 
@@ -62,7 +60,7 @@ abstract class AbstractTestability implements Testability {
 
   /// Execute the registered callbacks if the framework reports to be stable. If
   /// the framework is not stable, this is a noop.
-  void _runCallbacksIfStable({IsStableCallback newCallback}) {
+  void _runCallbacksIfStable({IsStableCallback? newCallback}) {
     // Run in root zone to stop blocking activity ends.
     Zone.root.run(() {
       if (!isStable) {

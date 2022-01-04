@@ -16,8 +16,7 @@ testing policies make these widgets an excellent fit for projects using
 
 [Material design]: https://material.io/guidelines
 [AngularDart]: https://pub.dev/packages/angular
-[applications]: https://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html
-[AngularDart Components Gallery]: https://angulardart.github.io/angular_components/
+[AngularDart Components Gallery]: https://gallery.angulardart.xyz
 
 The following packages provide the components as well as code generation for the
 AngularDart Components gallery.

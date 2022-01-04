@@ -7,7 +7,7 @@ import 'package:angular_components/utils/browser/feature_detector/feature_detect
 
 void main() {
   test('', () {
-		expect(isFirefox, isFalse);
-		expect(isEdge, isFalse);
-	});
+    expect(isFirefox, isFalse);
+    expect(isEdge, isFalse);
+  });
 }

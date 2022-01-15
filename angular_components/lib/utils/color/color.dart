@@ -105,9 +105,9 @@ class Color {
   /// [t] is the fraction of interpolation from [a] to [b]; between 0 and 1.
   ///
   /// If one color is null, a transparent instance of the other color is used.
-  static Color? lerp(Color a, Color b, num t) {
+  static Color? lerp(Color? a, Color? b, num t) {
     if (a == null && b == null) return null;
-    if (a == null) return b.withAlpha(_lerpNum(0, b.alpha, t));
+    if (a == null) return b?.withAlpha(_lerpNum(0, b.alpha, t));
     if (b == null) return a.withAlpha(_lerpNum(a.alpha, 0, t));
     return Color.rgba(
         _lerpNum(a.red, b.red, t).toInt(),

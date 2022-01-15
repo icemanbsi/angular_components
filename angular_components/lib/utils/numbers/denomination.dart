@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'package:fixnum/fixnum.dart';
 
 /// A denomination type for defining how large values are mapped to [suffix]es
@@ -19,7 +17,7 @@ class Denomination {
 
   /// An amount that can be multiplied by the formatted number to cancel out
   /// the suffix when parsing
-  final int multiplier;
+  final int? multiplier;
 
   /// The string suffix, if any.
   final String suffix;
@@ -35,7 +33,9 @@ class Denomination {
     } else if (Trillions.suffix == suffix) {
       return Trillions;
     } else {
-      return null;
+      // TODO(null-safety): This logic need to reevaluated
+      //return null;
+      throw ArgumentError("Unrecognized suffix [$suffix]");
     }
   }
 
@@ -43,7 +43,7 @@ class Denomination {
   ///
   /// If a [max] [Denomination] is provided, will not return a denomination
   /// larger than [max].
-  factory Denomination.fromValue(num value, [Denomination max]) {
+  factory Denomination.fromValue(num value, [Denomination? max]) {
     if (value < Thousands.minValue || max == Hundreds) {
       return Hundreds;
     } else if (value < Millions.minValue || max == Thousands) {
@@ -66,7 +66,7 @@ class Denomination {
 /// If [value] is a [num] or [Int64], it is converted to a double.
 ///
 /// Otherwise, `null` is returned.
-num toNum(Object value) {
+num? toNum(Object value) {
   if (value is num) {
     return value;
   } else if (value is Int64) {

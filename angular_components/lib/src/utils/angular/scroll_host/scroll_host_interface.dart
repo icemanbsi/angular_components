@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 import 'dart:html';
 
@@ -45,7 +43,7 @@ abstract class ScrollHost implements Disposable {
   /// to consume. If you need to trigger change detection, inject
   /// [ChangeDetectorRef] and [NgZone] and call
   /// [ChangeDetectorRef.markForCheck()] inside [NgZone.run()].
-  Stream<ScrollHostEvent> get onScroll;
+  Stream<ScrollHostEvent>? get onScroll;
 
   /// Start intercepting events that would cause scrolling.
   ///
@@ -72,20 +70,20 @@ abstract class ScrollHost implements Disposable {
   Rectangle calcViewportRect();
 
   /// Returns anchor element for hosting virtual horizontal scrollbar.
-  Element get anchorElement;
+  Element? get anchorElement;
 
   /// Gets the pan controller for the given scroll host.
-  PanController get panController;
+  PanController? get panController;
 
   /// Gets the sticky controller for the given scroll host.
-  StickyController get stickyController;
+  StickyController? get stickyController;
 
   /// A stream which fires when [element] intersects with the scroll viewport.
   ///
   /// NOTE: This requires
   /// [IntersectionObserver](caniuse.com/intersectionobserver). Check
   /// [supportsIntersectionObserver] from feature_detector.dart before using.
-  Stream<IntersectionObserverEntry> onIntersection(Element element);
+  Stream<IntersectionObserverEntry?> onIntersection(Element? element);
 
   /// Stop an event.
   // When listening from the document body the event cannot be prevented.
@@ -109,8 +107,8 @@ abstract class StickyController implements Disposable {
   /// If [stickyKey] is provided, then only the last (when [position] is top)
   /// or the first (when [position] is bottom) sticky element with the same
   /// [stickyKey] will be stuck.
-  void stick(Element element, StickyPosition position, Element range,
-      {String stickyClass, String stickyKey});
+  void stick(Element element, StickyPosition position, Element? range,
+      {String? stickyClass, String? stickyKey});
 
   /// Unregisters the element from sticking.
   void unstick(Element element);
@@ -153,7 +151,7 @@ abstract class StickyController implements Disposable {
   ///
   /// This does not work correctly for any current implementations when
   /// interleaving different stickyKeys.
-  bool enableSmoothPushing;
+  bool? enableSmoothPushing;
 }
 
 /// Sticky controller z index.
@@ -162,7 +160,7 @@ int stickyControllerZIndex = 100;
 /// Recognizes and interprets pan-related events and user intents.
 abstract class PanController implements Disposable {
   // A stream of pan events.
-  Stream<PanEvent> get onPan;
+  Stream<PanEvent>? get onPan;
 
   /// Clears resources.
   @override

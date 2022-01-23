@@ -2,13 +2,12 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 
 import 'package:meta/meta.dart';
-import 'package:angular_components/utils/angular/scroll_host/interface.dart';
 import 'package:angular_components/utils/disposer/disposer.dart';
+
+import 'scroll_host_interface.dart';
 
 /// Helper class to detect scroll activity start/end points.
 ///
@@ -23,13 +22,13 @@ class ScrollObserver implements Disposable {
   static const int defaultIdleCheckDurationMs = 150;
 
   ScrollHost _scrollHost;
-  StreamSubscription<ScrollHostEvent> _scrollSub;
+  StreamSubscription<ScrollHostEvent>? _scrollSub;
   int _scrollTimestamp = 0;
   bool _isScrolling = false;
-  Timer _timer;
+  Timer? _timer;
 
   /// Sets callback for scroll idle event.
-  ScrollObserverIdleCallback scrollStatusCallback;
+  ScrollObserverIdleCallback? scrollStatusCallback;
 
   /// Uses the default duration for the idle callback.
   ScrollObserver(ScrollHost scrollHost)
@@ -44,7 +43,7 @@ class ScrollObserver implements Disposable {
   }
 
   void _subscribe() {
-    _scrollSub = _scrollHost.onScroll.listen((_) {
+    _scrollSub = _scrollHost.onScroll!.listen((_) {
       _scrollTimestamp = _now;
       if (!_isScrolling) {
         _isScrolling = true;
@@ -72,7 +71,7 @@ class ScrollObserver implements Disposable {
 
   void _raiseIdleEvent(bool idle) {
     if (scrollStatusCallback != null) {
-      scrollStatusCallback(idle);
+      scrollStatusCallback!(idle);
     }
   }
 
@@ -80,7 +79,7 @@ class ScrollObserver implements Disposable {
   void dispose() {
     _timer?.cancel();
     _timer = null;
-    _scrollSub.cancel();
+    _scrollSub!.cancel();
     _scrollSub = null;
   }
 }

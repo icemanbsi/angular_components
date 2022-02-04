@@ -11,8 +11,7 @@ import 'id_test.template.dart' as ng;
 void main() {
   group('Utils test | angular | AutoIdDirective |', () {
     group('single-id test |', () {
-      final singleTestBed =
-          NgTestBed<SingleIdTestComponent>(ng.SingleIdTestComponentNgFactory);
+      final singleTestBed = NgTestBed(ng.SingleIdTestComponentNgFactory);
       late NgTestFixture singleFixture;
       late String previousId;
 
@@ -38,8 +37,7 @@ void main() {
     });
 
     group('multi-id test |', () {
-      final multiTestBed =
-          NgTestBed<MultiIdTestComponent>(ng.MultiIdTestComponentNgFactory);
+      final multiTestBed = NgTestBed(ng.MultiIdTestComponentNgFactory);
       late NgTestFixture multiFixture;
 
       setUp(() async => multiFixture = await multiTestBed.create());

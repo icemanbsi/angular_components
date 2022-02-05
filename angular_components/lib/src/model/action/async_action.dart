@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 
 /// An action whose lifecycle states may be controlled and deferred by
@@ -38,35 +36,38 @@ import 'dart:async';
 /// Usage is as follows:
 ///
 /// Component Firing Event:
-///     var ctrl = new AsyncActionController();
-///     streamCtrl.add(ctrl.action);
-///     ctrl.execute((shouldProceed) {
-///       // `shouldProceed` is true only if `whetherToCancel` futures all
-///       // returned false.
-///     }
+/// ```dart
+/// var ctrl = new AsyncActionController();
+/// streamCtrl.add(ctrl.action);
+/// ctrl.execute((shouldProceed) {
+///   // `shouldProceed` is true only if `whetherToCancel` futures all
+///   // returned false.
+/// }
 ///
-///     return ctrl.action.onDone.then((completed) {
-///       // Clean up.
-///       if (completed) {
-///       } else {
-///       }
-///     }
+/// return ctrl.action.onDone.then((completed) {
+///   // Clean up.
+///   if (completed) {
+///   } else {
+///   }
+/// }
+/// ```
 ///
 /// Subscribing Component
-///
-///     <my-component (saveEvent) = "onSave($event)">
-///
-///     class MyComponent {
-///       void onSave(AsyncAction action) {
-///         // possibly cancel the action.
-///         action.cancelIf(whetherToCancelFuture));
-///         // lazily defer the action.
-///         action.defer(action.onDefer.then(someAsyncMethod));
-///         // do something after the action has executed.
-///         action.onDone.then(onEventComplete);
-///       }
-///     }
-///
+/// ```html
+/// <my-component (saveEvent) = "onSave($event)">
+/// ```
+/// ```dart
+/// class MyComponent {
+///   void onSave(AsyncAction action) {
+///     // possibly cancel the action.
+///     action.cancelIf(whetherToCancelFuture));
+///     // lazily defer the action.
+///     action.defer(action.onDefer.then(someAsyncMethod));
+///     // do something after the action has executed.
+///     action.onDone.then(onEventComplete);
+///   }
+/// }
+/// ```
 /// <V> is the value type returned/resolved by the execution closure.
 class AsyncAction<V> {
   final Future<V> _onDone;
@@ -78,7 +79,7 @@ class AsyncAction<V> {
   final Function _doneGetter;
 
   bool _syncCancelled = false;
-  bool get _waitingForDone => _lockedGetter();
+  bool? get _waitingForDone => _lockedGetter();
 
   AsyncAction(
       this._onDone,
@@ -93,7 +94,7 @@ class AsyncAction<V> {
   bool get cancelled => _syncCancelled || _cancelledGetter();
 
   /// Indicates that the action has either completed or was cancelled.
-  bool get isDone => _doneGetter();
+  bool? get isDone => _doneGetter();
 
   /// Future which resolves to null if the action is cancelled. If the execution
   /// is not cancelled, the future resolves to whatever the execution returns.
@@ -119,12 +120,12 @@ class AsyncAction<V> {
     // Do nothing, it will be cancelled anyway.
     if (cancelled) return;
 
-    if (isDone) {
+    if (isDone!) {
       throw StateError('Cannot register. Action is complete.');
     }
 
     // Don't allow more registrations.
-    if (_waitingForDone) {
+    if (_waitingForDone!) {
       throw StateError('Cannot register. Already waiting.');
     }
 
@@ -140,11 +141,11 @@ class AsyncAction<V> {
     if (cancelled) return;
 
     // Don't allow more registrations.
-    if (isDone) {
+    if (isDone!) {
       throw StateError('Cannot register. Action is complete.');
     }
 
-    if (_waitingForDone) {
+    if (_waitingForDone!) {
       throw StateError('Cannot register. Already waiting.');
     }
 
@@ -167,11 +168,11 @@ class AsyncAction<V> {
     if (cancelled) return;
 
     // Don't allow more registrations.
-    if (isDone) {
+    if (isDone!) {
       throw StateError('Cannot register. Action is complete.');
     }
 
-    if (_waitingForDone) {
+    if (_waitingForDone!) {
       throw StateError('Cannot register. Already waiting.');
     }
 

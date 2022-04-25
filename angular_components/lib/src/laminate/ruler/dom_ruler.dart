@@ -6,8 +6,9 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/src/laminate/ruler/ruler_interface.dart';
 import 'package:angular_components/utils/browser/dom_service/dom_service.dart';
+
+import 'ruler_interface.dart';
 
 /// Measures and tracks size changes for HTML elements in Dart web applications.
 @Injectable()

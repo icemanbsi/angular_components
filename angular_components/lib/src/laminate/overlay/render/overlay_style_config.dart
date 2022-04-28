@@ -95,16 +95,17 @@ class OverlayStyleConfig {
         _document = document;
 
   void registerStyles() {
-    if (stylesRegistered) return;
-    _styleHost?.append(StyleElement()
-      ..id = _styleId
-      ..text = inlinedStyles);
-    _stylesRegistered = true;
+    if (!stylesRegistered) {
+      _styleHost?.append(StyleElement()
+        ..id = _styleId
+        ..text = inlinedStyles);
+      _stylesRegistered = true;
+    }
   }
 
   bool get stylesRegistered {
     if (_stylesRegistered) return true;
-    var styleNode = _document.querySelector('#$_styleId');
+    Element? styleNode = _document.querySelector('#$_styleId');
     if (styleNode != null) _stylesRegistered = true;
     return _stylesRegistered;
   }

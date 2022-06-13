@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 import 'dart:html';
 
@@ -73,15 +71,12 @@ class OverlayService {
       this._ngZone,
       @Inject(overlaySyncDom) this._useDomSynchronously,
       this._renderService,
-      @SkipSelf() @Optional() OverlayService existingInstance) {
-    assert(() {
-      // Overlay service should not be injected if it is already available
-      if (existingInstance != null) {
-        _logger.severe('OverlayService must be a singleton: '
-            'Remove nested OverlayService providers such as overlayBindings, '
-            'popupBindings, datepickerBindings or materialProviders');
-      }
-      return true;
-    }());
+      @SkipSelf() @Optional() OverlayService? existingInstance) {
+    // Overlay service should not be injected if it is already available
+    if (existingInstance != null) {
+      _logger.severe('OverlayService must be a singleton: '
+          'Remove nested OverlayService providers such as overlayBindings, '
+          'popupBindings, datepickerBindings or materialProviders');
+    }
   }
 }

@@ -2,14 +2,11 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart' hide Visibility;
 import 'package:angular_components/src/laminate/enums/visibility.dart';
-import 'package:angular_components/model/math/box.dart';
 import 'package:angular_components/src/laminate/overlay/overlay_state.dart';
 import 'package:angular_components/src/laminate/overlay/render/overlay_style_config.dart';
 import 'package:angular_components/src/laminate/overlay/zindexer.dart';
@@ -52,7 +49,7 @@ const overlayRepositionLoop = OpaqueToken<bool>('overlayRepositionLoop');
 ///
 /// By default popups are contained within the browser window. This allows apps
 /// to provide boundaries around the edges of the window to contain popups.
-const overlayViewportBoundaries = OpaqueToken<Box>('overlayViewportBoundaries');
+const overlayViewportBoundaries = OpaqueToken('overlayViewportBoundaries');
 
 /// A DOM implementation of the components needed for [OverlayService].
 ///
@@ -69,15 +66,15 @@ class OverlayDomRenderService {
   final DomRuler _domRuler;
   final DomService _domService;
   final AcxImperativeViewUtils _imperativeViewUtils;
-  final bool _useDomSynchronously;
-  final bool _useRepositionLoop;
+  final _useDomSynchronously;
+  final _useRepositionLoop;
   final ZIndexer _zIndexer;
 
   /// Track the last z-index used by an overlay. When updating an overlay,
   /// we want to put it in front of anything else that might be using zIndexer,
   /// so we check the last value against _zIndexer.peek() and increment if
   /// necessary.
-  int _lastZIndex;
+  int? _lastZIndex;
 
   // An auto-incrementing value to help track what popups
   int _uniqueId = 0;
@@ -119,7 +116,7 @@ class OverlayDomRenderService {
     var cssClasses = <String>[];
 
     // Optionally, make the overlay "modal" style.
-    if (state.captureEvents) {
+    if (state.captureEvents!) {
       cssClasses.add('modal');
     }
 
@@ -148,11 +145,12 @@ class OverlayDomRenderService {
 
     // If it exists, also update z-index of overlay container so it's on top of
     // any other zIndexer-using components
-    if (pane.parent != null) {
+    var p = pane.parent;
+    if (p != null) {
       if (_lastZIndex != _zIndexer.peek()) {
         _lastZIndex = _zIndexer.pop();
       }
-      _domRuler.updateSync(pane.parent, zIndex: _lastZIndex);
+      _domRuler.updateSync(p, zIndex: _lastZIndex);
     }
   }
 

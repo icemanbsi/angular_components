@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 @JS()
 library angular_components.css.acux.zindexer;
 
@@ -25,12 +23,11 @@ const int hoverableAutoIncrement = 1000;
 /// elements will sometimes show up underneath existing elements.
 @Injectable()
 class ZIndexer {
-  static ZIndexer _currentInstance;
+  static ZIndexer? _currentInstance;
 
+  // TODO(GZGavinZhao): write tests (potentially in popups) to verify behavior.
   static void _initZIndex() {
-    if (_currentZIndex == null) {
-      _currentZIndex = hoverableAutoIncrement;
-    }
+    _currentZIndex = hoverableAutoIncrement;
   }
 
   factory ZIndexer() {

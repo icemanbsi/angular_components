@@ -1,12 +1,32 @@
-# Angular material components for AngularDart
+# Example of using Material Components
 
-## HTML
+## my-component.dart
+
+```dart
+@Component(
+  selector: 'my-component',
+  templateUrl: 'my-component.html',
+  styleUrls: ['my-component.css'],
+  directives: [
+    DarkThemeDirective,
+    MaterialButtonComponent,
+    MaterialFabComponent,
+    MaterialIconComponent,
+  ],
+  preserveWhitespace: true,
+)
+class MyComponent {
+  String content = 'click me';
+}
+```
+
+## my-component.html
 
 ```html
-<h1>Material Button</h1>
+<h1>My Component</h1>
 
 <div>
-  <section class="margin">
+  <section class="button-panel">
     <h2>Custom text</h2>
     <material-button raised>{{content}}</material-button>
     <material-button raised class="blue">Colored {{content}}</material-button>
@@ -16,14 +36,13 @@
 
 ```
 
-## CSS
+## my-component.scss
 
 ```css
 
-```
-
-## Dart
-
-```dart
+.button-panel {
+  padding: 1em;
+}
 
 ```
+

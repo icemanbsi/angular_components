@@ -5,7 +5,8 @@ environment:
 
 dependencies:
   angular: ^7.0.1
-  ngcomponents: ^1.0.0
+  ngcomponents: 
+    path: ../ngcomponents
   angular_forms: ^4.0.0
   angular_router: ^3.0.0
   build: ^2.1.1
@@ -15,6 +16,3 @@ dependencies:
   ngsecurity:
     git: https://github.com/angulardart-community/ngsecurity
 
-dependency_overrides:
-  ngcomponents:
-    path: ../ngcomponents

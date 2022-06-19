@@ -567,7 +567,7 @@ class _ChangeTracker<T> {
       // just got down to zero, need to invoke callback
       _domService.scheduleRead(() {
         if (_lastValue != null) {
-          _callback(_lastValue!);
+          _callback(_lastValue as T);
         }
       });
     } else {

@@ -4,8 +4,6 @@
 
 import 'package:angular/angular.dart';
 import 'package:quiver/strings.dart' show isBlank;
-import 'package:ngcomponents/utils/angular/properties/properties.dart'
-    show getInt;
 
 /// Provides computation of tabindex for components which actively maintain
 /// a tab index.
@@ -32,7 +30,7 @@ abstract class HasTabIndex {
     } else if (hostTabIndex == null) {
       return null;
     } else if (!isBlank(hostTabIndex)) {
-      assert(getInt(hostTabIndex) != null);
+      //assert(getInt(hostTabIndex) != null);
       return hostTabIndex;
     }
     throw 'Host tabIndex should either be null or a value';

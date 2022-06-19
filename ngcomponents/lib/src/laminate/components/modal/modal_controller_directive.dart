@@ -24,7 +24,7 @@ class ModalControllerDirective extends TemplatePortal implements OnDestroy {
 
   /// Attaches content to the provided [overlayRef].
   @Input('modalController')
-  set overlay(OverlayRef overlayRef) {
+  set overlay(OverlayRef? overlayRef) {
     if (overlayRef == null) {
       if (isAttached) {
         this.detach();

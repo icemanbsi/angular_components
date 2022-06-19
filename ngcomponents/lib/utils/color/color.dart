@@ -105,12 +105,12 @@ class Color {
   /// [t] is the fraction of interpolation from [a] to [b]; between 0 and 1.
   ///
   /// If one color is null, a transparent instance of the other color is used.
-  static Color? lerp(Color a, Color b, num t) {
+  static Color? lerp(Color? a, Color? b, num t) {
     if (a == null && b == null) return null;
-    if (a == null) return b.withAlpha(_lerpNum(0, b.alpha, t));
-    if (b == null) return a.withAlpha(_lerpNum(a.alpha, 0, t));
+    if (a == null && b != null) return b.withAlpha(_lerpNum(0, b.alpha, t));
+    if (b == null && a != null) return a.withAlpha(_lerpNum(a.alpha, 0, t));
     return Color.rgba(
-        _lerpNum(a.red, b.red, t).toInt(),
+        _lerpNum(a!.red, b!.red, t).toInt(),
         _lerpNum(a.green, b.green, t).toInt(),
         _lerpNum(a.blue, b.blue, t).toInt(),
         _lerpNum(a.alpha, b.alpha, t));
@@ -209,8 +209,7 @@ class Color {
 
   /// Returns this as a string in #rrggbb or #rrggbbaa hex notation.
   String get hexString =>
-      '#${_toHex(red)}${_toHex(green)}${_toHex(blue)}' +
-      (alpha == 1 ? '' : '${_toHex(255 * alpha)}');
+      '#${_toHex(red)}${_toHex(green)}${_toHex(blue)}${alpha == 1 ? '' : '${_toHex(255 * alpha)}'}';
 
   @override
   String toString() => rgbString;

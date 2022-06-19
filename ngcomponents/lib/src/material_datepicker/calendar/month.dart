@@ -151,7 +151,7 @@ class MonthRange {
   /// max is before min.
   ///
   /// - `length: int` -- Must be at least 1.
-  factory MonthRange.within(CalendarMonth min, CalendarMonth max, int length,
+  factory MonthRange.within(CalendarMonth? min, CalendarMonth? max, int length,
       {final CalendarMonth? tryToStartAt}) {
     if (length < 1) {
       throw ArgumentError.value(length, 'length', 'must be at least 1');

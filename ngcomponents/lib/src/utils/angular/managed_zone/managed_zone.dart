@@ -147,6 +147,5 @@ abstract class ManagedZoneBase extends ManagedZone {
 
   @override
   String toString() =>
-      'ManagedZone ' +
-      {'inInnerZone': inInnerZone, 'inOuterZone': inOuterZone}.toString();
+      'ManagedZone ${{'inInnerZone': inInnerZone, 'inOuterZone': inOuterZone}}';
 }

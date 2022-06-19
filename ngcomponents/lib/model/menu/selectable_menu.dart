@@ -192,10 +192,8 @@ class SelectableMenuItem<ItemType> extends PropertyChangeNotifier
         value ? SelectableOption.Selectable : SelectableOption.Disabled;
   }
 
-  @override
   MenuAction? get action => _action;
 
-  @override
   set action(MenuAction? value) {
     if (value == _action) return;
 
@@ -207,7 +205,6 @@ class SelectableMenuItem<ItemType> extends PropertyChangeNotifier
   @override
   ActionWithContext? get actionWithContext => _actionWithContext;
 
-  @override
   set actionWithContext(ActionWithContext? value) {
     if (value == _actionWithContext) return;
 

@@ -60,8 +60,8 @@ class TextHighlighter {
   /// text highlighting behavior.
   @protected
   List<int> getMarkers(String text, List<String?> tokens) {
-    var _matchText = caseSensitive ? text : text.toLowerCase();
-    List<int> markers = List.filled(_matchText.length, 0);
+    var matchText = caseSensitive ? text : text.toLowerCase();
+    List<int> markers = List.filled(matchText.length, 0);
 
     for (String? token in tokens) {
       // Prevents an infinite loop, since there are "infinite" occurrences of
@@ -72,11 +72,11 @@ class TextHighlighter {
       }
       int index = 0;
       while (true) {
-        index = _matchText.indexOf(token, index);
+        index = matchText.indexOf(token, index);
         if (index == -1) {
           break;
         } else {
-          String? wrapperToken = index != 0 ? _matchText[index - 1] : null;
+          String? wrapperToken = index != 0 ? matchText[index - 1] : null;
           if (!matchFromStartOfWord ||
               (index == 0 ||
                   // Some suggestions will have an alternate label appended to

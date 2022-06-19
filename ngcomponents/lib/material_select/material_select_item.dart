@@ -165,7 +165,7 @@ class MaterialSelectItemComponent<T> extends ButtonDirective
         itemRenderer != null &&
         value != null) {
       // !identical(itemRenderer, nullRenderer)) {
-      return itemRenderer!(value!);
+      return itemRenderer!(value as T);
     }
     return null;
   }
@@ -216,7 +216,7 @@ class MaterialSelectItemComponent<T> extends ButtonDirective
 
   bool get _isMarkedSelected => selected;
   bool get _isSelectedInSelectionModel =>
-      value != null && (_selection.isSelected(value!));
+      value != null && (_selection.isSelected(value as T));
 
   void handleActivate(UIEvent e) {
     var hasCheckbox = supportsMultiSelect && !hideCheckbox;
@@ -233,10 +233,10 @@ class MaterialSelectItemComponent<T> extends ButtonDirective
       }
     }
     if (_selectOnActivate && value != null) {
-      if (!_selection.isSelected(value!)) {
-        _selection.select(value!);
+      if (!_selection.isSelected(value as T)) {
+        _selection.select(value as T);
       } else if (_deselectOnActivate) {
-        _selection.deselect(value!);
+        _selection.deselect(value as T);
       }
     }
   }

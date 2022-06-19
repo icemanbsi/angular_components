@@ -170,5 +170,5 @@ class PopupState extends Observable {
       ]);
 
   @override
-  String toString() => 'PopupState ' + _backingMap.toString();
+  String toString() => 'PopupState $_backingMap';
 }

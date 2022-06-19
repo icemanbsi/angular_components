@@ -21,12 +21,12 @@ ItemRenderer<T> newCachingItemRenderer<T>(ItemRenderer<T> itemRenderer) {
   if (_rendererMarker[itemRenderer] != null) {
     return itemRenderer;
   }
-  var _cache = <T, String?>{};
+  var cache = <T, String?>{};
   ItemRenderer<T> cachingItemRenderer = (T item) {
-    String? value = _cache[item];
+    String? value = cache[item];
     if (value == null) {
       value = itemRenderer(item);
-      _cache[item] = value;
+      cache[item] = value;
     }
     return value;
   };

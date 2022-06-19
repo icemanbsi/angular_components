@@ -6,8 +6,6 @@ import 'dart:async';
 
 import 'package:angular/angular.dart';
 import 'package:ngcomponents/angular_components.dart';
-import 'package:ngcomponents/src/laminate/popup/popup_source.dart';
-import 'package:ngcomponents/src/laminate/popup/popup_state.dart';
 
 /// A reusable interface for something that is or delegates to [PopupComponent].
 abstract class PopupInterface {

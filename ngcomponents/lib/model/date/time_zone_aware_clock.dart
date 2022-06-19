@@ -131,9 +131,9 @@ class SettableTimeZone {
         _logger.severe('not initialized with time zone data');
         return systemTime;
       }
-    } else if (systemTime.timeZoneOffset.inMicroseconds == null) {
-      throw StateError(
-          'System time has a null or undefined timezone offset! $systemTime');
+      //} else if (systemTime.timeZoneOffset.inMicroseconds == null) {
+      //  throw StateError(
+      //      'System time has a null or undefined timezone offset! $systemTime');
     } else if (systemTime.timeZoneOffset.inMicroseconds.isNaN) {
       throw StateError('System time has a NaN timezone offset! $systemTime');
     }
@@ -141,10 +141,10 @@ class SettableTimeZone {
     // To convert system time to UTC, subtract systemTime.timeZoneOffset.
     // To convert UTC to the Custom's local time, add [offsetFromUtc].
     var offset = offsetFromUtc! - systemTime.timeZoneOffset;
-    if (offset.inMicroseconds == null) {
-      throw StateError('Computed time offset is null or undefined! '
-          '$offsetFromUtc - ${systemTime.timeZoneOffset} = $offset');
-    }
+    //if (offset.inMicroseconds == null) {
+    //  throw StateError('Computed time offset is null or undefined! '
+    //      '$offsetFromUtc - ${systemTime.timeZoneOffset} = $offset');
+    //}
     if (offset.inMicroseconds.isNaN) {
       throw StateError('Computed time offset is NaN! '
           '$offsetFromUtc - ${systemTime.timeZoneOffset} = $offset');

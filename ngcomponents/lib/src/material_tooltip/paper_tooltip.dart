@@ -162,7 +162,7 @@ class MaterialPaperTooltipComponent implements DeferredContentAware, Tooltip {
 
   /// The element at which this tooltip is targeted.
   @Input('for')
-  set tooltipRef(TooltipTarget target) {
+  set tooltipRef(TooltipTarget? target) {
     if (target == null) return;
     _tooltipSource = target;
     target.setTooltip(tooltipHandle);

@@ -57,8 +57,7 @@ class ScorecardBarDirective implements OnInit, OnDestroy, AfterViewChecked {
   void ngOnInit() {
     _disposer.addDisposable(_domService.scheduleRead(_readElement));
     _disposer.addDisposable(_domService.trackLayoutChange(
-        () => currentClientSize.toString() + ' ' + currentScrollSize.toString(),
-        (dynamic _) {
+        () => '$currentClientSize $currentScrollSize', (dynamic _) {
       _readElement(windowResize: true);
       _refreshController.add(true);
     }, runInAngularZone: true));

@@ -47,7 +47,7 @@ class Alignment implements ElementStyleEnum {
   ///
   /// A null value is treated as 'start'. Else throws [ArgumentError].
   factory Alignment.parse(String displayName) {
-    if (displayName == null || displayName == 'start') {
+    if (displayName == 'start') {
       return Alignment.Start;
     } else if (displayName == 'center') {
       return Alignment.Center;
@@ -461,7 +461,7 @@ class RelativePosition {
 
   @override
   String toString() =>
-      'RelativePosition ' + {'originX': originX, 'originY': originY}.toString();
+      'RelativePosition ${{'originX': originX, 'originY': originY}}';
 }
 
 /// Origins for Material animation directions.

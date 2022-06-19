@@ -178,7 +178,7 @@ class YearRange {
   /// max is before min.
   ///
   /// - `length: int` -- Must be at least 1.
-  factory YearRange.within(CalendarYear min, CalendarYear max, int length,
+  factory YearRange.within(CalendarYear? min, CalendarYear? max, int length,
       {final CalendarYear? tryToStartAt}) {
     if (length < 1) {
       throw ArgumentError.value(length, 'length', 'must be at least 1');

@@ -52,7 +52,7 @@ abstract class HighlightAssistantMixin<T>
       ? (options as Filterable).currentQuery as String? ?? ''
       : '';
 
-  ItemRenderer<T>? get _highlightRenderer {
+  ItemRenderer<T>? get highlightRenderer {
     //if ((componentRenderer == null ||
     //        componentRenderer == highlightComponentRenderer) &&
     if (factoryRenderer == null ||
@@ -63,6 +63,7 @@ abstract class HighlightAssistantMixin<T>
       }
       return defaultItemRenderer;
     }
+    return null;
   }
 
   @override
@@ -72,7 +73,7 @@ abstract class HighlightAssistantMixin<T>
         matchFromStartOfWord: _highlightMatchFromStartOfWord);
 
     return _highlightAssistant?.highlightOption(
-            highlightQuery, item, _highlightRenderer) ??
+            highlightQuery, item, highlightRenderer) ??
         [];
   }
 }

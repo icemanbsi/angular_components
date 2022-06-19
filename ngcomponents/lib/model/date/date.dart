@@ -227,7 +227,7 @@ Iterable<Date> enumerateDates(Date start, Date? end) sync* {
 /// Returns an empty iterator when [range] is null.
 /// Throws [ArgumentError] when [range] is unbounded on either side.
 /// See [enumerateDates] for more details.
-Iterable<Date> enumerateRange(DateRange range) {
+Iterable<Date> enumerateRange(DateRange? range) {
   if (range == null) {
     return [];
   }

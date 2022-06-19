@@ -36,7 +36,7 @@ abstract class ShiftClickSelectionMixin<T>
     } else {
       final optionValues = options.optionsList;
       final clickedIndex = optionValues.indexOf(value);
-      final pivotIndex = optionValues.indexOf(_pivot!);
+      final pivotIndex = optionValues.indexOf(_pivot as T);
       if (pivotIndex == -1) {
         throw StateError("pivot item is no longer in the model: $_pivot");
       }

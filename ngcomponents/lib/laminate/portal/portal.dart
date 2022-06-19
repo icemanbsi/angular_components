@@ -19,13 +19,13 @@ abstract class Portal<T> {
   ///
   /// Throws [StateError] if a portal is already attached.
   Future<dynamic /*ComponentRef<Object> | Map<String, dynamic>*/ > attach(
-      PortalHost host) {
+      PortalHost? host) {
     assert(host != null);
     if (isAttached) {
       throw StateError('Already attached to host!');
     } else {
       _attachedHost = host;
-      return host.attach(this) as Future<T>;
+      return host?.attach(this) as Future<T>;
     }
   }
 
@@ -36,10 +36,10 @@ abstract class Portal<T> {
   ///
   /// Returns a future that completes when detached.
   Future<void> detach() {
-    final currentHost = _attachedHost!;
+    final currentHost = _attachedHost;
     assert(currentHost != null);
     _attachedHost = null;
-    return currentHost.detach();
+    return currentHost!.detach();
   }
 
   /// Returns true if this portal is in the process of being attached but the
@@ -89,8 +89,8 @@ class TemplatePortal extends Portal<Map<String, dynamic>> {
 
   // TODO(google): Add optional locals map initialization.
   TemplatePortal(this.template, this.viewContainer) {
-    assert(template != null);
-    assert(viewContainer != null);
+    //assert(template != null);
+    //assert(viewContainer != null);
   }
 
   get origin => viewContainer;
@@ -100,7 +100,7 @@ class TemplatePortal extends Portal<Map<String, dynamic>> {
 
   /// Attach to the [host], optionally with [locals] specific to this instance.
   @override
-  Future<Map<String, dynamic>?> attach(PortalHost host,
+  Future<Map<String, dynamic>?> attach(PortalHost? host,
       [Map<String, dynamic> locals = const {}]) {
     _locals = locals;
     return super.attach(host).then((value) => value as Map<String, dynamic>?);
@@ -151,8 +151,8 @@ abstract class BasePortalHost implements PortalHost {
 
   @override
   Future<dynamic /*ComponentRef<Object> | Map<String, dynamic>*/ > attach(
-      Portal<Object?> portal) {
-    assert(portal != null);
+      Portal<Object?>? portal) {
+    //assert(portal != null);
     if (_isDisposed) {
       throw StateError('Already disposed.');
     }

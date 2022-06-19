@@ -141,7 +141,7 @@ abstract class RulerBase<E> implements Ruler<E> {
         onCancel: () {
           subscription.cancel();
         });
-    return controller.stream.distinct((Rectangle previous, Rectangle next) {
+    return controller.stream.distinct((Rectangle? previous, Rectangle? next) {
       if (previous == null || next == null) return identical(previous, next);
 
       // We consider rectangles equal if their coordinates are within a

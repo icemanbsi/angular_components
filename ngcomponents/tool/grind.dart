@@ -37,6 +37,6 @@ Future<void> analyze() async {
   log('${need_migrate.length} out of $count files are still using deprecated API!\n');
 
   need_migrate.forEach((element) {
-    print('- [ ] ' + p.relative(element, from: 'lib'));
+    print('- [ ] ${p.relative(element, from: 'lib')}');
   });
 }

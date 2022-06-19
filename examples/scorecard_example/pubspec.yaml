@@ -6,7 +6,8 @@ environment:
 
 dependencies:
   angular: ^7.0.1
-  ngcomponents: ^1.0.0
+  ngcomponents:
+    path: ../../ngcomponents
   angular_forms: ^4.0.0
   angular_gallery:
     path: ../../angular_gallery
@@ -14,6 +15,3 @@ dependencies:
     path: ../../angular_gallery_section
   build_config: ^1.0.0
 
-dependency_overrides:
-  ngcomponents:
-    path: ../../ngcomponents

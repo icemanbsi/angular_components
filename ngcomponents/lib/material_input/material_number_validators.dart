@@ -95,10 +95,10 @@ class LowerBoundValidator implements Validator {
     return null;
   }
 
-  static String numberIsTooSmallMsg(String _lowerBound) =>
-      Intl.message('Enter a number $_lowerBound or greater',
+  static String numberIsTooSmallMsg(String lowerBound) =>
+      Intl.message('Enter a number $lowerBound or greater',
           name: 'LowerBoundValidator_numberIsTooSmallMsg',
-          args: [_lowerBound],
+          args: [lowerBound],
           desc: 'Error message when input number is too small.',
           examples: const {'_lowerBound': 42});
 }
@@ -132,10 +132,10 @@ class UpperBoundValidator implements Validator {
     return null;
   }
 
-  static String numberIsTooLargeMsg(String _upperBound) =>
-      Intl.message('Enter a number $_upperBound or smaller',
+  static String numberIsTooLargeMsg(String upperBound) =>
+      Intl.message('Enter a number $upperBound or smaller',
           name: 'UpperBoundValidator_numberIsTooLargeMsg',
-          args: [_upperBound],
+          args: [upperBound],
           desc: 'Error message when number input is too large.',
           examples: const {'_upperBound': 42});
 }

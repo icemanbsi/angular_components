@@ -168,9 +168,7 @@ class _ImmutableOverlayState implements OverlayState {
   Stream<Null> get onUpdate => const Stream.empty();
 
   @override
-  String toString() =>
-      'ImmutableOverlayState ' +
-      {
+  String toString() => 'ImmutableOverlayState ${{
         'captureEvents': captureEvents,
         'left': left,
         'top': top,
@@ -181,7 +179,7 @@ class _ImmutableOverlayState implements OverlayState {
         'visibility': visibility,
         'zIndex': zIndex,
         'position': position,
-      }.toString();
+      }}';
 }
 
 /// An interface that can mutate an active overlay pane.
@@ -354,9 +352,7 @@ class MutableOverlayState implements OverlayState {
   }
 
   @override
-  String toString() =>
-      'MutableOverlayState ' +
-      {
+  String toString() => 'MutableOverlayState ${{
         'captureEvents': captureEvents,
         'left': left,
         'top': top,
@@ -368,5 +364,5 @@ class MutableOverlayState implements OverlayState {
         'zIndex': zIndex,
         'visibility': visibility,
         'position': position
-      }.toString();
+      }}';
 }

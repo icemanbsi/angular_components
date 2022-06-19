@@ -5,7 +5,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 
-typedef _ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
+typedef ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
 
 /// A validator that defers to another delegator.
 ///
@@ -17,17 +17,17 @@ typedef _ValidatorFn = Map<String, dynamic>? Function(AbstractControl c);
 class DeferredValidator {
   // Use list instead of set so that don't need to conver for the compose
   // function.
-  final List<_ValidatorFn> _delegates = <_ValidatorFn>[];
-  _ValidatorFn? _validator;
+  final List<ValidatorFn> _delegates = <ValidatorFn>[];
+  ValidatorFn? _validator;
 
-  void add(_ValidatorFn validation) {
+  void add(ValidatorFn validation) {
     // Shouldn't add the same validator
     assert(!_delegates.contains(validation));
     _delegates.add(validation);
     _validator = null; // Reset the validator so that is is rebuilt.
   }
 
-  void remove(_ValidatorFn validation) {
+  void remove(ValidatorFn validation) {
     assert(_delegates.contains(validation)); // Should contain the validator
     _delegates.remove(validation);
     _validator = null; // Reset the validator so that is is rebuilt.

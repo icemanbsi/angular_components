@@ -51,7 +51,7 @@ class MaterialTreeNode<T> {
       _parent = _root.options as Parent<T, List<OptionGroup<T>>>;
     }
     // TODO(google).
-    final Object? options = _root.options;
+    final Object options = _root.options;
     if (options is Selectable<T>) {
       _selectable = options;
     } else {

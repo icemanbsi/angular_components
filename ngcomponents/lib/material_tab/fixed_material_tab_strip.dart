@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
 import 'package:ngcomponents/annotations/rtl_annotation.dart';
 import 'package:ngcomponents/focus/focus_item.dart';
 import 'package:ngcomponents/focus/focus_list.dart';

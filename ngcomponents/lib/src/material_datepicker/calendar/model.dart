@@ -150,7 +150,7 @@ class CalendarState {
   /// Return true if the given date is highlighted by the given selection,
   /// or by a preview of the given selection.
   bool highlighted(String? id, Date date) {
-    assert(date != null);
+    //assert(date != null);
     if (preview != null && currentSelection == id) {
       var current = selection(currentSelection);
       var anchor = previewAnchoredAtStart ? current.start : current.end;
@@ -234,7 +234,7 @@ class CalendarState {
 
   /// Updates the preview endpoint and sets `cause` to `previewing`.
   CalendarState updateCurrentPreview(Date newPreviewTarget) {
-    assert(newPreviewTarget != null);
+    //assert(newPreviewTarget != null);
     return CalendarState(
         selections: selections,
         currentSelection: currentSelection,

@@ -3,7 +3,6 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
 import 'package:ngcomponents/material_menu/affix/base_affix.dart';
 import 'package:ngcomponents/material_menu/affix/caption_affix_model.dart';
 

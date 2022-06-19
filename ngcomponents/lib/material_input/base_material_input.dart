@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/forms/error_renderer.dart' show ErrorFn;
 import 'package:ngcomponents/interfaces/has_disabled.dart';
@@ -273,9 +272,9 @@ class BaseMaterialInput extends FocusableMixin
       _localValidationMessage = _errorMsg;
       return {materialInputErrorKey: _localValidationMessage};
     }
-    var _checkValidMessage = checkValid(inputText);
-    if (_checkValidMessage.isNotEmpty) {
-      _localValidationMessage = _checkValidMessage;
+    var checkValidMessage = checkValid(inputText);
+    if (checkValidMessage.isNotEmpty) {
+      _localValidationMessage = checkValidMessage;
       return {materialInputErrorKey: _localValidationMessage};
     } // fallthrough
 

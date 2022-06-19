@@ -116,7 +116,7 @@ class MaterialInkTooltipComponent implements Tooltip {
   ///   <material-tooltip-text [for]="target">My tooltip</material-tooltip-text>
   /// ```
   @Input('for')
-  set tooltipRef(TooltipTarget target) {
+  set tooltipRef(TooltipTarget? target) {
     if (target == null) return;
     _tooltipSource = target;
     target.setTooltip(tooltipHandle);

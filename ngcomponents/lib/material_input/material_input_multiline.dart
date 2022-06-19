@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/utils/angular/properties/properties.dart';
@@ -103,7 +102,7 @@ class MaterialMultilineInputComponent extends BaseMaterialInput
   Element? get elementRef => popupSourceEl;
 
   /// Text used to size the multiline textarea.
-  String get mirrorText => (inputText) + '\n';
+  String get mirrorText => '$inputText\n';
 
   @ViewChild('lineHeightMeasure')
   set lineHeightMeasure(Element? value) {

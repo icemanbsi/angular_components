@@ -9,10 +9,10 @@ import 'package:angular/angular.dart';
 import 'package:js/js.dart';
 
 @JS('acxZIndex')
-external int get _currentZIndex;
+external int? get _currentZIndex;
 
 @JS('acxZIndex')
-external set _currentZIndex(int value);
+external set _currentZIndex(int? value);
 
 /// The layout tools will monotonically increment the zIndex for hoverable
 /// elements.
@@ -40,8 +40,18 @@ class ZIndexer {
   }
 
   /// Increment and get the current z-index.
-  int pop() => ++_currentZIndex;
+  int pop() {
+    if (_currentZIndex != null) {
+      var idx = _currentZIndex!;
+      _currentZIndex = ++idx;
+      return idx;
+    }
+
+    var idx = hoverableAutoIncrement;
+    _currentZIndex = ++idx;
+    return idx;
+  }
 
   /// Peek at the current z-index without changing it.
-  int peek() => _currentZIndex;
+  int peek() => _currentZIndex ?? hoverableAutoIncrement;
 }

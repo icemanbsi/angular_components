@@ -71,11 +71,11 @@ class ActiveItemModel<T> {
     if (const ListEquality().equals(itemList, _items)) return;
 
     _ids.clear();
-    var _lastActive = activeItem;
+    var lastActive = activeItem;
     // Ensure [_items] can't change.
     _items = List.unmodifiable(itemList);
-    if (_lastActive != null) {
-      var last = _items.indexOf(_lastActive);
+    if (lastActive != null) {
+      var last = _items.indexOf(lastActive);
       if (last != -1) {
         _activeIndex = last;
         return;

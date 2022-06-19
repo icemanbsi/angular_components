@@ -326,16 +326,14 @@ class _StickyRow implements StickyRowPosition {
   }
 
   @override
-  String toString() =>
-      '_StickyRow ' +
-      {
+  String toString() => '_StickyRow ${{
         'isBottom': isBottom,
         'isTop': isTop,
         'rowPosition': rowPosition,
         'rangePosition': rangePosition,
         'translateY': translateY,
         'stickyClass': stickyClass,
-      }.toString();
+      }}';
 }
 
 /// Wraps a row of arbitrary type with additional data needed by the algorithm.
@@ -422,15 +420,13 @@ class StickyContainerLayout<T> {
   }
 
   @override
-  String toString() =>
-      'StickyContainerLayout ' +
-      {
+  String toString() => 'StickyContainerLayout ${{
         'hostPosition': hostPosition,
         'topRows': topRows,
         'bottomRows': bottomRows,
         'hiddenRows': hiddenRows,
         '_translateYs': _translateYs
-      }.toString();
+      }}';
 }
 
 /// Helper methods, separated for simpler testing.

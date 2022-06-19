@@ -33,9 +33,9 @@ class HighlightAssistant {
         _matchFromStartOfWord = matchFromStartOfWord;
 
   List<HighlightedTextSegment> highlightOption<T>(
-      String _lastQuery, dynamic item, ItemRenderer<T>? itemRenderer) {
-    var _queryHighlightCache = _highlightCache[_lastQuery] ??= {};
-    var value = _queryHighlightCache[item];
+      String lastQuery, dynamic item, ItemRenderer<T>? itemRenderer) {
+    var queryHighlightCache = _highlightCache[lastQuery] ??= {};
+    var value = queryHighlightCache[item];
 
     if (value == null) {
       String render = '';
@@ -43,10 +43,10 @@ class HighlightAssistant {
         render = itemRenderer(item) ?? '';
       }
       value = (_optionHighlighter != null
-          ? _optionHighlighter!(_lastQuery, item)
+          ? _optionHighlighter!(lastQuery, item)
           : _textHighlighter.highlight(
-              render, _lastQuery.split(_separatorRegex)));
-      _queryHighlightCache[item] = value;
+              render, lastQuery.split(_separatorRegex)));
+      queryHighlightCache[item] = value;
     }
     return value;
   }

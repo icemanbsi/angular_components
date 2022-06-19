@@ -131,7 +131,7 @@ class StepDirective extends TemplatePortal {
     _requestStepAction(action, _jumpController);
   }
 
-  bool get shouldShowSummary => !active && completeSummary != null && complete;
+  bool get shouldShowSummary => !active && complete;
 
   void _requestStepAction(AsyncAction<bool> action,
       StreamController<AsyncAction<bool>> controller) {

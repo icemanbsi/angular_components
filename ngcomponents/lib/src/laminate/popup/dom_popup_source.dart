@@ -111,9 +111,10 @@ class DomPopupSource implements ElementPopupSource {
   }
 
   @override
-  String toString() =>
-      'DomPopupSource ' +
-      {'alignOriginX': alignOriginX, 'alignOriginY': alignOriginY}.toString();
+  String toString() => 'DomPopupSource ${{
+        'alignOriginX': alignOriginX,
+        'alignOriginY': alignOriginY
+      }}';
 
   @override
   void onOpen() {

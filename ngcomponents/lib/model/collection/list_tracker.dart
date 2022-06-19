@@ -75,7 +75,7 @@ class LazyListTracker<S, T> extends Object
       object = _mapSource(index, _source[index]);
       _target![index] = object;
     }
-    assert(_lookupSource(index, object!) == _source[index]);
+    assert(_lookupSource(index, object as T) == _source[index]);
     return object!;
   }
 

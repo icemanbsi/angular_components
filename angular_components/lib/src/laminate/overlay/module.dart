@@ -2,12 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:meta/meta.dart';
 import 'package:angular_components/src/laminate/overlay/constants.dart';
 import 'package:angular_components/src/laminate/overlay/overlay_service.dart';
 import 'package:angular_components/src/laminate/overlay/render/overlay_dom_render_service.dart';
@@ -32,8 +29,11 @@ export 'package:angular_components/src/laminate/overlay/render/overlay_dom_rende
 /// already.
 /// A hidden focusable element is inserted before and after the overlay
 /// container to support a11y features.
-HtmlElement createAcxOverlayContainer(HtmlElement parent,
-    {@required String id, @required String name, String className}) {
+HtmlElement createAcxOverlayContainer(Object parent,
+    {required String id, required String name, String? className}) {
+  if (parent is! HtmlElement) {
+    throw ArgumentError("Not a HtmlElement type");
+  }
   var container = parent.querySelector('#$id');
   if (container == null) {
     container = DivElement()
@@ -43,39 +43,50 @@ HtmlElement createAcxOverlayContainer(HtmlElement parent,
     parent.append(container);
   }
   container.attributes[overlayContainerNameAttribute] = name;
-  return container;
+  return container as HtmlElement;
 }
 
 /// Either finds, or creates an "acx-overlay-container" div at the end of body.
 @Injectable()
 HtmlElement getDefaultContainer(
-    @Inject(overlayContainerName) String name,
-    @Inject(overlayContainerParent) HtmlElement parent,
-    @Optional() @SkipSelf() @Inject(overlayContainerToken) container) {
-  if (container != null) return container;
+    @Inject(overlayContainerName) Object name,
+    @Inject(overlayContainerParent) Object parent,
+    @Optional() @SkipSelf() @Inject(overlayContainerToken) Object? container) {
+  if (container != null) {
+    return container as HtmlElement;
+  }
+
   return createAcxOverlayContainer(parent,
-      id: overlayDefaultContainerId, name: name);
+      id: overlayDefaultContainerId, name: name as String);
 }
 
 @Injectable()
 String getDefaultContainerName(
-    @Optional() @SkipSelf() @Inject(overlayContainerName) containerName) {
-  return containerName ?? 'default';
+    @Optional()
+    @SkipSelf()
+    @Inject(overlayContainerName)
+        Object? containerName) {
+  return containerName as String? ?? 'default';
 }
 
 /// Returns an overlay container with debugging aid enabled.
 @Injectable()
-HtmlElement getDebugContainer(@Inject(overlayContainerName) String name,
-    @Inject(overlayContainerParent) HtmlElement parent) {
+HtmlElement getDebugContainer(@Inject(overlayContainerName) Object name,
+    @Inject(overlayContainerParent) Object parent) {
   var element = getDefaultContainer(name, parent, null);
   element.classes.add('debug');
   return element;
 }
 
 @Injectable()
-HtmlElement getOverlayContainerParent(Document document,
-    @Optional() @SkipSelf() @Inject(overlayContainerParent) containerParent) {
-  return containerParent ?? document.querySelector('body');
+HtmlElement getOverlayContainerParent(
+    Document document,
+    @Optional()
+    @SkipSelf()
+    @Inject(overlayContainerParent)
+        Object? containerParent) {
+  return containerParent as HtmlElement? ??
+      document.querySelector('body') as HtmlElement;
 }
 
 /// DI module for Overlay and its dependencies.

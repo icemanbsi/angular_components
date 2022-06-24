@@ -44,7 +44,7 @@ typedef Predicate<T> = bool Function(T value);
 Predicate<T> not<T>(Predicate<T> predicate) => (value) => !predicate(value);
 
 /// A stream of click, mouseup or focus events outside a given element.
-Stream<Event> triggersOutside(Element element) {
+Stream<Event> triggersOutside(Element? element) {
   return triggersOutsideAny((node) => node == element);
 }
 

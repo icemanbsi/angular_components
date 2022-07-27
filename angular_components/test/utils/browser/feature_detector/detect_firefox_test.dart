@@ -1,4 +1,4 @@
-@TestOn('chrome')
+@TestOn('firefox')
 
 // import 'dart:html';
 import 'package:test/test.dart';
@@ -6,8 +6,8 @@ import 'package:test/test.dart';
 import 'package:angular_components/utils/browser/feature_detector/feature_detector.dart';
 
 void main() {
-  test('', () {
-    expect(isFirefox, isFalse);
+  test('Utils test | browser | feature_detector | firefox', () {
+    expect(isFirefox, isTrue);
     expect(isEdge, isFalse);
   });
 }

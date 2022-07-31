@@ -8,7 +8,7 @@ library events;
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart' as js_util;
 import 'package:ngcomponents/utils/browser/feature_detector/feature_detector.dart';

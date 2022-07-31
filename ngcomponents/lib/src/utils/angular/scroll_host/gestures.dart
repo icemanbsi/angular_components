@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math' as math;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:quiver/time.dart';
 import 'package:ngcomponents/src/utils/angular/scroll_host/scroll_host_event_impl.dart';
 import 'package:ngcomponents/src/utils/angular/scroll_host/scroll_host_interface.dart';

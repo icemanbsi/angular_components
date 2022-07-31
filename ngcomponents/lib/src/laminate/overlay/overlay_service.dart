@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/src/laminate/overlay/overlay_ref.dart';
 import 'package:ngcomponents/src/laminate/overlay/overlay_state.dart';
 import 'package:ngcomponents/src/laminate/overlay/render/overlay_dom_render_service.dart';

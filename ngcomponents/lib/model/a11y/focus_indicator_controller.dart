@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/di.dart';
+import 'package:ngdart/di.dart';
 
 const focusIndicatorProviders = [
   FactoryProvider(

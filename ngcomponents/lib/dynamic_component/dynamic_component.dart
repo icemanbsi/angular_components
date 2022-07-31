@@ -4,8 +4,8 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular/experimental.dart' show changeDetectionLink;
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/experimental.dart' show changeDetectionLink;
 import 'package:ngcomponents/model/ui/has_renderer.dart';
 
 /// Dynamically renders another component, setting the [value] field on the

@@ -4,8 +4,8 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/meta.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/material_datepicker/material_datepicker.dart';
 import 'package:ngcomponents/material_datepicker/material_time_picker.dart';

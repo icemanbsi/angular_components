@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/angular_components.dart';
 
 /// A reusable interface for something that is or delegates to [PopupComponent].

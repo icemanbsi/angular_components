@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/dynamic_component/dynamic_component.dart';
 import 'package:ngcomponents/material_checkbox/material_checkbox.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';

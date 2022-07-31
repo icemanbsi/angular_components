@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html' show KeyboardEvent, HtmlElement;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 
 /// `FocusItemDirective`, used in conjunction with [FocusListDirective],

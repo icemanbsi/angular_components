@@ -7,7 +7,7 @@ library angular_components.material_tree.src.material_tree_filter;
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/material_input/material_input.dart';
 import 'package:ngcomponents/src/material_tree/material_tree_root.dart';
 import 'package:ngcomponents/model/selection/select.dart';

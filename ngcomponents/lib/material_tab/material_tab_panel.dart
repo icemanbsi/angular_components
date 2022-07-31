@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/material_tab/fixed_material_tab_strip.dart';
 import 'package:ngcomponents/material_tab/material_tab.dart';
 import 'package:ngcomponents/material_tab/tab_change_event.dart';

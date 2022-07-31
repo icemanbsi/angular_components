@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';
@@ -13,7 +13,7 @@ import 'package:ngcomponents/material_ripple/material_ripple.dart';
 import 'package:ngcomponents/model/ui/icon.dart';
 import 'package:ngcomponents/utils/browser/events/events.dart';
 import 'package:ngcomponents/utils/id_generator/id_generator.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:meta/meta.dart';
 
 const Icon uncheckedIcon = Icon('check_box_outline_blank');

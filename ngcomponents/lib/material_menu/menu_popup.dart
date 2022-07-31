@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/content/deferred_content.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/focus/focus_trap.dart';

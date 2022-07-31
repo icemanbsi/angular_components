@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus_item.dart';
 import 'package:ngcomponents/focus/focus_list.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';

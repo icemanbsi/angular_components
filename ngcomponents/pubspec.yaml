@@ -4,11 +4,11 @@ description: Angular material components for AngularDart maintained by the commu
 repository: https://github.com/angulardart-community/angular_components
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  angular: ^7.0.1
-  angular_forms: ^4.0.0
+  ngdart: ^7.1.0
+  ngforms: ^4.1.0
   async: ^2.1.0
   build: ^2.1.1
   build_config: ^1.0.0

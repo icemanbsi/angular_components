@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/utils/angular/imperative_view/imperative_view.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';
 

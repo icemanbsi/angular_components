@@ -6,7 +6,7 @@
 library angular_components.scaffolding.gallery_section.components.gallery_component;
 
 import 'dart:html';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:js/js.dart';
 import 'package:ngcomponents/button_decorator/button_decorator.dart';
 import 'package:ngcomponents/dynamic_component/dynamic_component.dart';

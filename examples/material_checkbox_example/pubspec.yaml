@@ -2,13 +2,13 @@ name: material_checkbox_example
 publish_to: none
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  angular: ^7.0.1
+  ngdart: ^7.1.0
   ngcomponents:
     path: ../../ngcomponents
-  angular_forms: ^4.0.0
+  ngforms: ^4.1.0
   angular_gallery:
     path: ../../angular_gallery
   angular_gallery_section:

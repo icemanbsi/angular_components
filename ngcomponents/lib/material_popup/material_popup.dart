@@ -13,8 +13,7 @@ import 'package:meta/meta.dart';
 import 'package:ngcomponents/src/content/deferred_content_aware.dart';
 import 'package:ngcomponents/focus/focus_interface.dart';
 import 'package:ngcomponents/src/laminate/enums/alignment.dart';
-import 'package:ngcomponents/src/laminate/enums/visibility.dart'
-    as visibility;
+import 'package:ngcomponents/src/laminate/enums/visibility.dart' as visibility;
 import 'package:ngcomponents/src/laminate/overlay/module.dart';
 import 'package:ngcomponents/src/laminate/overlay/overlay.dart';
 import 'package:ngcomponents/src/laminate/overlay/zindexer.dart';

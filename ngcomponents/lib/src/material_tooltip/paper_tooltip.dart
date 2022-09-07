@@ -12,8 +12,7 @@ import 'package:ngcomponents/src/content/deferred_content.dart';
 import 'package:ngcomponents/src/content/deferred_content_aware.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/src/laminate/enums/alignment.dart';
-import 'package:ngcomponents/src/laminate/popup/popup.dart'
-    show PopupSource;
+import 'package:ngcomponents/src/laminate/popup/popup.dart' show PopupSource;
 import 'package:ngcomponents/material_popup/material_popup.dart';
 import 'package:ngcomponents/material_tooltip/module.dart';
 import 'package:ngcomponents/utils/angular/css/css.dart';

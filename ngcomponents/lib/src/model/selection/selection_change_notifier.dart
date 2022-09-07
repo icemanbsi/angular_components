@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-part of angular_components.model.selection.selection_model;
+part of ngcomponents.model.selection.selection_model;
 
 /// Interface for something that can be observed for selection.
 abstract class SelectionObservable<T> {

@@ -15,7 +15,7 @@
 /// complex domain objects that aren't able to implement [Observable].
 ///
 /// TODO(google): check with jmesserly: how to merge these with package:observe
-library angular_components.model.observable.observable;
+library ngcomponents.model.observable.observable;
 
 import 'dart:async';
 

@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-library angular_components.model.selection.selection_model;
+library ngcomponents.model.selection.selection_model;
 
 import 'dart:async';
 import 'dart:collection';

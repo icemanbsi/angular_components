@@ -5,7 +5,7 @@
 // @dart=2.9
 
 // TODO(google): Make this generic and shareable at first opportunity.
-library angular_components.material_tree.src.material_tree_filter;
+library ngcomponents.material_tree.src.material_tree_filter;
 
 import 'dart:async';
 

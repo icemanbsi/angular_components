@@ -9,8 +9,7 @@ import 'dart:html';
 import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/src/content/deferred_content.dart';
 import 'package:ngcomponents/src/laminate/enums/alignment.dart';
-import 'package:ngcomponents/src/laminate/popup/popup.dart'
-    show PopupSource;
+import 'package:ngcomponents/src/laminate/popup/popup.dart' show PopupSource;
 import 'package:ngcomponents/material_popup/material_popup.dart';
 import 'package:ngcomponents/material_tooltip/module.dart';
 import 'package:ngcomponents/utils/angular/css/css.dart';

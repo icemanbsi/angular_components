@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-part of angular_components.model.selection.selection_options;
+part of ngcomponents.model.selection.selection_options;
 
 class _StreamSelectionOptions<T> extends SelectionOptions<T> {
   StreamSubscription _streamSub;

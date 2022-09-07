@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-part of angular_components.model.selection.selection_model;
+part of ngcomponents.model.selection.selection_model;
 
 class _SingleSelectionModelImpl<T> extends PropertyChangeNotifier
     with SelectionChangeNotifier<T>, CastIterable<T>

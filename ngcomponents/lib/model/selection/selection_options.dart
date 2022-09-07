@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-library angular_components.model.selection.selection_options;
+library ngcomponents.model.selection.selection_options;
 
 import 'dart:async';
 

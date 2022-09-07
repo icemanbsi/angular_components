@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 @JS()
-library angular_components.framework_stabilizers.testability;
+library ngcomponents.framework_stabilizers.testability;
 
 import 'dart:async';
 

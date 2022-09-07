@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-part of angular_components.model.selection.selection_model;
+part of ngcomponents.model.selection.selection_model;
 
 /// Returned internally as a blank selection model.
 class _NoopSelectionModelImpl<T> implements NullSelectionModel<T> {

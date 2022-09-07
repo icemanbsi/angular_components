@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-part of angular_components.model.selection.selection_options;
+part of ngcomponents.model.selection.selection_options;
 
 class _FutureSelectionOptions<T> extends SelectionOptions<T> {
   _FutureSelectionOptions(Future<List<OptionGroup<T>>> optionGroupListFuture)

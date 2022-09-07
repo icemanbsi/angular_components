@@ -8,7 +8,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:ngdart/angular.dart';
-import 'package:ngcomponents/angular_components.dart';
+import 'package:ngcomponents/ngcomponents.dart';
 import 'package:ngcomponents/src/interfaces/has_disabled.dart';
 import 'package:ngcomponents/model/selection/selection_container.dart';
 import 'package:ngcomponents/model/ui/has_factory.dart';

@@ -32,7 +32,7 @@ github:
             sdk: stable
           
         - run: dart pub get && dart run build_runner build -o build
-          working-directory: examples/angular_components_example
+          working-directory: examples/ngcomponents_example
 
         - uses: FirebaseExtended/action-hosting-deploy@v0
           with:

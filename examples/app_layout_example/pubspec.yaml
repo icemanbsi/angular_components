@@ -17,4 +17,3 @@ dependencies:
 dependency_overrides:
   angular_components:
     path: ../../angular_components
-

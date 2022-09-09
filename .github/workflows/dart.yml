@@ -1,4 +1,4 @@
-# Created with package:mono_repo v6.0.0
+# Created with package:mono_repo v6.4.0
 name: Dart CI
 on:
   push:
@@ -13,6 +13,7 @@ defaults:
     shell: bash
 env:
   PUB_ENVIRONMENT: bot.github
+permissions: read-all
 
 jobs:
   job_001:
@@ -20,331 +21,338 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
           key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: mono_repo self validate
-        run: dart pub global activate mono_repo 6.0.0
+        run: dart pub global activate mono_repo 6.4.0
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
-    name: "analyze_and_format_core; Dart 2.14.2; PKGS: angular_components, angular_gallery, angular_gallery_section; `dart analyze .`"
+    name: "analyze_and_format_core; Dart 2.17.0; PKGS: angular_gallery, angular_gallery_section, ngcomponents; `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components-angular_gallery-angular_gallery_section;commands:analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:angular_gallery-angular_gallery_section-ngcomponents;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components-angular_gallery-angular_gallery_section
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:angular_gallery-angular_gallery_section-ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart pub upgrade
-      - name: angular_components; dart analyze .
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart analyze .
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: angular_gallery_pub_upgrade
         name: angular_gallery; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery
-        run: dart pub upgrade
       - name: angular_gallery; dart analyze .
+        run: dart analyze .
         if: "always() && steps.angular_gallery_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery
-        run: dart analyze .
       - id: angular_gallery_section_pub_upgrade
         name: angular_gallery_section; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery_section
-        run: dart pub upgrade
       - name: angular_gallery_section; dart analyze .
+        run: dart analyze .
         if: "always() && steps.angular_gallery_section_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery_section
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; dart analyze .
         run: dart analyze .
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
   job_003:
-    name: "analyze_and_format_core; Dart dev; PKG: angular_components; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components;commands:format-analyze_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: dev
-      - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart pub upgrade
-      - name: "angular_components; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
-        run: "dart format --output=none --set-exit-if-changed ."
-      - name: angular_components; dart analyze .
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart analyze .
-    if:
-    needs:
-      - job_001
-  job_004:
     name: "analyze_and_format_core; Dart dev; PKGS: angular_gallery, angular_gallery_section; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery-angular_gallery_section;commands:format-analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery-angular_gallery_section;commands:format-analyze_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery-angular_gallery_section
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: angular_gallery_pub_upgrade
         name: angular_gallery; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery
-        run: dart pub upgrade
       - name: "angular_gallery; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.angular_gallery_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_gallery
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "angular_gallery; dart analyze --fatal-infos ."
         if: "always() && steps.angular_gallery_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery
+      - name: "angular_gallery; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.angular_gallery_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_gallery
       - id: angular_gallery_section_pub_upgrade
         name: angular_gallery_section; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery_section
-        run: dart pub upgrade
       - name: "angular_gallery_section; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.angular_gallery_section_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_gallery_section
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "angular_gallery_section; dart analyze --fatal-infos ."
         if: "always() && steps.angular_gallery_section_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery_section
+      - name: "angular_gallery_section; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
-    if:
+        if: "always() && steps.angular_gallery_section_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_gallery_section
+    needs:
+      - job_001
+  job_004:
+    name: "analyze_and_format_core; Dart dev; PKG: ngcomponents; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:format-analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
   job_005:
-    name: "analyze_and_format_core; Dart stable; PKGS: angular_components, angular_gallery, angular_gallery_section; `dart analyze .`"
+    name: "analyze_and_format_core; Dart stable; PKGS: angular_gallery, angular_gallery_section, ngcomponents; `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components-angular_gallery-angular_gallery_section;commands:analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_gallery-angular_gallery_section-ngcomponents;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components-angular_gallery-angular_gallery_section
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_gallery-angular_gallery_section-ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart pub upgrade
-      - name: angular_components; dart analyze .
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
-        run: dart analyze .
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: angular_gallery_pub_upgrade
         name: angular_gallery; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery
-        run: dart pub upgrade
       - name: angular_gallery; dart analyze .
+        run: dart analyze .
         if: "always() && steps.angular_gallery_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery
-        run: dart analyze .
       - id: angular_gallery_section_pub_upgrade
         name: angular_gallery_section; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: angular_gallery_section
-        run: dart pub upgrade
       - name: angular_gallery_section; dart analyze .
+        run: dart analyze .
         if: "always() && steps.angular_gallery_section_pub_upgrade.conclusion == 'success'"
         working-directory: angular_gallery_section
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; dart analyze .
         run: dart analyze .
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
   job_006:
-    name: "analyze_and_format_examples_1; Dart 2.14.2; PKGS: examples/app_layout_example, examples/material_button_example, examples/material_card_example, examples/material_checkbox_example, examples/material_chips_example, examples/material_datepicker_example, examples/material_dialog_example, examples/material_expansionpanel_example, examples/material_icon_example, examples/material_list_example, examples/material_menu_example, examples/material_yes_no_buttons_example; `dart analyze .`"
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKGS: examples/app_layout_example, examples/material_button_example, examples/material_card_example, examples/material_checkbox_example, examples/material_chips_example, examples/material_datepicker_example, examples/material_dialog_example, examples/material_expansionpanel_example, examples/material_icon_example, examples/material_list_example, examples/material_menu_example, examples/material_yes_no_buttons_example; `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example;commands:analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_app_layout_example_pub_upgrade
         name: examples/app_layout_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/app_layout_example
-        run: dart pub upgrade
       - name: examples/app_layout_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_app_layout_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/app_layout_example
-        run: dart analyze .
       - id: examples_material_button_example_pub_upgrade
         name: examples/material_button_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_button_example
-        run: dart pub upgrade
       - name: examples/material_button_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_button_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_button_example
-        run: dart analyze .
       - id: examples_material_card_example_pub_upgrade
         name: examples/material_card_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_card_example
-        run: dart pub upgrade
       - name: examples/material_card_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_card_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_card_example
-        run: dart analyze .
       - id: examples_material_checkbox_example_pub_upgrade
         name: examples/material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
-        run: dart pub upgrade
       - name: examples/material_checkbox_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_checkbox_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
-        run: dart analyze .
       - id: examples_material_chips_example_pub_upgrade
         name: examples/material_chips_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_chips_example
-        run: dart pub upgrade
       - name: examples/material_chips_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_chips_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_chips_example
-        run: dart analyze .
       - id: examples_material_datepicker_example_pub_upgrade
         name: examples/material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
-        run: dart pub upgrade
       - name: examples/material_datepicker_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_datepicker_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
-        run: dart analyze .
       - id: examples_material_dialog_example_pub_upgrade
         name: examples/material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_dialog_example
-        run: dart pub upgrade
       - name: examples/material_dialog_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_dialog_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_dialog_example
-        run: dart analyze .
       - id: examples_material_expansionpanel_example_pub_upgrade
         name: examples/material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
-        run: dart pub upgrade
       - name: examples/material_expansionpanel_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
-        run: dart analyze .
       - id: examples_material_icon_example_pub_upgrade
         name: examples/material_icon_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_icon_example
-        run: dart pub upgrade
       - name: examples/material_icon_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_icon_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_icon_example
-        run: dart analyze .
       - id: examples_material_list_example_pub_upgrade
         name: examples/material_list_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_list_example
-        run: dart pub upgrade
       - name: examples/material_list_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_list_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_list_example
-        run: dart analyze .
       - id: examples_material_menu_example_pub_upgrade
         name: examples/material_menu_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_menu_example
-        run: dart pub upgrade
       - name: examples/material_menu_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_menu_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_menu_example
-        run: dart analyze .
       - id: examples_material_yes_no_buttons_example_pub_upgrade
         name: examples/material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
-        run: dart pub upgrade
       - name: examples/material_yes_no_buttons_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
-        run: dart analyze .
-    if:
     needs:
       - job_001
       - job_002
@@ -356,164 +364,165 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example;commands:format-analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example;commands:format-analyze_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_app_layout_example_pub_upgrade
         name: examples/app_layout_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/app_layout_example
-        run: dart pub upgrade
       - name: "examples/app_layout_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_app_layout_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/app_layout_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/app_layout_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_app_layout_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/app_layout_example
+      - name: "examples/app_layout_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_app_layout_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/app_layout_example
       - id: examples_material_button_example_pub_upgrade
         name: examples/material_button_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_button_example
-        run: dart pub upgrade
       - name: "examples/material_button_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_button_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_button_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_button_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_button_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_button_example
+      - name: "examples/material_button_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_button_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_button_example
       - id: examples_material_card_example_pub_upgrade
         name: examples/material_card_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_card_example
-        run: dart pub upgrade
       - name: "examples/material_card_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_card_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_card_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_card_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_card_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_card_example
+      - name: "examples/material_card_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_card_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_card_example
       - id: examples_material_checkbox_example_pub_upgrade
         name: examples/material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
-        run: dart pub upgrade
       - name: "examples/material_checkbox_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_checkbox_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_checkbox_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_checkbox_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_checkbox_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
+      - name: "examples/material_checkbox_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_checkbox_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_checkbox_example
       - id: examples_material_chips_example_pub_upgrade
         name: examples/material_chips_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_chips_example
-        run: dart pub upgrade
       - name: "examples/material_chips_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_chips_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_chips_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_chips_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_chips_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_chips_example
+      - name: "examples/material_chips_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_chips_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_chips_example
       - id: examples_material_datepicker_example_pub_upgrade
         name: examples/material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
-        run: dart pub upgrade
       - name: "examples/material_datepicker_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_datepicker_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_datepicker_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_datepicker_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_datepicker_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
+      - name: "examples/material_datepicker_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_datepicker_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_datepicker_example
       - id: examples_material_dialog_example_pub_upgrade
         name: examples/material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_dialog_example
-        run: dart pub upgrade
       - name: "examples/material_dialog_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_dialog_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_dialog_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_dialog_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_dialog_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_dialog_example
+      - name: "examples/material_dialog_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_dialog_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_dialog_example
       - id: examples_material_expansionpanel_example_pub_upgrade
         name: examples/material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
-        run: dart pub upgrade
       - name: "examples/material_expansionpanel_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_expansionpanel_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_expansionpanel_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
+      - name: "examples/material_expansionpanel_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_expansionpanel_example
       - id: examples_material_icon_example_pub_upgrade
         name: examples/material_icon_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_icon_example
-        run: dart pub upgrade
       - name: "examples/material_icon_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_icon_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_icon_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_icon_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_icon_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_icon_example
+      - name: "examples/material_icon_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_icon_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_icon_example
       - id: examples_material_list_example_pub_upgrade
         name: examples/material_list_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_list_example
-        run: dart pub upgrade
       - name: "examples/material_list_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_list_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_list_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_list_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_list_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_list_example
+      - name: "examples/material_list_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_list_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_list_example
       - id: examples_material_yes_no_buttons_example_pub_upgrade
         name: examples/material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
-        run: dart pub upgrade
       - name: "examples/material_yes_no_buttons_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_yes_no_buttons_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_yes_no_buttons_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
+      - name: "examples/material_yes_no_buttons_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
-    if:
+        if: "always() && steps.examples_material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_yes_no_buttons_example
     needs:
       - job_001
       - job_002
@@ -525,34 +534,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_menu_example;commands:format-analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_menu_example;commands:format-analyze_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_menu_example
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_material_menu_example_pub_upgrade
         name: examples/material_menu_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_menu_example
-        run: dart pub upgrade
       - name: "examples/material_menu_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_menu_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_menu_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: examples/material_menu_example; dart analyze .
         if: "always() && steps.examples_material_menu_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_menu_example
+      - name: examples/material_menu_example; dart analyze .
         run: dart analyze .
-    if:
+        if: "always() && steps.examples_material_menu_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_menu_example
     needs:
       - job_001
       - job_002
@@ -564,129 +574,130 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example;commands:analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example;commands:analyze_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_menu_example-examples/material_yes_no_buttons_example
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_app_layout_example_pub_upgrade
         name: examples/app_layout_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/app_layout_example
-        run: dart pub upgrade
       - name: examples/app_layout_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_app_layout_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/app_layout_example
-        run: dart analyze .
       - id: examples_material_button_example_pub_upgrade
         name: examples/material_button_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_button_example
-        run: dart pub upgrade
       - name: examples/material_button_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_button_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_button_example
-        run: dart analyze .
       - id: examples_material_card_example_pub_upgrade
         name: examples/material_card_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_card_example
-        run: dart pub upgrade
       - name: examples/material_card_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_card_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_card_example
-        run: dart analyze .
       - id: examples_material_checkbox_example_pub_upgrade
         name: examples/material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
-        run: dart pub upgrade
       - name: examples/material_checkbox_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_checkbox_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_checkbox_example
-        run: dart analyze .
       - id: examples_material_chips_example_pub_upgrade
         name: examples/material_chips_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_chips_example
-        run: dart pub upgrade
       - name: examples/material_chips_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_chips_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_chips_example
-        run: dart analyze .
       - id: examples_material_datepicker_example_pub_upgrade
         name: examples/material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
-        run: dart pub upgrade
       - name: examples/material_datepicker_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_datepicker_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_datepicker_example
-        run: dart analyze .
       - id: examples_material_dialog_example_pub_upgrade
         name: examples/material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_dialog_example
-        run: dart pub upgrade
       - name: examples/material_dialog_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_dialog_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_dialog_example
-        run: dart analyze .
       - id: examples_material_expansionpanel_example_pub_upgrade
         name: examples/material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
-        run: dart pub upgrade
       - name: examples/material_expansionpanel_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_expansionpanel_example
-        run: dart analyze .
       - id: examples_material_icon_example_pub_upgrade
         name: examples/material_icon_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_icon_example
-        run: dart pub upgrade
       - name: examples/material_icon_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_icon_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_icon_example
-        run: dart analyze .
       - id: examples_material_list_example_pub_upgrade
         name: examples/material_list_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_list_example
-        run: dart pub upgrade
       - name: examples/material_list_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_list_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_list_example
-        run: dart analyze .
       - id: examples_material_menu_example_pub_upgrade
         name: examples/material_menu_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_menu_example
-        run: dart pub upgrade
       - name: examples/material_menu_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_menu_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_menu_example
-        run: dart analyze .
       - id: examples_material_yes_no_buttons_example_pub_upgrade
         name: examples/material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
-        run: dart pub upgrade
       - name: examples/material_yes_no_buttons_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_yes_no_buttons_example
-        run: dart analyze .
-    if:
     needs:
       - job_001
       - job_002
@@ -694,151 +705,152 @@ jobs:
       - job_004
       - job_005
   job_010:
-    name: "analyze_and_format_examples_2; Dart 2.14.2; PKGS: examples/material_input_example, examples/material_popup_example, examples/material_progress_example, examples/material_radio_example, examples/material_select_example, examples/material_slider_example, examples/material_spinner_example, examples/material_stepper_example, examples/material_tab_example, examples/material_toggle_example, examples/material_tooltip_example, examples/material_tree_example, examples/scorecard_example, examples/simple_html_example; `dart analyze .`"
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKGS: examples/material_input_example, examples/material_popup_example, examples/material_progress_example, examples/material_radio_example, examples/material_select_example, examples/material_slider_example, examples/material_spinner_example, examples/material_stepper_example, examples/material_tab_example, examples/material_toggle_example, examples/material_tooltip_example, examples/material_tree_example, examples/scorecard_example, examples/simple_html_example; `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/si-!!too_long!!-521-956569471"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/si-!!too_long!!-521-496999080"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_material_input_example_pub_upgrade
         name: examples/material_input_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_input_example
-        run: dart pub upgrade
       - name: examples/material_input_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_input_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_input_example
-        run: dart analyze .
       - id: examples_material_popup_example_pub_upgrade
         name: examples/material_popup_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_popup_example
-        run: dart pub upgrade
       - name: examples/material_popup_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_popup_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_popup_example
-        run: dart analyze .
       - id: examples_material_progress_example_pub_upgrade
         name: examples/material_progress_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_progress_example
-        run: dart pub upgrade
       - name: examples/material_progress_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_progress_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_progress_example
-        run: dart analyze .
       - id: examples_material_radio_example_pub_upgrade
         name: examples/material_radio_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_radio_example
-        run: dart pub upgrade
       - name: examples/material_radio_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_radio_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_radio_example
-        run: dart analyze .
       - id: examples_material_select_example_pub_upgrade
         name: examples/material_select_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_select_example
-        run: dart pub upgrade
       - name: examples/material_select_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_select_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_select_example
-        run: dart analyze .
       - id: examples_material_slider_example_pub_upgrade
         name: examples/material_slider_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_slider_example
-        run: dart pub upgrade
       - name: examples/material_slider_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_slider_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_slider_example
-        run: dart analyze .
       - id: examples_material_spinner_example_pub_upgrade
         name: examples/material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_spinner_example
-        run: dart pub upgrade
       - name: examples/material_spinner_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_spinner_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_spinner_example
-        run: dart analyze .
       - id: examples_material_stepper_example_pub_upgrade
         name: examples/material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_stepper_example
-        run: dart pub upgrade
       - name: examples/material_stepper_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_stepper_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_stepper_example
-        run: dart analyze .
       - id: examples_material_tab_example_pub_upgrade
         name: examples/material_tab_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tab_example
-        run: dart pub upgrade
       - name: examples/material_tab_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tab_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tab_example
-        run: dart analyze .
       - id: examples_material_toggle_example_pub_upgrade
         name: examples/material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_toggle_example
-        run: dart pub upgrade
       - name: examples/material_toggle_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_toggle_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_toggle_example
-        run: dart analyze .
       - id: examples_material_tooltip_example_pub_upgrade
         name: examples/material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
-        run: dart pub upgrade
       - name: examples/material_tooltip_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tooltip_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
-        run: dart analyze .
       - id: examples_material_tree_example_pub_upgrade
         name: examples/material_tree_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tree_example
-        run: dart pub upgrade
       - name: examples/material_tree_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tree_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tree_example
-        run: dart analyze .
       - id: examples_scorecard_example_pub_upgrade
         name: examples/scorecard_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/scorecard_example
-        run: dart pub upgrade
       - name: examples/scorecard_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_scorecard_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/scorecard_example
-        run: dart analyze .
       - id: examples_simple_html_example_pub_upgrade
         name: examples/simple_html_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/simple_html_example
-        run: dart pub upgrade
       - name: examples/simple_html_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_simple_html_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/simple_html_example
-        run: dart analyze .
-    if:
     needs:
       - job_001
       - job_002
@@ -854,203 +866,204 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simpl-!!too_long!!-525-702186916"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simpl-!!too_long!!-525-846567117"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_material_input_example_pub_upgrade
         name: examples/material_input_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_input_example
-        run: dart pub upgrade
       - name: "examples/material_input_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_input_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_input_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_input_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_input_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_input_example
+      - name: "examples/material_input_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_input_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_input_example
       - id: examples_material_popup_example_pub_upgrade
         name: examples/material_popup_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_popup_example
-        run: dart pub upgrade
       - name: "examples/material_popup_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_popup_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_popup_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_popup_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_popup_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_popup_example
+      - name: "examples/material_popup_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_popup_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_popup_example
       - id: examples_material_progress_example_pub_upgrade
         name: examples/material_progress_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_progress_example
-        run: dart pub upgrade
       - name: "examples/material_progress_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_progress_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_progress_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_progress_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_progress_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_progress_example
+      - name: "examples/material_progress_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_progress_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_progress_example
       - id: examples_material_radio_example_pub_upgrade
         name: examples/material_radio_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_radio_example
-        run: dart pub upgrade
       - name: "examples/material_radio_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_radio_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_radio_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_radio_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_radio_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_radio_example
+      - name: "examples/material_radio_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_radio_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_radio_example
       - id: examples_material_select_example_pub_upgrade
         name: examples/material_select_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_select_example
-        run: dart pub upgrade
       - name: "examples/material_select_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_select_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_select_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_select_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_select_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_select_example
+      - name: "examples/material_select_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_select_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_select_example
       - id: examples_material_slider_example_pub_upgrade
         name: examples/material_slider_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_slider_example
-        run: dart pub upgrade
       - name: "examples/material_slider_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_slider_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_slider_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_slider_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_slider_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_slider_example
+      - name: "examples/material_slider_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_slider_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_slider_example
       - id: examples_material_spinner_example_pub_upgrade
         name: examples/material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_spinner_example
-        run: dart pub upgrade
       - name: "examples/material_spinner_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_spinner_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_spinner_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_spinner_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_spinner_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_spinner_example
+      - name: "examples/material_spinner_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_spinner_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_spinner_example
       - id: examples_material_stepper_example_pub_upgrade
         name: examples/material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_stepper_example
-        run: dart pub upgrade
       - name: "examples/material_stepper_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_stepper_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_stepper_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_stepper_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_stepper_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_stepper_example
+      - name: "examples/material_stepper_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_stepper_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_stepper_example
       - id: examples_material_tab_example_pub_upgrade
         name: examples/material_tab_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tab_example
-        run: dart pub upgrade
       - name: "examples/material_tab_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_tab_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_tab_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_tab_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_tab_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tab_example
+      - name: "examples/material_tab_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_tab_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_tab_example
       - id: examples_material_toggle_example_pub_upgrade
         name: examples/material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_toggle_example
-        run: dart pub upgrade
       - name: "examples/material_toggle_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_toggle_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_toggle_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_toggle_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_toggle_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_toggle_example
+      - name: "examples/material_toggle_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_toggle_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_toggle_example
       - id: examples_material_tooltip_example_pub_upgrade
         name: examples/material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
-        run: dart pub upgrade
       - name: "examples/material_tooltip_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_tooltip_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_tooltip_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_tooltip_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_tooltip_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
+      - name: "examples/material_tooltip_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_tooltip_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_tooltip_example
       - id: examples_material_tree_example_pub_upgrade
         name: examples/material_tree_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tree_example
-        run: dart pub upgrade
       - name: "examples/material_tree_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_material_tree_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/material_tree_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/material_tree_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_material_tree_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tree_example
+      - name: "examples/material_tree_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_material_tree_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/material_tree_example
       - id: examples_scorecard_example_pub_upgrade
         name: examples/scorecard_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/scorecard_example
-        run: dart pub upgrade
       - name: "examples/scorecard_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_scorecard_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/scorecard_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/scorecard_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_scorecard_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/scorecard_example
+      - name: "examples/scorecard_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
+        if: "always() && steps.examples_scorecard_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/scorecard_example
       - id: examples_simple_html_example_pub_upgrade
         name: examples/simple_html_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/simple_html_example
-        run: dart pub upgrade
       - name: "examples/simple_html_example; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.examples_simple_html_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/simple_html_example
         run: "dart format --output=none --set-exit-if-changed ."
-      - name: "examples/simple_html_example; dart analyze --fatal-infos ."
         if: "always() && steps.examples_simple_html_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/simple_html_example
+      - name: "examples/simple_html_example; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
-    if:
+        if: "always() && steps.examples_simple_html_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/simple_html_example
     needs:
       - job_001
       - job_002
@@ -1066,147 +1079,148 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/si-!!too_long!!-521-778577294"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/si-!!too_long!!-521-128800792"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_material_input_example_pub_upgrade
         name: examples/material_input_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_input_example
-        run: dart pub upgrade
       - name: examples/material_input_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_input_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_input_example
-        run: dart analyze .
       - id: examples_material_popup_example_pub_upgrade
         name: examples/material_popup_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_popup_example
-        run: dart pub upgrade
       - name: examples/material_popup_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_popup_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_popup_example
-        run: dart analyze .
       - id: examples_material_progress_example_pub_upgrade
         name: examples/material_progress_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_progress_example
-        run: dart pub upgrade
       - name: examples/material_progress_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_progress_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_progress_example
-        run: dart analyze .
       - id: examples_material_radio_example_pub_upgrade
         name: examples/material_radio_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_radio_example
-        run: dart pub upgrade
       - name: examples/material_radio_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_radio_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_radio_example
-        run: dart analyze .
       - id: examples_material_select_example_pub_upgrade
         name: examples/material_select_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_select_example
-        run: dart pub upgrade
       - name: examples/material_select_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_select_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_select_example
-        run: dart analyze .
       - id: examples_material_slider_example_pub_upgrade
         name: examples/material_slider_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_slider_example
-        run: dart pub upgrade
       - name: examples/material_slider_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_slider_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_slider_example
-        run: dart analyze .
       - id: examples_material_spinner_example_pub_upgrade
         name: examples/material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_spinner_example
-        run: dart pub upgrade
       - name: examples/material_spinner_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_spinner_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_spinner_example
-        run: dart analyze .
       - id: examples_material_stepper_example_pub_upgrade
         name: examples/material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_stepper_example
-        run: dart pub upgrade
       - name: examples/material_stepper_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_stepper_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_stepper_example
-        run: dart analyze .
       - id: examples_material_tab_example_pub_upgrade
         name: examples/material_tab_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tab_example
-        run: dart pub upgrade
       - name: examples/material_tab_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tab_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tab_example
-        run: dart analyze .
       - id: examples_material_toggle_example_pub_upgrade
         name: examples/material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_toggle_example
-        run: dart pub upgrade
       - name: examples/material_toggle_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_toggle_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_toggle_example
-        run: dart analyze .
       - id: examples_material_tooltip_example_pub_upgrade
         name: examples/material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
-        run: dart pub upgrade
       - name: examples/material_tooltip_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tooltip_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tooltip_example
-        run: dart analyze .
       - id: examples_material_tree_example_pub_upgrade
         name: examples/material_tree_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/material_tree_example
-        run: dart pub upgrade
       - name: examples/material_tree_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_material_tree_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/material_tree_example
-        run: dart analyze .
       - id: examples_scorecard_example_pub_upgrade
         name: examples/scorecard_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/scorecard_example
-        run: dart pub upgrade
       - name: examples/scorecard_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_scorecard_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/scorecard_example
-        run: dart analyze .
       - id: examples_simple_html_example_pub_upgrade
         name: examples/simple_html_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/simple_html_example
-        run: dart pub upgrade
       - name: examples/simple_html_example; dart analyze .
+        run: dart analyze .
         if: "always() && steps.examples_simple_html_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/simple_html_example
-        run: dart analyze .
-    if:
     needs:
       - job_001
       - job_002
@@ -1218,38 +1232,39 @@ jobs:
       - job_008
       - job_009
   job_013:
-    name: "unit_test; Dart 2.14.2; PKG: angular_components; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
+    name: "unit_test; Dart 2.17.0; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components;commands:command_0-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents;commands:command_2-test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: angular_components; ./tool/travis/install_protoc.sh
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh
-      - name: "angular_components; dart test --run-skipped"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart test --run-skipped"
         run: dart test --run-skipped
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1264,34 +1279,35 @@ jobs:
       - job_011
       - job_012
   job_014:
-    name: "unit_test; Dart 2.14.2; PKG: angular_components; `dart run build_runner test -- -p chrome`"
+    name: "unit_test; Dart 2.17.0; PKG: ngcomponents; `dart run build_runner test -- -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:angular_components
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: "angular_components; dart run build_runner test -- -p chrome"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner test -- -p chrome"
         run: dart run build_runner test -- -p chrome
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1306,38 +1322,39 @@ jobs:
       - job_011
       - job_012
   job_015:
-    name: "unit_test; Dart dev; PKG: angular_components; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
+    name: "unit_test; Dart dev; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components;commands:command_0-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_2-test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: angular_components; ./tool/travis/install_protoc.sh
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh
-      - name: "angular_components; dart test --run-skipped"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart test --run-skipped"
         run: dart test --run-skipped
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1352,34 +1369,35 @@ jobs:
       - job_011
       - job_012
   job_016:
-    name: "unit_test; Dart dev; PKG: angular_components; `dart run build_runner test -- -p chrome`"
+    name: "unit_test; Dart dev; PKG: ngcomponents; `dart run build_runner test -- -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: "angular_components; dart run build_runner test -- -p chrome"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner test -- -p chrome"
         run: dart run build_runner test -- -p chrome
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1394,38 +1412,39 @@ jobs:
       - job_011
       - job_012
   job_017:
-    name: "unit_test; Dart stable; PKG: angular_components; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
+    name: "unit_test; Dart stable; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components;commands:command_0-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents;commands:command_2-test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: angular_components; ./tool/travis/install_protoc.sh
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh
-      - name: "angular_components; dart test --run-skipped"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart test --run-skipped"
         run: dart test --run-skipped
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1440,34 +1459,35 @@ jobs:
       - job_011
       - job_012
   job_018:
-    name: "unit_test; Dart stable; PKG: angular_components; `dart run build_runner test -- -p chrome`"
+    name: "unit_test; Dart stable; PKG: ngcomponents; `dart run build_runner test -- -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components;commands:command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents;commands:command_3"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
-      - id: angular_components_pub_upgrade
-        name: angular_components; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: angular_components
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: ngcomponents_pub_upgrade
+        name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
-      - name: "angular_components; dart run build_runner test -- -p chrome"
-        if: "always() && steps.angular_components_pub_upgrade.conclusion == 'success'"
-        working-directory: angular_components
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner test -- -p chrome"
         run: dart run build_runner test -- -p chrome
-    if:
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
+        working-directory: ngcomponents
     needs:
       - job_001
       - job_002
@@ -1482,38 +1502,39 @@ jobs:
       - job_011
       - job_012
   job_019:
-    name: "build; Dart 2.14.2; PKG: examples/angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
+    name: "build; Dart 2.17.0; PKG: examples/angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/angular_components_example;commands:command_2-command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/angular_components_example;commands:command_0-command_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2;packages:examples/angular_components_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:2.14.2
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:examples/angular_components_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: "2.14.2"
+          sdk: "2.17.0"
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_angular_components_example_pub_upgrade
         name: examples/angular_components_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/angular_components_example
-        run: dart pub upgrade
       - name: examples/angular_components_example; dart pub run build_runner build web
-        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/angular_components_example
         run: dart pub run build_runner build web
-      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/angular_components_example
+      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         run: dart pub run build_runner build web --release
-    if:
+        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/angular_components_example
     needs:
       - job_001
       - job_002
@@ -1538,34 +1559,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/angular_components_example;commands:command_2-command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/angular_components_example;commands:command_0-command_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/angular_components_example
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_angular_components_example_pub_upgrade
         name: examples/angular_components_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/angular_components_example
-        run: dart pub upgrade
       - name: examples/angular_components_example; dart pub run build_runner build web
-        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/angular_components_example
         run: dart pub run build_runner build web
-      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/angular_components_example
+      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         run: dart pub run build_runner build web --release
-    if:
+        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/angular_components_example
     needs:
       - job_001
       - job_002
@@ -1590,34 +1612,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/angular_components_example;commands:command_2-command_3"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/angular_components_example;commands:command_0-command_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:examples/angular_components_example
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
-      - uses: dart-lang/setup-dart@v1.3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.4.0
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - id: examples_angular_components_example_pub_upgrade
         name: examples/angular_components_example; dart pub upgrade
+        run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: examples/angular_components_example
-        run: dart pub upgrade
       - name: examples/angular_components_example; dart pub run build_runner build web
-        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
-        working-directory: examples/angular_components_example
         run: dart pub run build_runner build web
-      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
         working-directory: examples/angular_components_example
+      - name: "examples/angular_components_example; dart pub run build_runner build web --release"
         run: dart pub run build_runner build web --release
-    if:
+        if: "always() && steps.examples_angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: examples/angular_components_example
     needs:
       - job_001
       - job_002
@@ -1639,8 +1662,8 @@ jobs:
       - job_018
   job_022:
     name: Deploy to Firebase Hosting on PR
-    if: "github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository"
     runs-on: ubuntu-latest
+    if: "github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository"
     steps:
       - uses: actions/checkout@v2
       - name: Setup Dart SDK
@@ -1648,7 +1671,7 @@ jobs:
         with:
           sdk: stable
       - run: "dart pub get && dart run build_runner build -o build"
-        working-directory: examples/angular_components_example
+        working-directory: examples/ngcomponents_example
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

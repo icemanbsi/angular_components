@@ -1,0 +1,4347 @@
+# Created with package:mono_repo v6.4.0
+name: Dart CI
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+defaults:
+  run:
+    shell: bash
+env:
+  PUB_ENVIRONMENT: bot.github
+permissions: read-all
+
+jobs:
+  job_001:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_input_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_input_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_input_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_input_example_pub_upgrade
+        name: material_input_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_input_example
+      - name: material_input_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_input_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_input_example
+  job_002:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_popup_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_popup_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_popup_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_popup_example_pub_upgrade
+        name: material_popup_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_popup_example
+      - name: material_popup_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_popup_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_popup_example
+  job_003:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_progress_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_progress_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_progress_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_progress_example_pub_upgrade
+        name: material_progress_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_progress_example
+      - name: material_progress_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_progress_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_progress_example
+  job_004:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_radio_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_radio_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_radio_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_radio_example_pub_upgrade
+        name: material_radio_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_radio_example
+      - name: material_radio_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_radio_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_radio_example
+  job_005:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_select_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_select_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_select_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_select_example_pub_upgrade
+        name: material_select_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_select_example
+      - name: material_select_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_select_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_select_example
+  job_006:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_slider_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_slider_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_slider_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_slider_example_pub_upgrade
+        name: material_slider_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_slider_example
+      - name: material_slider_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_slider_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_slider_example
+  job_007:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_spinner_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_spinner_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_spinner_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_spinner_example_pub_upgrade
+        name: material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_spinner_example
+      - name: material_spinner_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_spinner_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_spinner_example
+  job_008:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_stepper_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_stepper_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_stepper_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_stepper_example_pub_upgrade
+        name: material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_stepper_example
+      - name: material_stepper_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_stepper_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_stepper_example
+  job_009:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_tab_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tab_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tab_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tab_example_pub_upgrade
+        name: material_tab_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tab_example
+      - name: material_tab_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tab_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tab_example
+  job_010:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_toggle_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_toggle_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_toggle_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_toggle_example_pub_upgrade
+        name: material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_toggle_example
+      - name: material_toggle_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_toggle_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_toggle_example
+  job_011:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_tooltip_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tooltip_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tooltip_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tooltip_example_pub_upgrade
+        name: material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tooltip_example
+      - name: material_tooltip_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tooltip_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tooltip_example
+  job_012:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: material_tree_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tree_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_tree_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tree_example_pub_upgrade
+        name: material_tree_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tree_example
+      - name: material_tree_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tree_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tree_example
+  job_013:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: scorecard_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:scorecard_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:scorecard_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: scorecard_example_pub_upgrade
+        name: scorecard_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: scorecard_example
+      - name: scorecard_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.scorecard_example_pub_upgrade.conclusion == 'success'"
+        working-directory: scorecard_example
+  job_014:
+    name: "analyze_and_format_examples_2; Dart 2.17.0; PKG: simple_html_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:simple_html_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:simple_html_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: simple_html_example_pub_upgrade
+        name: simple_html_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: simple_html_example
+      - name: simple_html_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.simple_html_example_pub_upgrade.conclusion == 'success'"
+        working-directory: simple_html_example
+  job_015:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_input_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_input_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_input_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_input_example_pub_upgrade
+        name: material_input_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_input_example
+      - name: "material_input_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_input_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_input_example
+      - name: "material_input_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_input_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_input_example
+  job_016:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_popup_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_popup_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_popup_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_popup_example_pub_upgrade
+        name: material_popup_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_popup_example
+      - name: "material_popup_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_popup_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_popup_example
+      - name: "material_popup_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_popup_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_popup_example
+  job_017:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_progress_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_progress_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_progress_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_progress_example_pub_upgrade
+        name: material_progress_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_progress_example
+      - name: "material_progress_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_progress_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_progress_example
+      - name: "material_progress_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_progress_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_progress_example
+  job_018:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_radio_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_radio_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_radio_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_radio_example_pub_upgrade
+        name: material_radio_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_radio_example
+      - name: "material_radio_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_radio_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_radio_example
+      - name: "material_radio_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_radio_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_radio_example
+  job_019:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_select_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_select_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_select_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_select_example_pub_upgrade
+        name: material_select_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_select_example
+      - name: "material_select_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_select_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_select_example
+      - name: "material_select_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_select_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_select_example
+  job_020:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_slider_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_slider_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_slider_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_slider_example_pub_upgrade
+        name: material_slider_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_slider_example
+      - name: "material_slider_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_slider_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_slider_example
+      - name: "material_slider_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_slider_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_slider_example
+  job_021:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_spinner_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_spinner_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_spinner_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_spinner_example_pub_upgrade
+        name: material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_spinner_example
+      - name: "material_spinner_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_spinner_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_spinner_example
+      - name: "material_spinner_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_spinner_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_spinner_example
+  job_022:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_stepper_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_stepper_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_stepper_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_stepper_example_pub_upgrade
+        name: material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_stepper_example
+      - name: "material_stepper_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_stepper_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_stepper_example
+      - name: "material_stepper_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_stepper_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_stepper_example
+  job_023:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_tab_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tab_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tab_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tab_example_pub_upgrade
+        name: material_tab_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tab_example
+      - name: "material_tab_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_tab_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tab_example
+      - name: "material_tab_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_tab_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tab_example
+  job_024:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_toggle_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_toggle_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_toggle_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_toggle_example_pub_upgrade
+        name: material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_toggle_example
+      - name: "material_toggle_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_toggle_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_toggle_example
+      - name: "material_toggle_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_toggle_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_toggle_example
+  job_025:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_tooltip_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tooltip_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tooltip_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tooltip_example_pub_upgrade
+        name: material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tooltip_example
+      - name: "material_tooltip_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_tooltip_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tooltip_example
+      - name: "material_tooltip_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_tooltip_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tooltip_example
+  job_026:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: material_tree_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tree_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_tree_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tree_example_pub_upgrade
+        name: material_tree_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tree_example
+      - name: "material_tree_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_tree_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tree_example
+      - name: "material_tree_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_tree_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tree_example
+  job_027:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: scorecard_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:scorecard_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:scorecard_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: scorecard_example_pub_upgrade
+        name: scorecard_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: scorecard_example
+      - name: "scorecard_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.scorecard_example_pub_upgrade.conclusion == 'success'"
+        working-directory: scorecard_example
+      - name: "scorecard_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.scorecard_example_pub_upgrade.conclusion == 'success'"
+        working-directory: scorecard_example
+  job_028:
+    name: "analyze_and_format_examples_2; Dart dev; PKG: simple_html_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:simple_html_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:simple_html_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: simple_html_example_pub_upgrade
+        name: simple_html_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: simple_html_example
+      - name: "simple_html_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.simple_html_example_pub_upgrade.conclusion == 'success'"
+        working-directory: simple_html_example
+      - name: "simple_html_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.simple_html_example_pub_upgrade.conclusion == 'success'"
+        working-directory: simple_html_example
+  job_029:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_input_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_input_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_input_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_input_example_pub_upgrade
+        name: material_input_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_input_example
+      - name: material_input_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_input_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_input_example
+  job_030:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_popup_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_popup_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_popup_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_popup_example_pub_upgrade
+        name: material_popup_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_popup_example
+      - name: material_popup_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_popup_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_popup_example
+  job_031:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_progress_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_progress_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_progress_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_progress_example_pub_upgrade
+        name: material_progress_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_progress_example
+      - name: material_progress_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_progress_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_progress_example
+  job_032:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_radio_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_radio_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_radio_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_radio_example_pub_upgrade
+        name: material_radio_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_radio_example
+      - name: material_radio_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_radio_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_radio_example
+  job_033:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_select_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_select_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_select_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_select_example_pub_upgrade
+        name: material_select_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_select_example
+      - name: material_select_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_select_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_select_example
+  job_034:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_slider_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_slider_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_slider_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_slider_example_pub_upgrade
+        name: material_slider_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_slider_example
+      - name: material_slider_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_slider_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_slider_example
+  job_035:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_spinner_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_spinner_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_spinner_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_spinner_example_pub_upgrade
+        name: material_spinner_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_spinner_example
+      - name: material_spinner_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_spinner_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_spinner_example
+  job_036:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_stepper_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_stepper_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_stepper_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_stepper_example_pub_upgrade
+        name: material_stepper_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_stepper_example
+      - name: material_stepper_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_stepper_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_stepper_example
+  job_037:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_tab_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tab_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tab_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tab_example_pub_upgrade
+        name: material_tab_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tab_example
+      - name: material_tab_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tab_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tab_example
+  job_038:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_toggle_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_toggle_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_toggle_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_toggle_example_pub_upgrade
+        name: material_toggle_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_toggle_example
+      - name: material_toggle_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_toggle_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_toggle_example
+  job_039:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_tooltip_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tooltip_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tooltip_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tooltip_example_pub_upgrade
+        name: material_tooltip_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tooltip_example
+      - name: material_tooltip_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tooltip_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tooltip_example
+  job_040:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: material_tree_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tree_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_tree_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_tree_example_pub_upgrade
+        name: material_tree_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_tree_example
+      - name: material_tree_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_tree_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_tree_example
+  job_041:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: scorecard_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:scorecard_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:scorecard_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: scorecard_example_pub_upgrade
+        name: scorecard_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: scorecard_example
+      - name: scorecard_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.scorecard_example_pub_upgrade.conclusion == 'success'"
+        working-directory: scorecard_example
+  job_042:
+    name: "analyze_and_format_examples_2; Dart stable; PKG: simple_html_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:simple_html_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:simple_html_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: simple_html_example_pub_upgrade
+        name: simple_html_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: simple_html_example
+      - name: simple_html_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.simple_html_example_pub_upgrade.conclusion == 'success'"
+        working-directory: simple_html_example
+  job_043:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: app_layout_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:app_layout_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:app_layout_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: app_layout_example_pub_upgrade
+        name: app_layout_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: app_layout_example
+      - name: app_layout_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.app_layout_example_pub_upgrade.conclusion == 'success'"
+        working-directory: app_layout_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_044:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_button_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_button_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_button_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_button_example_pub_upgrade
+        name: material_button_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_button_example
+      - name: material_button_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_button_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_button_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_045:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_card_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_card_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_card_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_card_example_pub_upgrade
+        name: material_card_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_card_example
+      - name: material_card_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_card_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_card_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_046:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_checkbox_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_checkbox_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_checkbox_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_checkbox_example_pub_upgrade
+        name: material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_checkbox_example
+      - name: material_checkbox_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_checkbox_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_checkbox_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_047:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_chips_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_chips_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_chips_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_chips_example_pub_upgrade
+        name: material_chips_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_chips_example
+      - name: material_chips_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_chips_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_chips_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_048:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_datepicker_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_datepicker_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_datepicker_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_datepicker_example_pub_upgrade
+        name: material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_datepicker_example
+      - name: material_datepicker_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_datepicker_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_datepicker_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_049:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_dialog_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_dialog_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_dialog_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_dialog_example_pub_upgrade
+        name: material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_dialog_example
+      - name: material_dialog_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_dialog_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_dialog_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_050:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_expansionpanel_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_expansionpanel_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_expansionpanel_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_expansionpanel_example_pub_upgrade
+        name: material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+      - name: material_expansionpanel_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_051:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_icon_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_icon_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_icon_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_icon_example_pub_upgrade
+        name: material_icon_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_icon_example
+      - name: material_icon_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_icon_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_icon_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_052:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_list_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_list_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_list_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_list_example_pub_upgrade
+        name: material_list_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_list_example
+      - name: material_list_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_list_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_list_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_053:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_menu_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_menu_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_menu_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_menu_example_pub_upgrade
+        name: material_menu_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_menu_example
+      - name: material_menu_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_menu_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_menu_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_054:
+    name: "analyze_and_format_examples_1; Dart 2.17.0; PKG: material_yes_no_buttons_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_yes_no_buttons_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:material_yes_no_buttons_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_yes_no_buttons_example_pub_upgrade
+        name: material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+      - name: material_yes_no_buttons_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_055:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: app_layout_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:app_layout_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:app_layout_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: app_layout_example_pub_upgrade
+        name: app_layout_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: app_layout_example
+      - name: "app_layout_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.app_layout_example_pub_upgrade.conclusion == 'success'"
+        working-directory: app_layout_example
+      - name: "app_layout_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.app_layout_example_pub_upgrade.conclusion == 'success'"
+        working-directory: app_layout_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_056:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_button_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_button_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_button_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_button_example_pub_upgrade
+        name: material_button_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_button_example
+      - name: "material_button_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_button_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_button_example
+      - name: "material_button_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_button_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_button_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_057:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_card_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_card_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_card_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_card_example_pub_upgrade
+        name: material_card_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_card_example
+      - name: "material_card_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_card_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_card_example
+      - name: "material_card_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_card_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_card_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_058:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_checkbox_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_checkbox_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_checkbox_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_checkbox_example_pub_upgrade
+        name: material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_checkbox_example
+      - name: "material_checkbox_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_checkbox_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_checkbox_example
+      - name: "material_checkbox_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_checkbox_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_checkbox_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_059:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_chips_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_chips_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_chips_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_chips_example_pub_upgrade
+        name: material_chips_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_chips_example
+      - name: "material_chips_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_chips_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_chips_example
+      - name: "material_chips_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_chips_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_chips_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_060:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_datepicker_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_datepicker_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_datepicker_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_datepicker_example_pub_upgrade
+        name: material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_datepicker_example
+      - name: "material_datepicker_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_datepicker_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_datepicker_example
+      - name: "material_datepicker_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_datepicker_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_datepicker_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_061:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_dialog_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_dialog_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_dialog_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_dialog_example_pub_upgrade
+        name: material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_dialog_example
+      - name: "material_dialog_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_dialog_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_dialog_example
+      - name: "material_dialog_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_dialog_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_dialog_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_062:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_expansionpanel_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_expansionpanel_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_expansionpanel_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_expansionpanel_example_pub_upgrade
+        name: material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+      - name: "material_expansionpanel_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+      - name: "material_expansionpanel_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_063:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_icon_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_icon_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_icon_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_icon_example_pub_upgrade
+        name: material_icon_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_icon_example
+      - name: "material_icon_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_icon_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_icon_example
+      - name: "material_icon_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_icon_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_icon_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_064:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_list_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_list_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_list_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_list_example_pub_upgrade
+        name: material_list_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_list_example
+      - name: "material_list_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_list_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_list_example
+      - name: "material_list_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_list_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_list_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_065:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_yes_no_buttons_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_yes_no_buttons_example;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_yes_no_buttons_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_yes_no_buttons_example_pub_upgrade
+        name: material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+      - name: "material_yes_no_buttons_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+      - name: "material_yes_no_buttons_example; dart analyze --fatal-infos ."
+        run: dart analyze --fatal-infos .
+        if: "always() && steps.material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_066:
+    name: "analyze_and_format_examples_1; Dart dev; PKG: material_menu_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_menu_example;commands:format-analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:material_menu_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_menu_example_pub_upgrade
+        name: material_menu_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_menu_example
+      - name: "material_menu_example; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.material_menu_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_menu_example
+      - name: material_menu_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_menu_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_menu_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_067:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: app_layout_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:app_layout_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:app_layout_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: app_layout_example_pub_upgrade
+        name: app_layout_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: app_layout_example
+      - name: app_layout_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.app_layout_example_pub_upgrade.conclusion == 'success'"
+        working-directory: app_layout_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_068:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_button_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_button_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_button_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_button_example_pub_upgrade
+        name: material_button_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_button_example
+      - name: material_button_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_button_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_button_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_069:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_card_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_card_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_card_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_card_example_pub_upgrade
+        name: material_card_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_card_example
+      - name: material_card_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_card_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_card_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_070:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_checkbox_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_checkbox_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_checkbox_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_checkbox_example_pub_upgrade
+        name: material_checkbox_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_checkbox_example
+      - name: material_checkbox_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_checkbox_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_checkbox_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_071:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_chips_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_chips_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_chips_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_chips_example_pub_upgrade
+        name: material_chips_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_chips_example
+      - name: material_chips_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_chips_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_chips_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_072:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_datepicker_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_datepicker_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_datepicker_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_datepicker_example_pub_upgrade
+        name: material_datepicker_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_datepicker_example
+      - name: material_datepicker_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_datepicker_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_datepicker_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_073:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_dialog_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_dialog_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_dialog_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_dialog_example_pub_upgrade
+        name: material_dialog_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_dialog_example
+      - name: material_dialog_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_dialog_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_dialog_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_074:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_expansionpanel_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_expansionpanel_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_expansionpanel_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_expansionpanel_example_pub_upgrade
+        name: material_expansionpanel_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+      - name: material_expansionpanel_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_expansionpanel_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_expansionpanel_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_075:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_icon_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_icon_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_icon_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_icon_example_pub_upgrade
+        name: material_icon_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_icon_example
+      - name: material_icon_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_icon_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_icon_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_076:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_list_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_list_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_list_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_list_example_pub_upgrade
+        name: material_list_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_list_example
+      - name: material_list_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_list_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_list_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_077:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_menu_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_menu_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_menu_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_menu_example_pub_upgrade
+        name: material_menu_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_menu_example
+      - name: material_menu_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_menu_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_menu_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_078:
+    name: "analyze_and_format_examples_1; Dart stable; PKG: material_yes_no_buttons_example; `dart analyze .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_yes_no_buttons_example;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:material_yes_no_buttons_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: material_yes_no_buttons_example_pub_upgrade
+        name: material_yes_no_buttons_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+      - name: material_yes_no_buttons_example; dart analyze .
+        run: dart analyze .
+        if: "always() && steps.material_yes_no_buttons_example_pub_upgrade.conclusion == 'success'"
+        working-directory: material_yes_no_buttons_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+  job_079:
+    name: "build; Dart 2.17.0; PKG: angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:angular_components_example;commands:command_0-command_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:angular_components_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: "2.17.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: angular_components_example_pub_upgrade
+        name: angular_components_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: angular_components_example; dart pub run build_runner build web
+        run: dart pub run build_runner build web
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: "angular_components_example; dart pub run build_runner build web --release"
+        run: dart pub run build_runner build web --release
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+      - job_043
+      - job_044
+      - job_045
+      - job_046
+      - job_047
+      - job_048
+      - job_049
+      - job_050
+      - job_051
+      - job_052
+      - job_053
+      - job_054
+      - job_055
+      - job_056
+      - job_057
+      - job_058
+      - job_059
+      - job_060
+      - job_061
+      - job_062
+      - job_063
+      - job_064
+      - job_065
+      - job_066
+      - job_067
+      - job_068
+      - job_069
+      - job_070
+      - job_071
+      - job_072
+      - job_073
+      - job_074
+      - job_075
+      - job_076
+      - job_077
+      - job_078
+  job_080:
+    name: "build; Dart dev; PKG: angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components_example;commands:command_0-command_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_components_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: angular_components_example_pub_upgrade
+        name: angular_components_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: angular_components_example; dart pub run build_runner build web
+        run: dart pub run build_runner build web
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: "angular_components_example; dart pub run build_runner build web --release"
+        run: dart pub run build_runner build web --release
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+      - job_043
+      - job_044
+      - job_045
+      - job_046
+      - job_047
+      - job_048
+      - job_049
+      - job_050
+      - job_051
+      - job_052
+      - job_053
+      - job_054
+      - job_055
+      - job_056
+      - job_057
+      - job_058
+      - job_059
+      - job_060
+      - job_061
+      - job_062
+      - job_063
+      - job_064
+      - job_065
+      - job_066
+      - job_067
+      - job_068
+      - job_069
+      - job_070
+      - job_071
+      - job_072
+      - job_073
+      - job_074
+      - job_075
+      - job_076
+      - job_077
+      - job_078
+  job_081:
+    name: "build; Dart stable; PKG: angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components_example;commands:command_0-command_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:angular_components_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - id: angular_components_example_pub_upgrade
+        name: angular_components_example; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: angular_components_example; dart pub run build_runner build web
+        run: dart pub run build_runner build web
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+      - name: "angular_components_example; dart pub run build_runner build web --release"
+        run: dart pub run build_runner build web --release
+        if: "always() && steps.angular_components_example_pub_upgrade.conclusion == 'success'"
+        working-directory: angular_components_example
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+      - job_018
+      - job_019
+      - job_020
+      - job_021
+      - job_022
+      - job_023
+      - job_024
+      - job_025
+      - job_026
+      - job_027
+      - job_028
+      - job_029
+      - job_030
+      - job_031
+      - job_032
+      - job_033
+      - job_034
+      - job_035
+      - job_036
+      - job_037
+      - job_038
+      - job_039
+      - job_040
+      - job_041
+      - job_042
+      - job_043
+      - job_044
+      - job_045
+      - job_046
+      - job_047
+      - job_048
+      - job_049
+      - job_050
+      - job_051
+      - job_052
+      - job_053
+      - job_054
+      - job_055
+      - job_056
+      - job_057
+      - job_058
+      - job_059
+      - job_060
+      - job_061
+      - job_062
+      - job_063
+      - job_064
+      - job_065
+      - job_066
+      - job_067
+      - job_068
+      - job_069
+      - job_070
+      - job_071
+      - job_072
+      - job_073
+      - job_074
+      - job_075
+      - job_076
+      - job_077
+      - job_078

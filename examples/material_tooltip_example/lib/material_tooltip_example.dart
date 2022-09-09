@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/content.dart';
 import 'package:angular_components/focus/keyboard_only_focus_indicator.dart';
 import 'package:angular_components/laminate.dart';

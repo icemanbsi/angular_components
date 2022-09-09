@@ -5,7 +5,7 @@ global_options:
 targets:
   $default:
     builders:
-      angular|angular:
+      ngdart|ngdart:
         enabled: true
       angular_gallery|angular_gallery:
         options:

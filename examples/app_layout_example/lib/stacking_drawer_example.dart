@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/app_layout/material_stackable_drawer.dart';
 import 'package:angular_components/content.dart';
 import 'package:angular_components/material_button/material_button.dart';

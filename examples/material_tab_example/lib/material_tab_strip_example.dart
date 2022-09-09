@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/annotations.dart';
 import 'package:angular_components/material_tab/fixed_material_tab_strip.dart';
 import 'package:angular_components/material_tab/tab_change_event.dart';

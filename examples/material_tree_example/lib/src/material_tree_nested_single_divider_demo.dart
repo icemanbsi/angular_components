@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/material_radio/material_radio.dart';
 import 'package:angular_components/material_radio/material_radio_group.dart';
 import 'package:angular_components/material_tree/material_tree.dart';

@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/material_tree/material_tree.dart';
 import 'material_tree_component_renderer.template.dart';
 import 'material_tree_demo_options.dart' as data;

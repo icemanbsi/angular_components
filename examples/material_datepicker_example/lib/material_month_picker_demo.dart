@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/material_datepicker/calendar.dart';
 import 'package:angular_components/material_datepicker/date_range_input.dart';
 import 'package:angular_components/material_datepicker/material_month_picker.dart';

@@ -6,7 +6,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/material_button/material_button.dart';
 import 'package:angular_components/material_stepper/material_step.dart';
 import 'package:angular_components/material_stepper/material_stepper.dart';

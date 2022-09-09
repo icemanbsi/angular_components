@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/content.dart';
 import 'package:angular_components/laminate.dart';
 import 'package:angular_components/material_button/material_button.dart';

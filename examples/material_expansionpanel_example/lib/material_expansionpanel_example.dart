@@ -6,7 +6,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/focus/focus.dart';
 import 'package:angular_components/focus/focus_list.dart';
 import 'package:angular_components/laminate.dart';

@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_components/auto_dismiss/auto_dismiss.dart';
 import 'package:angular_components/focus/focus.dart';
 import 'package:angular_components/laminate.dart';

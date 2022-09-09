@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
 import 'package:angular_components/annotations.dart';
 import 'package:angular_components/material_input/material_number_accessor.dart';

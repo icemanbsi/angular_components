@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart' show Component, FactoryProvider;
+import 'package:ngdart/angular.dart' show Component, FactoryProvider;
 import 'package:angular_components/simple_html/simple_html.dart'
     show SimpleHtmlComponent, simpleHtmlUriWhitelist;
 

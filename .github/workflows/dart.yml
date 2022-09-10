@@ -3,7 +3,6 @@ name: Dart CI
 on:
   push:
     branches:
-      - main
       - master
       - null-safety
       - fix-ci-null-safety

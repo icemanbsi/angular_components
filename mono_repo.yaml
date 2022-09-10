@@ -6,7 +6,7 @@ github:
   on:
     push:
       branches:
-        - main
+        # - main
         - master
         - null-safety
         - fix-ci-null-safety

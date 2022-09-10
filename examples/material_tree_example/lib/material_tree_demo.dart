@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular_components/material_tree/material_tree.dart';
+import 'package:ngcomponents/material_tree/material_tree.dart';
 import 'material_tree_shared.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 

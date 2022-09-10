@@ -5,9 +5,9 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_menu/material_fab_menu.dart';
-import 'package:angular_components/model/menu/menu.dart';
-import 'package:angular_components/model/ui/icon.dart';
+import 'package:ngcomponents/material_menu/material_fab_menu.dart';
+import 'package:ngcomponents/model/menu/menu.dart';
+import 'package:ngcomponents/model/ui/icon.dart';
 
 @Component(
   selector: 'material-fab-menu-demo',

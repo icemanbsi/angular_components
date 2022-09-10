@@ -5,10 +5,10 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_button/material_button.dart';
-import 'package:angular_components/material_icon/material_icon.dart';
-import 'package:angular_components/material_input/material_input.dart';
-import 'package:angular_components/model/ui/icon.dart';
+import 'package:ngcomponents/material_button/material_button.dart';
+import 'package:ngcomponents/material_icon/material_icon.dart';
+import 'package:ngcomponents/material_input/material_input.dart';
+import 'package:ngcomponents/model/ui/icon.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

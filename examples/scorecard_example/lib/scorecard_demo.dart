@@ -6,12 +6,12 @@
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
-import 'package:angular_components/annotations.dart';
-import 'package:angular_components/material_input/material_number_accessor.dart';
+import 'package:ngcomponents/annotations.dart';
+import 'package:ngcomponents/material_input/material_number_accessor.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
-import 'package:angular_components/scorecard/scoreboard.dart';
-import 'package:angular_components/scorecard/scorecard.dart';
-import 'package:angular_components/utils/color/material.dart';
+import 'package:ngcomponents/scorecard/scoreboard.dart';
+import 'package:ngcomponents/scorecard/scorecard.dart';
+import 'package:ngcomponents/utils/color/material.dart';
 
 @GallerySectionConfig(
   displayName: 'Scorecard',

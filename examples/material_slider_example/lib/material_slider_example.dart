@@ -5,8 +5,8 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_slider/material_slider.dart';
-import 'package:angular_components/material_toggle/material_toggle.dart';
+import 'package:ngcomponents/material_slider/material_slider.dart';
+import 'package:ngcomponents/material_toggle/material_toggle.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

@@ -5,12 +5,12 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/annotations.dart';
-import 'package:angular_components/material_tab/fixed_material_tab_strip.dart';
-import 'package:angular_components/material_tab/tab_change_event.dart';
-import 'package:angular_components/material_toggle/material_toggle.dart';
-import 'package:angular_components/utils/browser/dom_service/angular_2.dart';
-import 'package:angular_components/utils/browser/window/module.dart';
+import 'package:ngcomponents/annotations.dart';
+import 'package:ngcomponents/material_tab/fixed_material_tab_strip.dart';
+import 'package:ngcomponents/material_tab/tab_change_event.dart';
+import 'package:ngcomponents/material_toggle/material_toggle.dart';
+import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';
+import 'package:ngcomponents/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-tab-strip-example',

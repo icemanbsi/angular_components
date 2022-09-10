@@ -4,8 +4,8 @@
 
 // @dart=2.9
 
-import 'package:angular_components/material_list/material_list.dart';
-import 'package:angular_components/material_list/material_list_item.dart';
+import 'package:ngcomponents/material_list/material_list.dart';
+import 'package:ngcomponents/material_list/material_list_item.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 import 'material_list_demo.dart';
 

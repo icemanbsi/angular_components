@@ -5,7 +5,7 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_input/material_input.dart';
+import 'package:ngcomponents/material_input/material_input.dart';
 
 @Component(
   selector: 'material-input-mixins',

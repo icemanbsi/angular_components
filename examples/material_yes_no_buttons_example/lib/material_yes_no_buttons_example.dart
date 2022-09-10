@@ -8,7 +8,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_yes_no_buttons/material_yes_no_buttons.dart';
+import 'package:ngcomponents/material_yes_no_buttons/material_yes_no_buttons.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

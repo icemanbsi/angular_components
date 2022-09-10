@@ -7,18 +7,18 @@
 import 'dart:html';
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/laminate.dart';
-import 'package:angular_components/material_icon/material_icon.dart';
-import 'package:angular_components/material_menu/affix/caption_affix_model.dart';
-import 'package:angular_components/material_menu/affix/icon_affix_model.dart';
-import 'package:angular_components/material_menu/dropdown_menu.dart';
-import 'package:angular_components/material_menu/material_menu.dart';
-import 'package:angular_components/model/menu/menu.dart';
-import 'package:angular_components/model/menu/selectable_menu.dart';
-import 'package:angular_components/model/selection/select.dart';
-import 'package:angular_components/model/selection/selection_model.dart';
-import 'package:angular_components/model/ui/icon.dart';
-import 'package:angular_components/utils/disposer/disposer.dart';
+import 'package:ngcomponents/laminate.dart';
+import 'package:ngcomponents/material_icon/material_icon.dart';
+import 'package:ngcomponents/material_menu/affix/caption_affix_model.dart';
+import 'package:ngcomponents/material_menu/affix/icon_affix_model.dart';
+import 'package:ngcomponents/material_menu/dropdown_menu.dart';
+import 'package:ngcomponents/material_menu/material_menu.dart';
+import 'package:ngcomponents/model/menu/menu.dart';
+import 'package:ngcomponents/model/menu/selectable_menu.dart';
+import 'package:ngcomponents/model/selection/select.dart';
+import 'package:ngcomponents/model/selection/selection_model.dart';
+import 'package:ngcomponents/model/ui/icon.dart';
+import 'package:ngcomponents/utils/disposer/disposer.dart';
 import 'package:observable/observable.dart';
 
 @Component(

@@ -6,7 +6,7 @@
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
-import 'package:angular_components/material_input/material_percent_directive.dart';
+import 'package:ngcomponents/material_input/material_percent_directive.dart';
 
 @Component(
   selector: 'material-percent-input-demo',

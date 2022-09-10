@@ -4,9 +4,9 @@
 
 // @dart=2.9
 
-import 'package:angular_components/material_tab/fixed_material_tab_strip.dart';
-import 'package:angular_components/material_tab/material_tab.dart';
-import 'package:angular_components/material_tab/material_tab_panel.dart';
+import 'package:ngcomponents/material_tab/fixed_material_tab_strip.dart';
+import 'package:ngcomponents/material_tab/material_tab.dart';
+import 'package:ngcomponents/material_tab/material_tab_panel.dart';
 import 'material_tab_panel_example.dart';
 import 'material_tab_strip_example.dart';
 import 'material_tab_strip_mixin_example.dart';

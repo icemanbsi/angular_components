@@ -4,14 +4,14 @@
 
 // @dart=2.9
 
-import 'package:angular_components/material_datepicker/date_input.dart';
-import 'package:angular_components/material_datepicker/date_range_input.dart';
-import 'package:angular_components/material_datepicker/material_calendar_picker.dart';
-import 'package:angular_components/material_datepicker/material_date_range_picker.dart';
-import 'package:angular_components/material_datepicker/material_date_time_picker.dart';
-import 'package:angular_components/material_datepicker/material_datepicker.dart';
-import 'package:angular_components/material_datepicker/material_month_picker.dart';
-import 'package:angular_components/material_datepicker/material_time_picker.dart';
+import 'package:ngcomponents/material_datepicker/date_input.dart';
+import 'package:ngcomponents/material_datepicker/date_range_input.dart';
+import 'package:ngcomponents/material_datepicker/material_calendar_picker.dart';
+import 'package:ngcomponents/material_datepicker/material_date_range_picker.dart';
+import 'package:ngcomponents/material_datepicker/material_date_time_picker.dart';
+import 'package:ngcomponents/material_datepicker/material_datepicker.dart';
+import 'package:ngcomponents/material_datepicker/material_month_picker.dart';
+import 'package:ngcomponents/material_datepicker/material_time_picker.dart';
 import 'date_input_demo.dart';
 import 'date_range_input_demo.dart';
 import 'material_calendar_picker_demo.dart';

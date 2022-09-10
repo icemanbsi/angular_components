@@ -5,9 +5,9 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_datepicker/material_date_time_picker.dart';
-import 'package:angular_components/material_datepicker/module.dart';
-import 'package:angular_components/utils/browser/window/module.dart';
+import 'package:ngcomponents/material_datepicker/material_date_time_picker.dart';
+import 'package:ngcomponents/material_datepicker/module.dart';
+import 'package:ngcomponents/utils/browser/window/module.dart';
 
 @Component(
   selector: 'material-date-time-picker-demo',

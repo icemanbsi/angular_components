@@ -5,13 +5,13 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/auto_dismiss/auto_dismiss.dart';
-import 'package:angular_components/focus/focus.dart';
-import 'package:angular_components/laminate.dart';
-import 'package:angular_components/material_button/material_button.dart';
-import 'package:angular_components/material_dialog/material_dialog.dart';
-import 'package:angular_components/material_icon/material_icon.dart';
-import 'package:angular_components/material_tooltip/material_tooltip.dart';
+import 'package:ngcomponents/auto_dismiss/auto_dismiss.dart';
+import 'package:ngcomponents/focus/focus.dart';
+import 'package:ngcomponents/laminate.dart';
+import 'package:ngcomponents/material_button/material_button.dart';
+import 'package:ngcomponents/material_dialog/material_dialog.dart';
+import 'package:ngcomponents/material_icon/material_icon.dart';
+import 'package:ngcomponents/material_tooltip/material_tooltip.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

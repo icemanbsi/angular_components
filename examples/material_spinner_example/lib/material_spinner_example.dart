@@ -5,7 +5,7 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_spinner/material_spinner.dart';
+import 'package:ngcomponents/material_spinner/material_spinner.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

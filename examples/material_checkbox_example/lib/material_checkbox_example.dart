@@ -6,11 +6,11 @@
 
 import 'package:ngdart/angular.dart';
 import 'package:ngforms/ngforms.dart';
-import 'package:angular_components/material_button/material_button.dart';
-import 'package:angular_components/material_checkbox/material_checkbox.dart';
-import 'package:angular_components/material_icon/material_icon.dart';
-import 'package:angular_components/material_input/material_input.dart';
-import 'package:angular_components/material_toggle/material_toggle.dart';
+import 'package:ngcomponents/material_button/material_button.dart';
+import 'package:ngcomponents/material_checkbox/material_checkbox.dart';
+import 'package:ngcomponents/material_icon/material_icon.dart';
+import 'package:ngcomponents/material_input/material_input.dart';
+import 'package:ngcomponents/material_toggle/material_toggle.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

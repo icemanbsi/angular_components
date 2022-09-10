@@ -5,9 +5,9 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_datepicker/date_range_input.dart';
-import 'package:angular_components/material_datepicker/module.dart';
-import 'package:angular_components/model/date/date.dart';
+import 'package:ngcomponents/material_datepicker/date_range_input.dart';
+import 'package:ngcomponents/material_datepicker/module.dart';
+import 'package:ngcomponents/model/date/date.dart';
 
 @Component(
   selector: 'date-range-input-demo',

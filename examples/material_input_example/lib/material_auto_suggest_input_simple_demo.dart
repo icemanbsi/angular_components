@@ -5,7 +5,7 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/material_input/material_auto_suggest_input.dart';
+import 'package:ngcomponents/material_input/material_auto_suggest_input.dart';
 
 @Component(
   selector: 'material-auto-suggest-input-simple-demo',

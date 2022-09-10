@@ -5,14 +5,14 @@
 // @dart=2.9
 
 import 'package:ngdart/angular.dart';
-import 'package:angular_components/content.dart';
-import 'package:angular_components/laminate.dart';
-import 'package:angular_components/material_button/material_button.dart';
-import 'package:angular_components/material_popup/material_popup.dart';
-import 'package:angular_components/material_select/material_dropdown_select.dart';
-import 'package:angular_components/material_tooltip/material_tooltip.dart';
-import 'package:angular_components/model/selection/selection_model.dart';
-import 'package:angular_components/model/selection/selection_options.dart';
+import 'package:ngcomponents/content.dart';
+import 'package:ngcomponents/laminate.dart';
+import 'package:ngcomponents/material_button/material_button.dart';
+import 'package:ngcomponents/material_popup/material_popup.dart';
+import 'package:ngcomponents/material_select/material_dropdown_select.dart';
+import 'package:ngcomponents/material_tooltip/material_tooltip.dart';
+import 'package:ngcomponents/model/selection/selection_model.dart';
+import 'package:ngcomponents/model/selection/selection_options.dart';
 import 'package:angular_gallery_section/annotation/gallery_section_config.dart';
 
 @GallerySectionConfig(

@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 /// Simple pass-thru content container which announces its construction and
 /// displays a label (in a <p> tag) above the content.

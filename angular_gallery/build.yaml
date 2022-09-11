@@ -1,9 +1,9 @@
 targets:
   $default:
     builders:
-      angular_components|scss_builder:
+      ngcomponents|scss_builder:
         enabled: True
-      angular|angular:
+      ngdart|ngdart:
         generate_for:
           exclude: ["lib/**"]
 
@@ -20,4 +20,4 @@ builders:
       ".html": [".dart"],
       "$web$": ["index.html", "main.dart", "style.scss"]}
     auto_apply: dependents
-    runs_before: ["angular|angular", "angular_components|scss_builder"]
+    runs_before: ["ngdart|ngdart", "ngcomponents|scss_builder"]

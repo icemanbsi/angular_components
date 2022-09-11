@@ -5,14 +5,14 @@
 // @dart=2.9
 
 @JS()
-library angular_components.scaffolding.gallery_section.components.gallery_component;
+library ngcomponents.scaffolding.gallery_section.components.gallery_component;
 
 import 'dart:html';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:js/js.dart';
-import 'package:angular_components/button_decorator/button_decorator.dart';
-import 'package:angular_components/dynamic_component/dynamic_component.dart';
-import 'package:angular_components/laminate.dart';
+import 'package:ngcomponents/button_decorator/button_decorator.dart';
+import 'package:ngcomponents/dynamic_component/dynamic_component.dart';
+import 'package:ngcomponents/laminate.dart';
 import 'package:angular_gallery/gallery/gallery_tokens.dart';
 import 'package:angular_gallery_section/components/gallery_component/documentation_component.dart';
 import 'package:angular_gallery_section/components/gallery_component/gallery_info.dart';

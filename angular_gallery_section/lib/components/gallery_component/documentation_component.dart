@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_gallery_section/components/gallery_component/gallery_info.dart';
 
 /// A list of all documentation directives.

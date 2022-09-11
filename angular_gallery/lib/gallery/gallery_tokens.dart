@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/di.dart';
+import 'package:ngdart/di.dart';
 
 const bugUrl = OpaqueToken<String>('bugUrl');
 const sourcecodeUrl = OpaqueToken<String>('sourcecodeUrl');

@@ -4,7 +4,7 @@
 
 // @dart=2.9
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:angular_gallery_section/components/gallery_component/documentation_info.dart';
 
 // This needs to be a seperate build target for the builders but all runtime

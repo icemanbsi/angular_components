@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/overlay/zindexer.dart';
 import 'package:ngcomponents/laminate/popup/module.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';

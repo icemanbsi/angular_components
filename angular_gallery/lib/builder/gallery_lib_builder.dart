@@ -100,11 +100,11 @@ class GalleryLibBuilder extends Builder {
       final summaries = (jsonDecode(summaryContents) as Iterable)
           .map((m) => (m as Map).cast<String, dynamic>());
       examples.addAll(summaries.map((summary) => Example(
-          summary['displayName'],
-          summary['group'],
-          summary['dartImport'],
-          summary['componentClass'],
-          summary['docs'].cast<String>())));
+          summary['displayName'] ?? '',
+          summary['group'] ?? '',
+          summary['dartImport'] ?? '',
+          summary['componentClass'] ?? '',
+          List<String>.from(summary['docs'] ?? {}))));
     }
 
     examples

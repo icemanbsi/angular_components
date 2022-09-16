@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html' as html;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:collection/collection.dart';
 import 'package:ngcomponents/button_decorator/button_decorator.dart';
 import 'package:ngcomponents/content/deferred_content.dart';
@@ -42,7 +42,7 @@ import 'package:ngcomponents/stop_propagation/stop_propagation.dart';
 import 'package:ngcomponents/utils/angular/properties/properties.dart';
 import 'package:ngcomponents/utils/async/async.dart';
 import 'package:ngcomponents/utils/id_generator/id_generator.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:meta/meta.dart';
 
 import 'material_input.dart';
@@ -835,7 +835,7 @@ class MaterialAutoSuggestInputComponent<T> extends MaterialSelectBase<T>
 
   @override
   void writeValue(newValue) {
-    _setInputText(newValue as String);
+    _setInputText(newValue as String?);
   }
 
   @override

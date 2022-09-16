@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math' show max;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:js/js.dart' as js;
 import 'package:logging/logging.dart' show Logger;
 import 'package:ngcomponents/src/utils/angular/scroll_host/gestures.dart';

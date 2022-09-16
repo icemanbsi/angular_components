@@ -4,7 +4,7 @@
 
 import 'dart:math';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/enums/alignment.dart';
 import 'package:ngcomponents/src/laminate/popup/popup_size_provider.dart';
 

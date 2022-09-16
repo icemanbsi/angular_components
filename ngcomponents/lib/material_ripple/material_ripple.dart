@@ -5,7 +5,7 @@
 import 'dart:html';
 import 'dart:math';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/utils/browser/events/events.dart';
 import 'package:ngcomponents/utils/browser/feature_detector/feature_detector.dart'
     show supportsAnimationApi;

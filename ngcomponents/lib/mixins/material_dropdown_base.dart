@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/content/deferred_content_aware.dart';
 import 'package:ngcomponents/laminate/enums/alignment.dart';
 import 'package:ngcomponents/laminate/popup/popup.dart';

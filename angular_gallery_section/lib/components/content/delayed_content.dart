@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/material_progress/material_progress.dart';
 
 /// `delayed-content` is a simple pass-thru content container which, when

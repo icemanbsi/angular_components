@@ -4,7 +4,7 @@
 
 //import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/model/ui/display_name.dart';
 import 'package:ngcomponents/model/ui/has_renderer.dart';
 

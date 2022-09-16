@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:intl/intl.dart';
 import 'package:quiver/time.dart';
 import 'package:ngcomponents/material_datepicker/calendar.dart';
@@ -137,7 +137,7 @@ abstract class MaterialDateGridBase
     // Get the 1-indexed starting weekday for the current locale, and use that.
     startingWeekday = DateFormat().dateSymbols.FIRSTDAYOFWEEK + 1;
 
-    if (mode != null && mode.isNotEmpty) {
+    if (mode.isNotEmpty) {
       _mode = fuzzyParseEnum(CalendarSelectionMode.values, mode);
     }
   }

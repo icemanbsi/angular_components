@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:js_util';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:intl/intl.dart';
 import 'package:quiver/time.dart';

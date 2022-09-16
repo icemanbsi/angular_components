@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/material_menu/menu_popup.dart';

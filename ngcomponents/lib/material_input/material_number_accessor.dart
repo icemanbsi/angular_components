@@ -4,9 +4,9 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/utils/angular/properties/properties.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:intl/intl.dart';
 import 'package:quiver/strings.dart';

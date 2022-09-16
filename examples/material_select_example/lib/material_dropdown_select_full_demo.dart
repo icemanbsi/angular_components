@@ -5,8 +5,8 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-//import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+//import 'package:ngforms/ngforms.dart';
 import 'package:ngcomponents/laminate/enums/alignment.dart';
 import 'package:ngcomponents/laminate/popup/module.dart';
 import 'package:ngcomponents/material_checkbox/material_checkbox.dart';
@@ -322,8 +322,7 @@ class ExampleSelectionOptions extends StringSelectionOptions<Language>
       : super.withOptionGroups(optionGroups as List<OptionGroup<Language>>,
             toFilterableString: (Language option) => option.toString());
   @override
-  SelectableOption getSelectable(Language item) =>
-      item is Language && item.code.contains('en')
-          ? SelectableOption.Disabled
-          : SelectableOption.Selectable;
+  SelectableOption getSelectable(Language item) => item.code.contains('en')
+      ? SelectableOption.Disabled
+      : SelectableOption.Selectable;
 }

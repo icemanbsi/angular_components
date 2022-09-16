@@ -22,8 +22,8 @@ Builder galleryAppBuilder(BuilderOptions options) => MultiplexingBuilder([
 /// Builder used to generate files in the gallery library target.
 Builder galleryLibBuilder(BuilderOptions options) => GalleryLibBuilder(
       options.config['galleryTitle'] ?? 'Example Gallery',
-      options.config['styleUrls'].cast<String>(),
-      (options.config['examples'] as String).split(','),
+      (options.config['styleUrls'] as List?)?.cast<String>() ?? [],
+      (options.config['examples'] as String?)?.split(',') ?? [],
     );
 
 /// Builder to generate the Sass styles for syntax highlighting with

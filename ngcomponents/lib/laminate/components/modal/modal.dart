@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/content/deferred_content_aware.dart';
 import 'package:ngcomponents/src/laminate/components/modal/modal_controller_directive.dart';
 import 'package:ngcomponents/laminate/overlay/overlay.dart';

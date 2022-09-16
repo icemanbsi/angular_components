@@ -27,7 +27,7 @@ void main() {
     // Use the version of protoc on the $PATH if available.
     var result = Process.runSync('which', ['protoc']);
     if (result.exitCode == 0) {
-      protocPath = (result.stdout as String).trim();
+      protocPath = (result.stdout as String?)?.trim() ?? '';
     }
 
     final datepickerProtoPath = '${currentDir}/lib/material_datepicker/proto';
@@ -72,7 +72,7 @@ String _runProc(String proc, List<String> args) {
   var result = Process.runSync(proc, args);
   if (result.exitCode != 0) {
     throw ProcessException(
-        proc, args, result.stderr as String, result.exitCode);
+        proc, args, result.stderr as String? ?? '', result.exitCode);
   }
-  return (result.stdout as String).trim();
+  return (result.stdout as String?)?.trim() ?? '';
 }

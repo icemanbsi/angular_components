@@ -32,11 +32,10 @@ class GalleryInfoBuilder extends Builder {
     final inputId = buildStep.inputId;
 
     final extractedConfigs =
-        await (extractGallerySectionConfigs(inputId, buildStep)
-            as FutureOr<Iterable<ConfigInfo>>);
+        await (extractGallerySectionConfigs(inputId, buildStep));
 
     // File does not contain @GallerySectionConfig annotation.
-    if (extractedConfigs.isEmpty) return;
+    if (extractedConfigs == null || extractedConfigs.isEmpty) return;
 
     final resolvedConfigs = await _resolveConfigs(
         extractedConfigs, await buildStep.inputLibrary, buildStep);
@@ -163,7 +162,7 @@ class GalleryInfoBuilder extends Builder {
             '$missingIdentifier.';
 
     final libraryId = AssetId.resolve(library.source.uri);
-    final docClass = library.getType(identifier);
+    final docClass = library.getClass(identifier);
     DartDocInfo? docs;
 
     // If this a functional directive, just extract the docs and we are done.
@@ -189,7 +188,7 @@ class GalleryInfoBuilder extends Builder {
       if (docs == null) {
         // The super class must be defined in the library as a part file.
         for (var part in classElement.library.parts) {
-          if (part.getType(classElement.name) != null) {
+          if (part.getClass(classElement.name) != null) {
             libraryId = AssetId.resolve(part.source.uri);
             docs = await extractDocumentation(
                 classElement.name, libraryId, assetReader);
@@ -237,15 +236,15 @@ class GalleryInfoBuilder extends Builder {
   }
 
   /// Returns a class hierarchy that ends at [leafClass] omitting [Object].
-  Iterable<ClassElement> _classHierarchy(ClassElement leafClass) {
+  Iterable<InterfaceElement> _classHierarchy(ClassElement leafClass) {
     final interfaces = leafClass.allSupertypes;
 
     // Object contains no interesting documentation and complicates searching.
     interfaces.removeWhere((interface) => interface.isDartCoreObject);
 
-    final classes = <ClassElement>[];
+    final classes = <InterfaceElement>[];
     for (var i in interfaces) {
-      classes.add(i.element);
+      classes.add(i.element2);
     }
 
     // Add the leaf class at the beginning of the hierarchy.
@@ -256,13 +255,18 @@ class GalleryInfoBuilder extends Builder {
     return classes.reversed;
   }
 
-  /// Returns the type of setter [name] in [classElement].
-  String _setterType(String name, ClassElement classElement) =>
-      classElement.getSetter(name)!.type.normalParameterTypes.first.toString();
+  /// Returns the type of setter [name] in [interfaceElement].
+  String _setterType(String name, InterfaceElement interfaceElement) =>
+      interfaceElement
+          .getSetter(name)!
+          .type
+          .normalParameterTypes
+          .first
+          .toString();
 
-  /// Returns the type of the getter [name] in [classElement].
-  String _getterType(String name, ClassElement classElement) =>
-      classElement.getGetter(name)!.returnType.toString();
+  /// Returns the type of the getter [name] in [interfaceElement].
+  String _getterType(String name, InterfaceElement interfaceElement) =>
+      interfaceElement.getGetter(name)!.returnType.toString();
 
   /// Replace web server in `<img>` tags with the [_staticImageServer].
   String _replaceImgTags(String content) => content.replaceAllMapped(

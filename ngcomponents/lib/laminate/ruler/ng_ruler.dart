@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:angular/angular.dart' hide Visibility;
+import 'package:ngdart/angular.dart' hide Visibility;
 import 'package:ngcomponents/laminate/enums/position.dart';
 import 'package:ngcomponents/laminate/enums/visibility.dart';
 import 'package:ngcomponents/laminate/ruler/dom_ruler.dart';

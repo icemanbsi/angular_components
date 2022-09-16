@@ -4,8 +4,8 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular/src/meta.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngdart/src/meta.dart';
 import 'package:ngcomponents/utils/browser/dom_service/dom_service.dart';
 import 'package:meta/meta.dart';
 

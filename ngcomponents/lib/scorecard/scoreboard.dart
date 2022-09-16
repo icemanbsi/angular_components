@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:intl/intl.dart';
 import 'package:ngcomponents/material_button/material_button.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';

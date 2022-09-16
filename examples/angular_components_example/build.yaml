@@ -5,7 +5,7 @@ global_options:
 targets:
   $default:
     builders:
-      angular|angular:
+      ngdart|ngdart:
         enabled: true
       angular_gallery|angular_gallery:
         options:
@@ -24,7 +24,7 @@ targets:
         generate_for:
         - web/main.dart
         options:
-        #  compiler: dart2js
+          compiler: dart2js
           dart2js_args:
           - --minify
           - --dump-info

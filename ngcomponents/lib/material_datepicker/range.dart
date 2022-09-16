@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/di.dart';
+import 'package:ngdart/di.dart';
 import 'package:ngcomponents/material_datepicker/proto/date.pb.dart'
     as dateproto;
 import 'package:intl/intl.dart';

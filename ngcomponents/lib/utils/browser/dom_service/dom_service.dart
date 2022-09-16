@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math' show max, min;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/utils/async/async.dart';
 import 'package:ngcomponents/utils/disposer/disposable_callback.dart';
 // TODO(google): Consolidate this with RenderSync /Angular.

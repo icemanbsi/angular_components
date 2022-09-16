@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/enums/alignment.dart';
 import 'package:ngcomponents/laminate/overlay/module.dart';
 import 'package:ngcomponents/src/laminate/popup/dom_popup_source.dart';

@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/material_tab/fixed_material_tab_strip.dart';
 import 'package:ngcomponents/material_tab/material_tab.dart';
 import 'package:ngcomponents/material_tab/tab_change_event.dart';
@@ -83,7 +83,7 @@ class MaterialTabPanelComponent implements AfterContentInit {
   }
 
   void _initTabs() {
-    _tabLabels = _tabs.map((t) => t.label).toList().cast<String>();
+    _tabLabels = _tabs.map((t) => t.label).whereType<String>().toList();
     _tabIds = _tabs.map((t) => t.tabId).toList();
 
     // Setting the active tab needs to happen in the next turn as it is changing

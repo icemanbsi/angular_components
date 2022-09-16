@@ -4,8 +4,8 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/material_radio/material_radio.dart';
 import 'package:ngcomponents/model/selection/selection_model.dart';

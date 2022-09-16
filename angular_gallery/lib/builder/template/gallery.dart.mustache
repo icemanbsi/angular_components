@@ -63,7 +63,7 @@ class GalleryComponent implements HighlightProvider {
   //final ItemRenderer<dynamic> _highlightRenderer =
   //    (item) => item is _Example ? item.displayName : item?.toString();
   String? _highlightRenderer(item) {
-    return item is _Example ? item.displayName : item.toString();
+    return item is _Example ? item.displayName : item?.toString();
   }
 
   final List<RouteDefinition> routes = galleryRoutes;

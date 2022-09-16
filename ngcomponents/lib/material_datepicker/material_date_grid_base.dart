@@ -137,7 +137,7 @@ abstract class MaterialDateGridBase
     // Get the 1-indexed starting weekday for the current locale, and use that.
     startingWeekday = DateFormat().dateSymbols.FIRSTDAYOFWEEK + 1;
 
-    if (mode != null && mode.isNotEmpty) {
+    if (mode.isNotEmpty) {
       _mode = fuzzyParseEnum(CalendarSelectionMode.values, mode);
     }
   }

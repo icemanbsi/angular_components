@@ -83,7 +83,7 @@ class MaterialTabPanelComponent implements AfterContentInit {
   }
 
   void _initTabs() {
-    _tabLabels = _tabs.map((t) => t.label).toList().cast<String>();
+    _tabLabels = _tabs.map((t) => t.label).whereType<String>().toList();
     _tabIds = _tabs.map((t) => t.tabId).toList();
 
     // Setting the active tab needs to happen in the next turn as it is changing

@@ -114,7 +114,7 @@ class StringSelectionOptions<T> extends SelectionOptions<T>
   @override
   DisposableFuture<bool> filter(Object query, {int? limit = -1}) {
     _currentLimit = limit! < 1 ? UNLIMITED : limit;
-    _currentQuery = query as String;
+    _currentQuery = query as String? ?? '';
     refilter();
     return DisposableFuture.fromValue(true);
   }

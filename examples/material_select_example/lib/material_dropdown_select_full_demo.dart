@@ -322,8 +322,7 @@ class ExampleSelectionOptions extends StringSelectionOptions<Language>
       : super.withOptionGroups(optionGroups as List<OptionGroup<Language>>,
             toFilterableString: (Language option) => option.toString());
   @override
-  SelectableOption getSelectable(Language item) =>
-      item is Language && item.code.contains('en')
-          ? SelectableOption.Disabled
-          : SelectableOption.Selectable;
+  SelectableOption getSelectable(Language item) => item.code.contains('en')
+      ? SelectableOption.Disabled
+      : SelectableOption.Selectable;
 }

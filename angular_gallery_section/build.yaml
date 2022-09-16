@@ -1,7 +1,7 @@
 targets:
   $default:
     builders:
-      angular|angular:
+      ngdart|ngdart:
         generate_for:
           exclude: [
             "lib/*.dart",
@@ -28,4 +28,4 @@ builders:
       ".dart": [".gallery_info.json", ".api.dart"],
       "$lib$": ["gallery_section.dart", "gallery_section_summary.json"]}
     auto_apply: dependents
-    runs_before: ["angular|angular", "ngcomponents|scss_builder"]
+    runs_before: ["ngdart|ngdart", "ngcomponents|scss_builder"]

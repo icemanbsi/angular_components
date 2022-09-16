@@ -835,7 +835,7 @@ class MaterialAutoSuggestInputComponent<T> extends MaterialSelectBase<T>
 
   @override
   void writeValue(newValue) {
-    _setInputText(newValue as String);
+    _setInputText(newValue as String?);
   }
 
   @override

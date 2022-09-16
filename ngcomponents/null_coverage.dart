@@ -47,6 +47,6 @@ Future<void> main(List<String> args) async {
   }
 
   need_migrate.forEach((element) {
-    print('- [ ] ' + p.relative(element, from: 'lib'));
+    print('- [ ] ${p.relative(element, from: 'lib')}');
   });
 }

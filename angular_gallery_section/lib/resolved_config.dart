@@ -47,7 +47,7 @@ class ResolvedConfig {
 
   /// Constructs a new [ResolvedConfig] from a decoded json map.
   ResolvedConfig.fromJson(Map<String, dynamic> jsonMap) {
-    displayName = jsonMap['displayName'] as String;
+    displayName = jsonMap['displayName'] as String? ?? '';
     group = jsonMap['group'] as String?;
 
     docs = (jsonMap['docs'] as Iterable?)

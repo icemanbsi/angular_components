@@ -4,8 +4,6 @@
 
 library angular_components;
 
-import 'package:ngforms/ngforms.dart';
-
 import 'app_layout/material_persistent_drawer.dart';
 import 'app_layout/material_stackable_drawer.dart';
 import 'app_layout/material_temporary_drawer.dart';

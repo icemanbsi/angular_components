@@ -397,9 +397,8 @@ class TimeSelectionOptions extends StringSelectionOptions<DateTime>
 
   @override
   SelectableOption getSelectable(DateTime item) {
-    return item is DateTime &&
-            ((_minTime != null && item.isBefore(_minTime!)) ||
-                (_maxTime != null && item.isAfter(_maxTime!)))
+    return ((_minTime != null && item.isBefore(_minTime!)) ||
+            (_maxTime != null && item.isAfter(_maxTime!)))
         ? SelectableOption.Disabled
         : SelectableOption.Selectable;
   }

@@ -21,5 +21,5 @@ const rulerModule = Module(include: [
 const _rulerProviders = [
   ClassProvider(DomRuler),
   ClassProvider(ManagedZone, useClass: Angular2ManagedZone),
-  ClassProvider(NgRuler),
+  //ClassProvider(NgRuler),
 ];

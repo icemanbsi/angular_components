@@ -6,6 +6,9 @@ build/
 packages
 pubspec.lock
 
+# Files created by Dart buidlers
+*.mocks.dart
+
 # Files created by dart2js
 *.dart.js
 *.part.js

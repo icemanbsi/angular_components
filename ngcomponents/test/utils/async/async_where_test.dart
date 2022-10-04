@@ -7,7 +7,9 @@ Future<bool> isOddAsync(int number) async {
 
 Future<bool> iHateEverything(dynamic object) async => false;
 
-void main() {
+Future<bool> onlyKevinSurvives(String son) async => son == 'Kevin';
+
+Future<void> main() async {
   group('Utils test | async | async_where |', () {
     group('asyncWhere |', () {
       test('asyncWhere emits items in order', () {
@@ -32,6 +34,35 @@ void main() {
           "old dry mother",
         ];
         expect(asyncWhere(food, iHateEverything), emits(emitsDone));
+      });
+    });
+
+    group('asyncFirst |', () {
+      const List<String> sons = [
+        "Donald",
+        "Jason",
+        "Kevin",
+        "Max",
+        "William",
+        "Zach",
+      ];
+
+      test('basic test', () {
+        expect(
+            asyncFirst(sons, onlyKevinSurvives), completion(equals('Kevin')));
+        expect(
+          asyncFirst(
+            sons,
+            iHateEverything,
+            orElse: () => "Kingdom falls apart",
+          ),
+          completion(equals('Kingdom falls apart')),
+        );
+      });
+
+      test('throws an error if everything false and [orElse] is absent',
+          () async {
+        expect(asyncFirst(sons, iHateEverything), throwsStateError);
       });
     });
   });

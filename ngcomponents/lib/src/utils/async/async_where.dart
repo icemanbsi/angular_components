@@ -23,7 +23,7 @@ Stream<T> asyncWhere<T>(List<T> items, Future<bool> filter(T item)) async* {
 /// item only when its filter future completes with true AND the filter futures
 /// for all previous items have completed.
 /// If all filter futures complete with false and [orElse] is absent, completes
-/// with an error.
+/// with a [StateError].
 /// If all filter futures complete with false and [orElse] is present,
 /// completes with the return value of [orElse].
 ///

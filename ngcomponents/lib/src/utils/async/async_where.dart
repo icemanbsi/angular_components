@@ -39,7 +39,8 @@ Future<T> asyncFirst<T>(List<T> items, Future<bool> filter(T item),
 /// item only when its filter future completes with true AND all the other
 /// filter futures complete with false.
 /// If all filter futures complete with false or (at least 2 complete with true
-/// and all the ones before them complete), then it completes with an error.
+/// and all the ones before them complete), then it completes with a
+/// [StateError].
 ///
 /// Example: prisonersDilemmaWinner = asyncSingle(prisoners, defects);
 Future<T> asyncSingle<T>(List<T> items, Future<bool> filter(T item)) =>

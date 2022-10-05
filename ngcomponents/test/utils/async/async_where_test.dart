@@ -1,13 +1,17 @@
 import 'package:ngcomponents/src/utils/async/async_where.dart';
 import 'package:test/test.dart';
 
-Future<bool> isOddAsync(int number) async {
-  return number.isOdd;
+Future<bool> donaldIsOlder(String son) async {
+  switch (son) {
+    case 'Kevin':
+      await Future.delayed(Duration(seconds: 1));
+      return true;
+    case 'Donald':
+      return true;
+    default:
+      return false;
+  }
 }
-
-Future<bool> iHateEverything(dynamic object) async => false;
-
-Future<bool> onlyKevinSurvives(String son) async => son == 'Kevin';
 
 Future<void> main() async {
   group('Utils test | async | async_where |', () {
@@ -15,7 +19,7 @@ Future<void> main() async {
       test('asyncWhere emits items in order', () {
         final List<int> items = [1, 2, 3, 4, 5];
         expect(
-          asyncWhere(items, isOddAsync),
+          asyncWhere(items, (int n) async => n.isOdd),
           emitsInOrder(
             [
               1,
@@ -33,7 +37,7 @@ Future<void> main() async {
           "oreos",
           "old dry mother",
         ];
-        expect(asyncWhere(food, iHateEverything), emits(emitsDone));
+        expect(asyncWhere(food, (f) async => false), emits(emitsDone));
       });
     });
 
@@ -48,21 +52,49 @@ Future<void> main() async {
       ];
 
       test('basic test', () {
-        expect(
-            asyncFirst(sons, onlyKevinSurvives), completion(equals('Kevin')));
+        expect(asyncFirst(sons, (s) async => s == 'Kevin'),
+            completion(equals('Kevin')));
+      });
+
+      test(
+          'throws StateError if everything completes with false and [orElse] is absent',
+          () async {
+        expect(asyncFirst(sons, (s) async => false), throwsStateError);
+      });
+
+      test('calls orElse if everything completes with false', () {
         expect(
           asyncFirst(
             sons,
-            iHateEverything,
+            (s) async => false,
             orElse: () => "Kingdom falls apart",
           ),
           completion(equals('Kingdom falls apart')),
         );
       });
 
-      test('throws an error if everything false and [orElse] is absent',
+      test('returns the first completed item indeed', () {
+        expect(asyncFirst(sons, donaldIsOlder), completion(equals('Donald')));
+      });
+    });
+
+    group('asyncSingle |', () {
+      const List<String> prisoners = ['A', 'B', 'C', 'D', 'E'];
+
+      test('basic test', () {
+        expect(asyncSingle(prisoners, (p) async => p == 'E'),
+            completion(equals('E')));
+      });
+
+      test('throws StateError is everything completes with false', () async {
+        expect(asyncSingle(prisoners, (p) async => false), throwsStateError);
+      });
+
+      test('throws StateError is more than one item complete with true',
           () async {
-        expect(asyncFirst(sons, iHateEverything), throwsStateError);
+        expect(asyncSingle(prisoners, (p) async => true), throwsStateError);
+
+        expect(asyncSingle(prisoners, (p) async => p == 'C' || p == 'D'), throwsStateError);
       });
     });
   });

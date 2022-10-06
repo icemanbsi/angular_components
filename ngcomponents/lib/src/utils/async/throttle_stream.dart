@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:ngcomponents/utils/rate_limit_utils/rate_limit_utils.dart'
+import 'package:ngcomponents/src/utils/rate_limit_utils/rate_limit_utils.dart'
     show throttle, throttleGuaranteeLast;
 
 import 'rate_limit.dart';

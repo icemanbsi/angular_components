@@ -86,11 +86,11 @@ Future<void> main() async {
             completion(equals('E')));
       });
 
-      test('throws StateError is everything completes with false', () async {
+      test('throws StateError if everything completes with false', () async {
         expect(asyncSingle(prisoners, (p) async => false), throwsStateError);
       });
 
-      test('throws StateError is more than one item complete with true',
+      test('throws StateError if more than one item complete with true',
           () async {
         expect(asyncSingle(prisoners, (p) async => true), throwsStateError);
 

@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/utils/browser/dom_iterator/dom_iterator.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';

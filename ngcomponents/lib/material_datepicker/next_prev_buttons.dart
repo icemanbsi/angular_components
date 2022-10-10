@@ -4,7 +4,7 @@
 
 import 'dart:html' show Event;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:intl/intl.dart';
 import 'package:ngcomponents/src/material_datepicker/sequential.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';

@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 // These are necessary because 'const' functions don't yet exist within Dart.
 

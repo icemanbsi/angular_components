@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/portal/portal.dart';
 import 'package:ngcomponents/model/action/async_action.dart';
 

@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus_trap.dart';
 import 'package:ngcomponents/laminate/components/modal/modal.dart';
 import 'package:ngcomponents/model/a11y/keyboard_handler_mixin.dart';

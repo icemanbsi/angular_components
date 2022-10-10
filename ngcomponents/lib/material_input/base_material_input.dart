@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/forms/error_renderer.dart' show ErrorFn;
 import 'package:ngcomponents/interfaces/has_disabled.dart';
@@ -14,7 +14,7 @@ import 'package:ngcomponents/utils/angular/properties/properties.dart';
 import 'package:ngcomponents/utils/angular/reference/reference.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';
 import 'package:ngcomponents/utils/id_generator/id_generator.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:intl/intl.dart';
 import 'package:quiver/strings.dart' show isEmpty, isNotEmpty;
 

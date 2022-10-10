@@ -5,8 +5,8 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:meta/meta.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/utils/browser/events/events.dart';

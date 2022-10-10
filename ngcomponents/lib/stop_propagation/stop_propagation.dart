@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/utils/browser/events/events.dart';
 
 /// A directive that prevents button trigger events from propagating.

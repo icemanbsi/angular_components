@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/src/material_tree/material_tree_expand_state.dart';
 import 'package:ngcomponents/src/material_tree/material_tree_root.dart';
 import 'package:ngcomponents/model/selection/select.dart';

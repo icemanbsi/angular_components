@@ -2,8 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';
@@ -14,7 +14,7 @@ import 'deferred_validator.dart';
 import 'material_input_default_value_accessor.dart';
 import 'material_input_multiline.dart';
 
-export 'package:angular_forms/angular_forms.dart' show NgModel;
+export 'package:ngforms/ngforms.dart' show NgModel;
 
 export 'base_material_input.dart' show ValidityCheck, CharacterCounter;
 export 'material_input_default_value_accessor.dart';

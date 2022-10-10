@@ -4,13 +4,13 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:intl/intl.dart';
 import 'package:quiver/time.dart';
 import 'package:ngcomponents/material_input/material_input.dart';
 import 'package:ngcomponents/model/date/date.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 
 import 'calendar.dart';
 import 'module.dart';

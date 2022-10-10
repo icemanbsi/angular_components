@@ -6,7 +6,7 @@ import 'dart:async' show Stream, StreamController;
 import 'dart:html'
     show Element, NodeValidator, NodeValidatorBuilder, UIEvent, UriPolicy;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:logging/logging.dart' show Logger;
 import 'package:quiver/check.dart';
 import 'package:ngcomponents/utils/angular/properties/properties.dart';

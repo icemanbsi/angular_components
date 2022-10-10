@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 /// Adds CSS to the `document.head` location in order to use overlays.
 ///

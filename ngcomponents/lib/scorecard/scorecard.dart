@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/keyboard_only_focus_indicator.dart';
 import 'package:ngcomponents/material_icon/material_icon.dart';
 import 'package:ngcomponents/material_ripple/material_ripple.dart';

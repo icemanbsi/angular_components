@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/theme/module.dart';
 
 /// The class applied to elements which have been themed, iff the dark theme is

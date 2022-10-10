@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 // TODO(google): Remove this once use of '#' in a template is either
 // consistent, or has a way to declare specifically what you want - e.g. the

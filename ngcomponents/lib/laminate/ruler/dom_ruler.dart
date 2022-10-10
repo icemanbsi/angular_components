@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/src/laminate/ruler/ruler_interface.dart';
 import 'package:ngcomponents/utils/browser/dom_service/dom_service.dart';
 

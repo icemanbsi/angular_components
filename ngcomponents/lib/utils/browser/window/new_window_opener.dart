@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 /// Utility class to allow opening a URL in a new window.
 @Injectable()

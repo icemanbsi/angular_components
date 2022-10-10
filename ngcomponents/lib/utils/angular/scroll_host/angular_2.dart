@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/src/utils/angular/scroll_host/scroll_host_base.dart';
 import 'package:ngcomponents/utils/angular/scroll_host/interface.dart';
 import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';

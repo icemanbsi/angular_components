@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/annotations/rtl_annotation.dart';
 import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';

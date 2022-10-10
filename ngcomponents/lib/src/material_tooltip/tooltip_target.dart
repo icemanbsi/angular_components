@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/overlay/constants.dart';
 import 'package:ngcomponents/laminate/popup/popup.dart';
 import 'package:ngcomponents/model/action/delayed_action.dart';

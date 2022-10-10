@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:intl/intl.dart';
 import 'package:ngcomponents/material_input/material_input.dart';
 import 'package:ngcomponents/material_input/material_input_error_keys.dart';

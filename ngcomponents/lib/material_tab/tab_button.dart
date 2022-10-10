@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/material_button/material_button_base.dart';
 import 'package:ngcomponents/material_ripple/material_ripple.dart';
 import 'package:ngcomponents/material_tab/tab_mixin.dart';

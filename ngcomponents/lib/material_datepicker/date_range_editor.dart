@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/button_decorator/button_decorator.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/focus/focus_item.dart';

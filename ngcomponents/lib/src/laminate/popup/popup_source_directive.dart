@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus_interface.dart';
 import 'package:ngcomponents/laminate/enums/alignment.dart';
 import 'package:ngcomponents/src/laminate/popup/dom_popup_source.dart';

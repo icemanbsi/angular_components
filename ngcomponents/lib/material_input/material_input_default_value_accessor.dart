@@ -4,8 +4,8 @@
 
 import 'dart:async';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:meta/meta.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';
 

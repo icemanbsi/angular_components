@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/button_decorator/button_decorator.dart';
 import 'package:ngcomponents/dynamic_component/dynamic_component.dart';
 import 'package:ngcomponents/material_checkbox/material_checkbox.dart';

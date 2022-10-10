@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/highlighted_text/highlighted_value.template.dart'
     as highlight;
 import 'package:ngcomponents/model/selection/select.dart';

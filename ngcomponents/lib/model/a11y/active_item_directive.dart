@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html' as dom;
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:js/js_util.dart' as js_util;
 import 'package:ngcomponents/laminate/components/modal/modal.dart';
 import 'package:ngcomponents/laminate/popup/popup.dart';

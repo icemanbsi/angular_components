@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular/di.dart';
+import 'package:ngdart/di.dart';
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
 import 'package:quiver/time.dart';

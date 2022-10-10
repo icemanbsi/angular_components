@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/overlay/constants.dart';
 import 'package:ngcomponents/utils/browser/events/events.dart' as events;
 

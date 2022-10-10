@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart' hide Visibility;
+import 'package:ngdart/angular.dart' hide Visibility;
 import 'package:ngcomponents/laminate/enums/visibility.dart';
 import 'package:ngcomponents/model/math/box.dart';
 import 'package:ngcomponents/src/laminate/overlay/overlay_state.dart';

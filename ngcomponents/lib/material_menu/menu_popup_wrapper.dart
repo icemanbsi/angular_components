@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/model/menu/menu.dart';
 import 'package:ngcomponents/model/observable/observable.dart';
 import 'package:ngcomponents/model/ui/accepts_width.dart';

@@ -5,13 +5,13 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/focus/focus.dart';
 import 'package:ngcomponents/interfaces/has_disabled.dart';
 import 'package:ngcomponents/utils/angular/properties/properties.dart';
 import 'package:ngcomponents/utils/angular/reference/reference.dart';
 import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngforms/ngforms.dart';
 
 import 'base_material_input.dart';
 import 'deferred_validator.dart';

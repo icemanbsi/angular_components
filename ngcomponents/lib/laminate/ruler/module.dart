@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/ruler/dom_ruler.dart';
 import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';
 import 'package:ngcomponents/utils/browser/window/module.dart';

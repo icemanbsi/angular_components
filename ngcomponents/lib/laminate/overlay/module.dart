@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:meta/meta.dart';
 import 'package:ngcomponents/laminate/overlay/constants.dart';
 import 'package:ngcomponents/src/laminate/overlay/overlay_service.dart';

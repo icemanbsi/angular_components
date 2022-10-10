@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use the new `ngdart` instead of the currently archived `angular` package.
+- Specify Sass compilation style as `OutputStyle.compressed` to suppress
+  warnings from using default configurations.
 
 ## [1.1.0] - 2021-11-07
 

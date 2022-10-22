@@ -7,11 +7,13 @@ sdk:
 stages:
   - analyze_and_format_core:
     - group:
+        - command: dart run build_runner build mockito:mockBuilder
         - format
         - analyze: .
       sdk:
         - dev
     - group:
+        - command: dart run build_runner build mockito:mockBuilder
         - analyze: .
       sdk:
         - 2.17.0

@@ -84,10 +84,14 @@ for PKG in ${PKGS}; do
         dart pub run build_runner build web --release || EXIT_CODE=$?
         ;;
       command_2)
+        echo 'dart run build_runner build mockito:mockBuilder'
+        dart run build_runner build mockito:mockBuilder || EXIT_CODE=$?
+        ;;
+      command_3)
         echo './tool/travis/install_protoc.sh'
         ./tool/travis/install_protoc.sh || EXIT_CODE=$?
         ;;
-      command_3)
+      command_4)
         echo 'dart run build_runner test -- -p chrome'
         dart run build_runner test -- -p chrome || EXIT_CODE=$?
         ;;

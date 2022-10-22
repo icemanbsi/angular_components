@@ -94,7 +94,8 @@ Future<void> main() async {
           () async {
         expect(asyncSingle(prisoners, (p) async => true), throwsStateError);
 
-        expect(asyncSingle(prisoners, (p) async => p == 'C' || p == 'D'), throwsStateError);
+        expect(asyncSingle(prisoners, (p) async => p == 'C' || p == 'D'),
+            throwsStateError);
       });
     });
   });

@@ -21,7 +21,7 @@ stages:
   - unit_test:
     - group:
       - command: ./tool/travis/install_protoc.sh
-      - test: --run-skipped
+      - test: --run-skipped -t ci
     - group:
       - command: dart run build_runner test -- -p chrome # Chrome already provided by GH Actions
 

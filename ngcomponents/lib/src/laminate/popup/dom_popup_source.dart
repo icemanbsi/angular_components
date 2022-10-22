@@ -1,6 +1,9 @@
 // Copyright (c) 2016-2021, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
+
+// @dart=2.9
+
 import 'dart:async';
 import 'dart:html';
 
@@ -76,29 +79,29 @@ class DomPopupSource implements ElementPopupSource {
     _alignOriginY = alignOriginY;
   }
 
-  Alignment? _alignOriginX;
-  Alignment? _alignOriginY;
-  String? _id;
+  Alignment _alignOriginX;
+  Alignment _alignOriginY;
+  String _id;
 
   @override
-  Alignment? get alignOriginX => _alignOriginX;
+  Alignment get alignOriginX => _alignOriginX;
 
   @override
-  Alignment? get alignOriginY => _alignOriginY;
+  Alignment get alignOriginY => _alignOriginY;
 
   @override
-  Stream<Rectangle<num>>? onDimensionsChanged({bool track = false}) {
+  Stream<Rectangle<num>> onDimensionsChanged({bool track = false}) {
     return _asyncMeasureSize(sourceElement, track: track);
   }
 
   @override
-  Rectangle? get dimensions => sourceElement.getBoundingClientRect();
+  Rectangle get dimensions => sourceElement.getBoundingClientRect();
 
   @override
   bool get isRtl => _isRtl;
 
   @override
-  set popupId(String? id) {
+  set popupId(String id) {
     _id = id;
     if (_id == null || !_initAriaAttributes) return;
     sourceElement.setAttribute('aria-haspopup', 'true');
@@ -117,7 +120,7 @@ class DomPopupSource implements ElementPopupSource {
   @override
   void onOpen() {
     if (_id == null || !_initAriaAttributes) return;
-    sourceElement.setAttribute('aria-owns', _id!);
+    sourceElement.setAttribute('aria-owns', _id);
   }
 
   @override

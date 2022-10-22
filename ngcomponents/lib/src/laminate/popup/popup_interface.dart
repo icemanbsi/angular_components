@@ -1,6 +1,9 @@
 // Copyright (c) 2016-2021, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
+
+// @dart=2.9
+
 import 'dart:async';
 
 import 'package:ngdart/angular.dart';
@@ -27,7 +30,7 @@ abstract class PopupInterface {
 
   /// Sets whether the popup should dismiss (close) itself on document press.
   @Input()
-  set autoDismiss(bool? autoDismiss);
+  set autoDismiss(bool autoDismiss);
 
   /// Sets whether the popup should automatically reposition itself based on
   /// space available relative to the viewport.
@@ -52,7 +55,7 @@ abstract class PopupInterface {
   /// positions. The popup will flatten out the list of positions and choose the
   /// first one that fits on screen.
   @Input()
-  set preferredPositions(Iterable<RelativePosition> preferredPositions);
+  set preferredPositions(Iterable<Object> preferredPositions);
 
   /// Sets the source the popup should be created relative to.
   @Input()
@@ -105,7 +108,7 @@ abstract class PopupBase implements PopupInterface {
   PopupState get state;
 
   @override
-  set autoDismiss(bool? autoDismiss) {
+  set autoDismiss(bool autoDismiss) {
     state.autoDismiss = autoDismiss;
   }
 
@@ -130,7 +133,7 @@ abstract class PopupBase implements PopupInterface {
   }
 
   @override
-  set preferredPositions(Iterable<RelativePosition> preferredPositions) {
+  set preferredPositions(Iterable<Object> preferredPositions) {
     state.preferredPositions = preferredPositions;
   }
 
@@ -157,7 +160,7 @@ abstract class PopupBase implements PopupInterface {
 /// want the same properties as a popup without the verbosity of re-typing.
 abstract class PopupComposite implements PopupInterface {
   @override
-  bool? autoDismiss = true;
+  bool autoDismiss = true;
 
   @override
   bool enforceSpaceConstraints = false;
@@ -172,10 +175,10 @@ abstract class PopupComposite implements PopupInterface {
   int offsetY = 0;
 
   @override
-  Iterable<RelativePosition> preferredPositions = const [];
+  Iterable<Object> preferredPositions = const [];
 
   @override
-  PopupSource? source;
+  PopupSource source;
 
   @override
   bool trackLayoutChanges = true;

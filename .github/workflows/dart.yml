@@ -1334,14 +1334,14 @@ jobs:
       - job_011
       - job_012
   job_016:
-    name: "unit_test; Dart 2.17.0; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
+    name: "unit_test; Dart 2.17.0; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents;commands:command_3-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents;commands:command_2-command_3-test"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -1358,6 +1358,10 @@ jobs:
         name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner build mockito:mockBuilder"
+        run: "dart run build_runner build mockito:mockBuilder"
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
         working-directory: ngcomponents
       - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh
@@ -1430,14 +1434,14 @@ jobs:
       - job_014
       - job_015
   job_018:
-    name: "unit_test; Dart dev; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
+    name: "unit_test; Dart dev; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_3-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_2-command_3-test"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -1454,6 +1458,10 @@ jobs:
         name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner build mockito:mockBuilder"
+        run: "dart run build_runner build mockito:mockBuilder"
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
         working-directory: ngcomponents
       - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh
@@ -1526,14 +1534,14 @@ jobs:
       - job_014
       - job_015
   job_020:
-    name: "unit_test; Dart stable; PKG: ngcomponents; `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
+    name: "unit_test; Dart stable; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents;commands:command_3-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents;commands:command_2-command_3-test"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:ngcomponents
             os:ubuntu-latest;pub-cache-hosted;sdk:stable
@@ -1550,6 +1558,10 @@ jobs:
         name: ngcomponents; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: ngcomponents
+      - name: "ngcomponents; dart run build_runner build mockito:mockBuilder"
+        run: "dart run build_runner build mockito:mockBuilder"
+        if: "always() && steps.ngcomponents_pub_upgrade.conclusion == 'success'"
         working-directory: ngcomponents
       - name: ngcomponents; ./tool/travis/install_protoc.sh
         run: ./tool/travis/install_protoc.sh

@@ -4,7 +4,7 @@
 
 set -ev
 PROTOC_PLUGIN_VERSION="20.0.0"
-PROTOC_VERSION="3.13.0"
+PROTOC_VERSION="3.17.0"
 
 if type protoc > /dev/null; then
   echo "protoc already installed."

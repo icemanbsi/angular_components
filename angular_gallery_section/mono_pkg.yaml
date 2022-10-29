@@ -5,7 +5,7 @@ stages:
         - format
         - analyze: .
       sdk:
-        - dev
+        - beta
     - group:
         - analyze: .
       sdk:

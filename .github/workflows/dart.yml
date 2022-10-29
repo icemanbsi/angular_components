@@ -117,23 +117,23 @@ jobs:
     needs:
       - job_001
   job_004:
-    name: "analyze_and_format_core; Dart dev; PKG: angular_gallery; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format_core; Dart beta; PKG: angular_gallery; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery;commands:format-analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:angular_gallery;commands:format-analyze_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:angular_gallery
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -153,23 +153,23 @@ jobs:
     needs:
       - job_001
   job_005:
-    name: "analyze_and_format_core; Dart dev; PKG: angular_gallery_section; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
+    name: "analyze_and_format_core; Dart beta; PKG: angular_gallery_section; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery_section;commands:format-analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:angular_gallery_section;commands:format-analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:angular_gallery_section
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:angular_gallery_section
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -189,23 +189,23 @@ jobs:
     needs:
       - job_001
   job_006:
-    name: "analyze_and_format_core; Dart dev; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
+    name: "analyze_and_format_core; Dart beta; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_2-format-analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents;commands:command_2-format-analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -444,23 +444,23 @@ jobs:
       - job_007
       - job_008
   job_010:
-    name: "analyze_and_format_examples_1; Dart dev; PKGS: examples/app_layout_example, examples/material_button_example, examples/material_card_example, examples/material_checkbox_example, examples/material_chips_example, examples/material_datepicker_example, examples/material_dialog_example, examples/material_expansionpanel_example, examples/material_icon_example, examples/material_list_example, examples/material_yes_no_buttons_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format_examples_1; Dart beta; PKGS: examples/app_layout_example, examples/material_button_example, examples/material_card_example, examples/material_checkbox_example, examples/material_chips_example, examples/material_datepicker_example, examples/material_dialog_example, examples/material_expansionpanel_example, examples/material_icon_example, examples/material_list_example, examples/material_yes_no_buttons_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example;commands:format-analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example;commands:format-analyze_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/app_layout_example-examples/material_button_example-examples/material_card_example-examples/material_checkbox_example-examples/material_chips_example-examples/material_datepicker_example-examples/material_dialog_example-examples/material_expansionpanel_example-examples/material_icon_example-examples/material_list_example-examples/material_yes_no_buttons_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -617,23 +617,23 @@ jobs:
       - job_007
       - job_008
   job_011:
-    name: "analyze_and_format_examples_1; Dart dev; PKG: examples/material_menu_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
+    name: "analyze_and_format_examples_1; Dart beta; PKG: examples/material_menu_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_menu_example;commands:format-analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/material_menu_example;commands:format-analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_menu_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/material_menu_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -958,23 +958,23 @@ jobs:
       - job_011
       - job_012
   job_014:
-    name: "analyze_and_format_examples_2; Dart dev; PKGS: examples/material_input_example, examples/material_popup_example, examples/material_progress_example, examples/material_radio_example, examples/material_select_example, examples/material_slider_example, examples/material_spinner_example, examples/material_stepper_example, examples/material_tab_example, examples/material_toggle_example, examples/material_tooltip_example, examples/material_tree_example, examples/scorecard_example, examples/simple_html_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format_examples_2; Dart beta; PKGS: examples/material_input_example, examples/material_popup_example, examples/material_progress_example, examples/material_radio_example, examples/material_select_example, examples/material_slider_example, examples/material_spinner_example, examples/material_stepper_example, examples/material_tab_example, examples/material_toggle_example, examples/material_tooltip_example, examples/material_tree_example, examples/scorecard_example, examples/simple_html_example; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simpl-!!too_long!!-525-846567117"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simp-!!too_long!!-526-437736084"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/material_input_example-examples/material_popup_example-examples/material_progress_example-examples/material_radio_example-examples/material_select_example-examples/material_slider_example-examples/material_spinner_example-examples/material_stepper_example-examples/material_tab_example-examples/material_toggle_example-examples/material_tooltip_example-examples/material_tree_example-examples/scorecard_example-examples/simple_html_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -1434,23 +1434,23 @@ jobs:
       - job_014
       - job_015
   job_018:
-    name: "unit_test; Dart dev; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
+    name: "unit_test; Dart beta; PKG: ngcomponents; `dart run build_runner build mockito:mockBuilder`, `./tool/travis/install_protoc.sh`, `dart test --run-skipped -t ci`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_2-command_3-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents;commands:command_2-command_3-test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -1488,23 +1488,23 @@ jobs:
       - job_014
       - job_015
   job_019:
-    name: "unit_test; Dart dev; PKG: ngcomponents; `dart run build_runner test -- -p chrome`"
+    name: "unit_test; Dart beta; PKG: ngcomponents; `dart run build_runner test -- -p chrome`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents;commands:command_4"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents;commands:command_4"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:ngcomponents
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:ngcomponents
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -1690,23 +1690,23 @@ jobs:
       - job_020
       - job_021
   job_023:
-    name: "build; Dart dev; PKG: examples/angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
+    name: "build; Dart beta; PKG: examples/angular_components_example; `dart pub run build_runner build web`, `dart pub run build_runner build web --release`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/angular_components_example;commands:command_0-command_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/angular_components_example;commands:command_0-command_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:examples/angular_components_example
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta;packages:examples/angular_components_example
+            os:ubuntu-latest;pub-cache-hosted;sdk:beta
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@6a218f2413a3e78e9087f638a238f6b40893203d
         with:
-          sdk: dev
+          sdk: beta
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8

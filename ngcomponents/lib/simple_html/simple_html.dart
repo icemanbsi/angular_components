@@ -72,7 +72,7 @@ const _externalUriAllowedSchemes = {'http', 'https', 'mailto'};
   selector: 'simple-html',
   template: '<span></span>',
   styleUrls: ['simple_html.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class SimpleHtmlComponent extends _SimpleHtmlBase {
   final Element _element;
@@ -97,7 +97,7 @@ class SimpleHtmlComponent extends _SimpleHtmlBase {
   selector: 'simple-html-block',
   template: '<div></div>',
   styleUrls: ['simple_html.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class SimpleHtmlBlockComponent extends _SimpleHtmlBase {
   final Element _element;

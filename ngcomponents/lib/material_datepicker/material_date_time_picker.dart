@@ -27,7 +27,7 @@ import 'package:quiver/time.dart';
 ///     </material-date-time-picker>
 @Component(
   selector: 'material-date-time-picker',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   templateUrl: 'material_date_time_picker.html',
   styleUrls: ['material_date_time_picker.scss.css'],
   directives: [

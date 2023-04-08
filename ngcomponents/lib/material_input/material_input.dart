@@ -49,7 +49,7 @@ const String materialInputErrorKey = 'material-input-error';
 /// - `role` -- The role attribute for the input element.
 @Component(
   selector: 'material-input:not(material-input[multiline])',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   providers: [
     DeferredValidator,
     ExistingProvider.forToken(NG_VALIDATORS, DeferredValidator),

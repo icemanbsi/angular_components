@@ -5,10 +5,10 @@ environment:
   sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  ngdart: ^7.1.0
+  ngdart: ^8.0.0-dev.1
   ngcomponents:
     path: ../../ngcomponents
-  ngforms: ^4.1.0
+  ngforms: ^5.0.0-dev.1
   angular_gallery:
     path: ../../angular_gallery
   angular_gallery_section:

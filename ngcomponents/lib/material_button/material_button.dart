@@ -81,7 +81,7 @@ import 'material_button_base.dart';
     ExistingProvider(HasDisabled, MaterialButtonComponent),
   ],
   styleUrls: ['material_button.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   // TODO(google): Change to `Visibility.local` to reduce code size.
   visibility: Visibility.all,
 )

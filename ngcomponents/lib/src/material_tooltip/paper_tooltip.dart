@@ -80,7 +80,7 @@ Tooltip getTooltipHandle(MaterialPaperTooltipComponent tooltip) =>
   </div>
 </material-popup>''',
   styleUrls: ['paper_tooltip.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
   visibility: Visibility.all, // injected by [getTooltipHandle] above.

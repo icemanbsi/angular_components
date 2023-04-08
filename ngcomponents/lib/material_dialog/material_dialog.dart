@@ -30,7 +30,7 @@ import 'package:ngcomponents/utils/id_generator/id_generator.dart';
   templateUrl: 'material_dialog.html',
   styleUrls: ['material_dialog.scss.css'],
   directives: [FocusTrapComponent, NgIf],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialDialogComponent
     with KeyboardHandlerMixin

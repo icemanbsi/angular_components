@@ -4,17 +4,12 @@ environment:
   sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  ngdart: ^7.1.0
+  ngdart: ^8.0.0-dev.1
   ngcomponents: 
     path: ../ngcomponents
-  ngforms: ^4.1.0
-  ngrouter: ^3.1.0
+  ngforms: ^5.0.0-dev.1
+  ngrouter: ^4.0.0-dev.1
   build: ^2.1.1
   build_config: ^1.0.0
   #mustache: ^1.0.0
   mustache_template: ^2.0.0
-  ngsecurity:
-    git: 
-      url: https://github.com/angulardart-community/ngsecurity
-      ref: main
-

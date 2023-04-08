@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:ngdart/angular.dart';
-import 'package:ngsecurity/security.dart';
+import 'package:ngdart/security.dart';
 import 'package:angular_gallery_section/components/gallery_component/gallery_info.dart';
 import 'package:sanitize_html/sanitize_html.dart' show sanitizeHtml;
 

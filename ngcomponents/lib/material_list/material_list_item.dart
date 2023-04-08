@@ -25,7 +25,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
   providers: [ExistingProvider(HasDisabled, MaterialListItemComponent)],
   styleUrls: ['material_list_item.scss.css'],
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialListItemComponent extends ButtonDirective implements OnDestroy {
   @HostBinding('class')

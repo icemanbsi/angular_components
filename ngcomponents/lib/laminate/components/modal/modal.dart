@@ -154,7 +154,7 @@ abstract class Modal {
       <ng-content></ng-content>
     </template>
   ''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
   visibility: Visibility.all, // Injected by dialog, et al.

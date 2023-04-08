@@ -38,7 +38,7 @@ import 'scorecard_bar.dart';
   ],
   templateUrl: 'scoreboard.html',
   styleUrls: ['scoreboard.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class ScoreboardComponent implements OnInit, OnDestroy {
   static const chevronLeft = 'chevron_left';

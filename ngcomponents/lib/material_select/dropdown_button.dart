@@ -24,7 +24,7 @@ import 'package:ngcomponents/utils/id_generator/id_generator.dart';
 /// itself.
 @Component(
   selector: 'dropdown-button',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   templateUrl: 'dropdown_button.html',
   styleUrls: [
     'package:ngcomponents/button_decorator/button_decorator.scss.css',

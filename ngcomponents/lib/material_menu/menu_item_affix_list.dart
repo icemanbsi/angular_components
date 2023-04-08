@@ -19,7 +19,7 @@ import 'package:quiver/core.dart' as qc;
 // TODO(google): move component management to common utils if useful to others
 @Component(
     selector: 'menu-item-affix-list',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.onPush,
     directives: [
       DynamicComponent,
       NgFor,

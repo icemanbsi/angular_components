@@ -37,7 +37,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
     ],
     providers: [ExistingProvider(HasDisabled, MaterialMenuComponent)],
     templateUrl: 'material_menu.html',
-    changeDetection: ChangeDetectionStrategy.OnPush)
+    changeDetection: ChangeDetectionStrategy.onPush)
 class MaterialMenuComponent extends Object
     with
         FocusableMixin,

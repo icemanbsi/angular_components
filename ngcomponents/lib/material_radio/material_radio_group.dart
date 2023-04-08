@@ -35,7 +35,7 @@ import 'package:collection/collection.dart';
   selector: 'material-radio-group',
   template: '<ng-content></ng-content>',
   styleUrls: ['material_radio_group.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   visibility: Visibility.all, // Injected by members of the group.
 )
 class MaterialRadioGroupComponent

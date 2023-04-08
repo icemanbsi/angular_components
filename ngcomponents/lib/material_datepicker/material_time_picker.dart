@@ -21,7 +21,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
 /// A material-design-styled time input component.
 @Component(
   selector: 'material-time-picker',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [
     MaterialDropdownSelectComponent,
     materialInputDirectives,

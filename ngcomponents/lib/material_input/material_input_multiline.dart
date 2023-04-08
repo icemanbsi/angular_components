@@ -22,7 +22,7 @@ export 'base_material_input.dart' show ValidityCheck, CharacterCounter;
 /// input, and can optionally have a label.
 @Component(
   selector: 'material-input[multiline]',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   providers: [
     DeferredValidator,
     ExistingProvider(HasDisabled, MaterialMultilineInputComponent),

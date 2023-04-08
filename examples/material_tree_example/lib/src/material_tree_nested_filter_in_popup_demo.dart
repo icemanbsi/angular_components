@@ -27,7 +27,7 @@ import 'package:ngcomponents/model/selection/selection_options.dart';
       </div>
     ''',
   styleUrls: ['material_shadow.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialTreeDropdownNestedFilterInPopupDemoComponent {
   final SelectionOptions filterableNestedOptions = data.filterableNestedOptions;

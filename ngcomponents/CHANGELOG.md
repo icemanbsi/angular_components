@@ -22,9 +22,9 @@
 * Changed parameters of component factory with `@Optional` annotation to be nullable
 * Changed parameters of component factory without `@Optional` annotation be non-nullable
 * Changed parameters of component constructor with `@Attribute` annotation to be nullable
-* Added `ChangeDetectionStrategy.OnPush` to `material_tree_dropdown`
-* Added `ChangeDetectionStrategy.OnPush` to `material_tree_filter`
-* Added `ChangeDetectionStrategy.OnPush` to `material_tree_impl`
+* Added `ChangeDetectionStrategy.onPush` to `material_tree_dropdown`
+* Added `ChangeDetectionStrategy.onPush` to `material_tree_filter`
+* Added `ChangeDetectionStrategy.onPush` to `material_tree_impl`
 * Updated `disabled` to be non nullable
 * Replaced `DomSanitizationService` with `pkg:sanitizer_html`
 
@@ -35,7 +35,7 @@
 ## 1.0.2
 
 * Update a number of outdated links in documentation.
-* Reverted addition of `changeDetection: ChangeDetectionStrategy.OnPush` to
+* Reverted addition of `changeDetection: ChangeDetectionStrategy.onPush` to
   components where the functionality is broken. Note: this may result in
   additional warnings during build.
 
@@ -66,7 +66,7 @@
 #### Material Auto Suggest Input
 
 * Stop event propagation when key nav events are handled.
-* Update to work within components using `ChangeDetectionStrategy.OnPush`.
+* Update to work within components using `ChangeDetectionStrategy.onPush`.
 
 #### Material Button
 

@@ -68,7 +68,7 @@ export 'package:ngcomponents/laminate/popup/popup.dart'
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
   visibility: Visibility.all, // injected by hierarchy
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialPopupComponent extends Object
     with PopupBase, PopupEvents, PopupHierarchyElement

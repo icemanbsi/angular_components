@@ -27,7 +27,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
   ],
   providers: [ExistingProvider(HasDisabled, DropdownMenuComponent)],
   templateUrl: 'dropdown_menu.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )

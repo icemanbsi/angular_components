@@ -25,7 +25,7 @@ export 'package:ngcomponents/src/material_datepicker/sequential.dart';
 // icon-button component.
 @Component(
   selector: 'next-prev-buttons',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   template: r'''
 <button class="prev"
         [class.disabled]="isPrevDisabled"

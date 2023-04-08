@@ -62,7 +62,7 @@ import 'package:quiver/core.dart' as qc show Optional;
   ],
   templateUrl: 'menu_item_groups.html',
   styleUrls: ['menu_item_groups.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,
 )

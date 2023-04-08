@@ -188,7 +188,7 @@ class GalleryInfoBuilder extends Builder {
       if (docs == null) {
         // The super class must be defined in the library as a part file.
         for (var part in classElement.library.parts) {
-          if (part.getClass(classElement.name) != null) {
+          if (part.children.contains((c) => c.name == classElement.name)) {
             libraryId = AssetId.resolve(part.source.uri);
             docs = await extractDocumentation(
                 classElement.name, libraryId, assetReader);
@@ -237,10 +237,9 @@ class GalleryInfoBuilder extends Builder {
 
   /// Returns a class hierarchy that ends at [leafClass] omitting [Object].
   Iterable<InterfaceElement> _classHierarchy(ClassElement leafClass) {
-    final interfaces = leafClass.allSupertypes;
-
     // Object contains no interesting documentation and complicates searching.
-    interfaces.removeWhere((interface) => interface.isDartCoreObject);
+    final interfaces = leafClass.allSupertypes
+        .where((interface) => !interface.isDartCoreObject);
 
     final classes = <InterfaceElement>[];
     for (var i in interfaces) {

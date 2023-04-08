@@ -53,7 +53,7 @@ const List<String> _flippedIcons = [
   selector: 'material-icon',
   templateUrl: 'material_icon.html',
   styleUrls: ['material_icon.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialIconComponent {
   /// The `Icon` model (lib/model/ui/icon.dart) or icon

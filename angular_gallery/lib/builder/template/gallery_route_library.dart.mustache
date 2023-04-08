@@ -18,7 +18,6 @@ final List<RouteDefinition> galleryRoutes = [
     path: '{{ name }}',
     loader: () async {
       await {{ name }}.loadLibrary();
-      {{ name }}.initReflector();
       return {{ name }}.{{ component }}NgFactory;
     }
   ),

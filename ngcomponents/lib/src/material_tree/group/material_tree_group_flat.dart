@@ -19,7 +19,7 @@ import 'package:ngcomponents/model/selection/selection_model.dart';
 /// is *sometimes* used but sometimes not.
 @Component(
   selector: 'material-tree-group-flat-list',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [DynamicComponent, NgFor, NgIf],
   templateUrl: 'material_tree_group_flat_list.html',
   styleUrls: ['material_tree_group_flat_list.scss.css'],
@@ -40,7 +40,7 @@ class MaterialTreeGroupFlatListComponent<T> extends MaterialTreeNode<T> {
 /// is *sometimes* used but sometimes not.
 @Component(
   selector: 'material-tree-group-flat-radio',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [
     ButtonDirective,
     DynamicComponent,
@@ -82,7 +82,7 @@ class MaterialTreeGroupFlatRadioComponent<T> extends MaterialTreeNode<T> {
 /// is *sometimes* used but sometimes not.
 @Component(
   selector: 'material-tree-group-flat-check',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [
     ButtonDirective,
     DynamicComponent,

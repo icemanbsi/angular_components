@@ -10,7 +10,7 @@ import 'package:ngcomponents/material_menu/affix/caption_affix_model.dart';
 @Component(
     selector: 'caption-affix',
     directives: [],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.onPush,
     styleUrls: ['caption_affix.scss.css'],
     template: '{{text}}')
 class CaptionAffixComponent implements BaseAffixComponent<CaptionAffix?> {

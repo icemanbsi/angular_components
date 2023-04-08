@@ -17,7 +17,7 @@ import 'package:ngcomponents/material_tab/tab_change_event.dart';
   directives: [FixedMaterialTabStripComponent],
   templateUrl: 'material_tab_panel.html',
   styleUrls: ['material_tab_panel.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialTabPanelComponent implements AfterContentInit {
   @HostBinding('class')

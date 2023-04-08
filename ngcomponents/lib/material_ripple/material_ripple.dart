@@ -147,9 +147,9 @@ void _applyFallbackAnimation(
 @Component(
   selector: 'material-ripple',
   template: '',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.none,
   styleUrls: ['material_ripple.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialRippleComponent implements OnDestroy {
   final HtmlElement _element;

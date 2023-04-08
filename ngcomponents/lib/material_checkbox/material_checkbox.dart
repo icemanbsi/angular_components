@@ -46,7 +46,7 @@ const indeterminateAriaState = 'mixed';
   directives: [MaterialIconComponent, MaterialRippleComponent, NgIf],
   templateUrl: 'material_checkbox.html',
   styleUrls: ['material_checkbox.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialCheckboxComponent
     implements ControlValueAccessor<bool>, HasDisabled, Focusable, OnDestroy {

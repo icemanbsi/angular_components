@@ -56,7 +56,7 @@ class MaterialTooltipExamples {}
   ],
   templateUrl: 'material_tooltip_example.html',
   styleUrls: ['material_tooltip_example.scss.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   preserveWhitespace: true,
 )
 class MaterialTooltipExampleComponent {

@@ -28,7 +28,7 @@ import 'material_tree_impl.dart';
 /// A button-triggered dropdown containing a [MaterialTreeComponent].
 @Component(
   selector: 'material-tree-dropdown',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [
     DeferredContentDirective,
     KeyboardOnlyFocusIndicatorDirective,
@@ -210,8 +210,8 @@ class MaterialTreeDropdownComponent<T>
     _customPopupPositions = positions;
   }
 
-  List<RelativePosition> /*RelativePosition | List<RelativePosition>*/ get popupPositions =>
-      _customPopupPositions.isEmpty
+  List<RelativePosition> /*RelativePosition | List<RelativePosition>*/
+      get popupPositions => _customPopupPositions.isEmpty
           ? _defaultPopupPositions
           : _customPopupPositions;
   //_customPopupPositions ?? _defaultPopupPositions;

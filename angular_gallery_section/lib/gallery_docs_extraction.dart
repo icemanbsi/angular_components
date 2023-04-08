@@ -54,12 +54,14 @@ class GalleryDocumentationExtraction extends SimpleAstVisitor<DartDocInfo> {
   DartDocInfo? visitMixinDeclaration(MixinDeclaration node) =>
       _visitClassOrMixinDeclaration(node);
 
-  DartDocInfo? _visitClassOrMixinDeclaration(ClassOrMixinDeclaration node) {
+  DartDocInfo? _visitClassOrMixinDeclaration(NamedCompilationUnitMember node) {
     if (_extractDocumentation(node) == null) return null;
 
     var allProperties = <DartPropertyInfo?>[];
     var propertyVisitor = _AllMemberDocsExtraction(_filePath);
-    for (Declaration member in node.members) {
+    // We know that [node] is definitely either a ClassDeclaration or
+    // MixinDeclaration.
+    for (Declaration member in (node as dynamic).members) {
       // Must collect the annotations early because class fields don't have
       // annotations attached to their actual node. The comments are attached to
       // the field nodes so we have to continue visiting.
@@ -119,11 +121,11 @@ class GalleryDocumentationExtraction extends SimpleAstVisitor<DartDocInfo> {
 
   /// Collect information needed for documentation from [node].
   DartDocInfo? _extractDocumentation(NamedCompilationUnitMember node) {
-    if (node.name.name != _name) return null;
+    if (node.name.toString() != _name) return null;
 
     final deprecatedAnnotationNode = _deprecatedAnnotation(node);
     _info = DartDocInfo()
-      ..name = node.name.name
+      ..name = node.name.toString()
       ..deprecated = deprecatedAnnotationNode != null
       ..deprecatedMessage = deprecatedAnnotationNode?.arguments?.arguments
               // Visit the first arg or null if no args.
@@ -210,7 +212,7 @@ class _MemberDocExtraction extends SimpleAstVisitor<DartPropertyInfo> {
     return DartPropertyInfo()
       ..name = (node as dynamic /* MethodDeclaration | VariableDeclaration */)
           .name
-          .name
+          .toString()
       ..comment = g3docMarkdownToHtml(parseComment(node.documentationComment))
       ..classPath = _filePath;
   }

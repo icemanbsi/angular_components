@@ -29,7 +29,7 @@ export 'material_list_size.dart';
   styleUrls: ['material_list.scss.css'],
   directives: [NgClass],
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialListComponent implements AcceptsWidth {
   /// Preset width, 1 through 5. By default, the material list will expand to

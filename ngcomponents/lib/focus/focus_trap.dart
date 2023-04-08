@@ -17,7 +17,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
   templateUrl: 'focus_trap.html',
   styleUrls: ['focus_trap.scss.css'],
   directives: [FocusContentWrapper, AutoFocusDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class FocusTrapComponent implements OnDestroy {
   final _disposer = Disposer.oneShot();

@@ -18,7 +18,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
   directiveTypes: [
     Typed<MaterialChipComponent>.of([#T])
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class MaterialChipsComponent<T> implements HasRenderer<T>, OnDestroy {
   final ChangeDetectorRef _changeDetector;

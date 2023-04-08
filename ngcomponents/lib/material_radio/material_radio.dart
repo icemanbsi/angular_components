@@ -36,7 +36,7 @@ const Icon checkedIcon = Icon('radio_button_checked');
     providers: [ExistingProvider(HasDisabled, MaterialRadioComponent)],
     templateUrl: 'material_radio.html',
     styleUrls: ['material_radio.scss.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush)
+    changeDetection: ChangeDetectionStrategy.onPush)
 class MaterialRadioComponent extends RootFocusable
     implements
         ControlValueAccessor<bool>,

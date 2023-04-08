@@ -27,7 +27,7 @@ const materialTreeLeftPaddingToken =
 ///     <material-tree-group [group]="group"></material-tree-group>
 @Component(
   selector: 'material-tree-group',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
   directives: [
     ButtonDirective,
     DynamicComponent,

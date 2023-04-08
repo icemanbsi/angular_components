@@ -15,7 +15,7 @@ import 'package:ngcomponents/model/ui/has_renderer.dart';
 @Component(
   selector: 'dynamic-component',
   template: '''<template #marker></template>''',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.onPush,
 )
 class DynamicComponent implements OnDestroy, AfterChanges {
   final ComponentLoader _componentLoader;

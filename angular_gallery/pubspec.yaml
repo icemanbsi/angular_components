@@ -1,7 +1,7 @@
 name: angular_gallery
 publish_to: none
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   ngdart: ^8.0.0-dev.1
@@ -13,3 +13,4 @@ dependencies:
   build_config: ^1.0.0
   #mustache: ^1.0.0
   mustache_template: ^2.0.0
+  lints: ^3.0.0

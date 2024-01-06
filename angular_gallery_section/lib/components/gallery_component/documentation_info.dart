@@ -43,16 +43,19 @@ abstract class DocInfo {
 ///
 /// Contains information for the Angular API of a @Component or @Directive.
 class DartDocInfo implements DocInfo {
+  @override
   late String name;
   late bool deprecated;
   late String deprecatedMessage;
   late String selector;
   late String exportAs;
+  @override
   late String path;
   late String comment;
   late Iterable<DartPropertyInfo> inputs;
   late Iterable<DartPropertyInfo> outputs;
 
+  @override
   DocType get docType => DocType.dartDocInfo;
 
   DartDocInfo(
@@ -84,6 +87,7 @@ class DartDocInfo implements DocInfo {
   }
 
   /// Returns a json encodeable representation of this [DartDocInfo].
+  @override
   Map<String, dynamic> toJson() => {
         'docType': docType.toString(),
         'name': name,
@@ -147,10 +151,13 @@ class DartPropertyInfo {
 
 /// Documentation information for a single document, typically a markdown file.
 class MarkdownDocInfo implements DocInfo {
+  @override
   String name = '';
+  @override
   String path = '';
   String contents = '';
 
+  @override
   DocType get docType => DocType.markdownDocInfo;
 
   MarkdownDocInfo([this.name = '', this.path = '', this.contents = '']);
@@ -163,6 +170,7 @@ class MarkdownDocInfo implements DocInfo {
   }
 
   /// Returns a json encodeable representation of this [MarkdownDocInfo].
+  @override
   Map<String, dynamic> toJson() => {
         'docType': docType.toString(),
         'name': name,
@@ -174,13 +182,16 @@ class MarkdownDocInfo implements DocInfo {
 /// Documentation information for a Sass file listed in an @GallerySectionConfig
 /// annotation.
 class SassDocInfo implements DocInfo {
+  @override
   String name = '';
+  @override
   String path = '';
   String libraryDoc = '';
   Iterable<SassVariableInfo> variables = [];
   Iterable<SassCallableInfo> functions = [];
   Iterable<SassCallableInfo> mixins = [];
 
+  @override
   DocType get docType => DocType.sassDocInfo;
 
   SassDocInfo(this.name, this.path, this.libraryDoc, this.variables,
@@ -202,6 +213,7 @@ class SassDocInfo implements DocInfo {
             [];
 
   /// Returns a json encodeable representation of this [SassDocInfo].
+  @override
   Map<String, dynamic> toJson() => {
         'docType': docType.toString(),
         'name': name,

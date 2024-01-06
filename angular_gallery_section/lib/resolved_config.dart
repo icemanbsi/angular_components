@@ -27,12 +27,12 @@ class ResolvedConfig {
   /// this GalleryConfigSection.
   ///
   /// Assumes that the name displayed in the gallery is unique.
-  String get classSafeName => '${string.camelCase(_cleanName(displayName)!)}';
+  String get classSafeName => string.camelCase(_cleanName(displayName)!);
 
   /// A name for a Component selector that can be used if making a Component
   /// from this GalleryConfigSection.
   String get selectorSafeName =>
-      '${string.hyphenate(_cleanName(displayName)!)}';
+      string.hyphenate(_cleanName(displayName)!);
 
   /// Replaces all characters that are not letters, numbers or spaces with an
   /// underscore.

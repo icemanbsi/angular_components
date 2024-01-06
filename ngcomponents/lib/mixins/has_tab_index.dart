@@ -10,7 +10,7 @@ import 'package:quiver/strings.dart' show isBlank;
 ///
 /// Use this if your component needs to suppress its tab index when disabled but
 /// you want to support a custom tab index via host element.
-abstract class HasTabIndex {
+abstract mixin class HasTabIndex {
   String? get hostTabIndex => '0';
   bool? get disabled;
 

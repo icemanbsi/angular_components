@@ -9,7 +9,7 @@ which examples appear in the gallery.
 Build the entire gallery from the `examples/angular_components_example`
 directory.
 
-```
+```bash
 dart run build_runner build --output <output directory>
 ```
 
@@ -17,7 +17,7 @@ dart run build_runner build --output <output directory>
 
 Run a local development server with a file watcher and incremental rebuilds:
 
-```
+```bash
 dart run build_runner serve web
 ```
 

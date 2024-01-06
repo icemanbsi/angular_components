@@ -208,7 +208,7 @@ abstract class ObservableView<T> extends ChangeAware<T> implements Disposable {
 
 /// Implements methods of [ObservableView] in terms of the basic [value] and
 /// [stream] properties.
-abstract class ObservableViewMixin<T> implements ObservableView<T> {
+abstract mixin class ObservableViewMixin<T> implements ObservableView<T> {
   @override
   Stream<Change<T>> get changes {
     T last = value;

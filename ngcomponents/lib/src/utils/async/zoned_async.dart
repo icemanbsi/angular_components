@@ -8,7 +8,7 @@ import 'dart:async';
 typedef RunInZoneFn = Function(Function() fn);
 
 /// Generic zone-running helper mixin.
-abstract class _ZoneRunner {
+abstract mixin class _ZoneRunner {
   RunInZoneFn get _runInZoneFn;
 
   S _runInZone<S>(S fn()) => _runInZoneFn(fn) as S;

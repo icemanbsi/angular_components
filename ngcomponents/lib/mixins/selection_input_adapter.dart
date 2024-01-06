@@ -13,7 +13,7 @@ import 'package:ngcomponents/model/selection/string_selection_options.dart';
 
 /// A mixin to provide a simplier API for accepting [SelectionModel] and
 /// [SelectionOptions] for [SelectionContainer] components.
-abstract class SelectionInputAdapter<T> implements SelectionContainer<T> {
+abstract mixin class SelectionInputAdapter<T> implements SelectionContainer<T> {
   StreamController? _selectionChangeController;
 
   void _initSelectionModel() {

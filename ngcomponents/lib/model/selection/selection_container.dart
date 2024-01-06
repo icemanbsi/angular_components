@@ -8,7 +8,7 @@ import 'package:ngcomponents/model/ui/has_factory.dart';
 
 /// A type of component which renders items from a `SelectionModel` and may
 /// show options from a `SelectionOptions` model.
-abstract class SelectionContainer<T>
+abstract mixin class SelectionContainer<T>
     implements
         HasRenderer<T>,
         //HasComponentRenderer<RendersValue, Object>,

@@ -13,7 +13,7 @@ import 'package:ngcomponents/laminate/popup/popup.dart';
 /// Components wishing to control an ancestral dropdown can have this interface
 /// injected:
 ///     @Optional() DropdownHandle dropdown
-abstract class DropdownHandle {
+abstract mixin class DropdownHandle {
   void open();
   void close();
   void toggle();
@@ -35,7 +35,7 @@ abstract class DropdownHandle {
 /// - `DropdownHandle` -- Provides a common interface to open/close dropodowns.
 /// - `DeferredContentAware` -- Provides a means to lazily create/attach
 ///   content.
-class MaterialDropdownBase
+mixin class MaterialDropdownBase
     implements DropdownHandle, DeferredContentAware, PopupRef {
   /// Fired when the dropdown's visibility changes.
   @Output('visibleChange')

@@ -12,7 +12,7 @@ import 'dart:async';
 ///
 /// Pre-existing values will be overwritten if `MaterialTree.expandAll` is set
 /// to true.
-abstract class MaterialTreeExpandState {
+abstract mixin class MaterialTreeExpandState {
   bool _pending = false;
   bool _expanded = false;
 

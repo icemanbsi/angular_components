@@ -45,9 +45,8 @@ class MaterialButtonBase extends ButtonDirective {
   int get zElevation =>
       _isMouseDown || _focused ? mediumElevation : lowElevation;
 
-  MaterialButtonBase(HtmlElement element, String? role,
-      {bool handleSpacePresses = true})
-      : super(element, role, handleSpacePresses: handleSpacePresses);
+  MaterialButtonBase(HtmlElement super.element, super.role,
+      {super.handleSpacePresses});
 
   // Set _focused in a microtask to avoid triggering changes during a change
   // detection cycle, which is illegal. This avoids 'AST has changed' errors.

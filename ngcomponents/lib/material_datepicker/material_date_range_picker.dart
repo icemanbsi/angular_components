@@ -430,7 +430,7 @@ class MaterialDateRangePickerComponent
     }
     _disposer.addFunction(model.dispose);
 
-    bool _needsApply(DatepickerComparison modelValue) =>
+    bool needsApply(DatepickerComparison modelValue) =>
         modelValue != selection.value || !_isPreset(modelValue);
 
     // Wire the internal model and the external value up to each other.
@@ -442,7 +442,7 @@ class MaterialDateRangePickerComponent
       }))
       ..addDisposable(model.changes
           .map((v) => v.date)
-          .map(_needsApply)
+          .map(needsApply)
           .listen(_showApplyBar))
       ..addDisposable(model.changes
           .where((_) => !_popupVisible) // handle next/prev buttons while closed

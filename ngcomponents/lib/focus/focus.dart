@@ -199,12 +199,11 @@ class AutoFocusDirective extends RootFocusable implements OnInit, OnDestroy {
   PopupRef? _popupRef;
 
   AutoFocusDirective(
-      HtmlElement node,
+      HtmlElement super.node,
       this._domService,
       @Self() @Optional() this._focusable,
       @Optional() this._modal,
-      @Optional() this._popupRef)
-      : super(node);
+      @Optional() this._popupRef);
 
   @override
   void ngOnInit() {
@@ -270,5 +269,5 @@ class AutoFocusDirective extends RootFocusable implements OnInit, OnDestroy {
     exportAs: 'focusableElement',
     providers: [ExistingProvider(Focusable, FocusableDirective)])
 class FocusableDirective extends RootFocusable {
-  FocusableDirective(HtmlElement node) : super(node);
+  FocusableDirective(HtmlElement super.node);
 }

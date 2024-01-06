@@ -82,12 +82,11 @@ class MaterialInputComponent extends BaseSingleLineInputComponent
   static const hostTabIndex = -1;
 
   MaterialInputComponent(
-      @Attribute('type') String? type,
-      @Attribute('multiple') String? multiple,
-      @Self() @Optional() NgControl? cd,
-      ChangeDetectorRef changeDetector,
-      DeferredValidator validator)
-      : super(type, multiple, cd, changeDetector, validator);
+      @Attribute('type') super.type,
+      @Attribute('multiple') super.multiple,
+      @Self() @Optional() super.cd,
+      super.changeDetector,
+      super.validator);
 
   String? attributeToString(Object? value) {
     if (value != null) {

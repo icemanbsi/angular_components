@@ -244,9 +244,8 @@ class ElementScrollHost implements OnInit, OnDestroy, ElementScrollHostBase {
 /// Provides a scroll host that uses the browser window content area.
 @Injectable()
 class WindowScrollHost extends WindowScrollHostBase implements OnDestroy {
-  WindowScrollHost(DomService domService, NgZone ngZone,
-      GestureListenerFactory gestureListenerFactory, Window window)
-      : super(domService, ngZone, gestureListenerFactory, window);
+  WindowScrollHost(super.domService, super.ngZone,
+      super.gestureListenerFactory, super.window);
 
   @override
   ngOnDestroy() {
@@ -295,8 +294,7 @@ class StickyFloatingTracker implements OnInit, OnDestroy {
 class AcxPanClassDirective extends BasePanClassDirective
     implements OnInit, OnDestroy {
   AcxPanClassDirective(
-      DomService domService, ScrollHost scrollHost, HtmlElement element)
-      : super(domService, scrollHost, element);
+      super.domService, super.scrollHost, HtmlElement super.element);
 
   @override
   void ngOnInit() => startPanListener();

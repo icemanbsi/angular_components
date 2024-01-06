@@ -390,7 +390,7 @@ class TimeSelectionOptions extends StringSelectionOptions<DateTime>
   DateTime? _minTime;
   DateTime? _maxTime;
 
-  TimeSelectionOptions(List<DateTime> options) : super(options);
+  TimeSelectionOptions(super.options);
 
   set minTime(DateTime? time) => _minTime = time;
   set maxTime(DateTime? time) => _maxTime = time;

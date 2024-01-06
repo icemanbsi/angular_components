@@ -340,8 +340,7 @@ class TemplatePortalDirective extends TemplatePortal {
   final _ready = StreamController<TemplatePortalDirective>.broadcast();
 
   TemplatePortalDirective(
-      TemplateRef templateRef, ViewContainerRef viewContainerRef)
-      : super(templateRef, viewContainerRef) {
+      super.templateRef, super.viewContainerRef) {
     // TODO(google): Consider a better or standard pattern for this.
     scheduleMicrotask(() {
       _ready.add(this);

@@ -65,8 +65,6 @@ class MaterialSelectComponent<T> extends MaterialSelectBase<T>
   @HostBinding('attr.aria-multiselectable')
   String get isMultiSelectStr => super.isMultiSelect.toString();
 
-  @override
-  bool get isMultiSelect => super.isMultiSelect;
 
   /// The [SelectionOptions] instance providing options to render.
   @Input()
@@ -113,8 +111,6 @@ class MaterialSelectComponent<T> extends MaterialSelectBase<T>
     _refreshItems();
   }
 
-  @override
-  SelectionModel<T> get selection => super.selection;
 
   /// If selectionOptions implements Selectable, it is called to decided
   /// whether an item is disabled.

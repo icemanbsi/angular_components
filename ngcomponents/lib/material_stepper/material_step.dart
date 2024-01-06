@@ -85,8 +85,7 @@ class StepDirective extends TemplatePortal {
   /// Optional summary directive associated with this step.
   SummaryDirective? summaryDirective;
 
-  StepDirective(TemplateRef ref, ViewContainerRef viewContainerRef)
-      : super(ref, viewContainerRef);
+  StepDirective(super.ref, super.viewContainerRef);
 
   /// The selection state of the step.
   bool active = false;
@@ -171,6 +170,5 @@ class SummaryDirective extends TemplatePortal {
     step.summaryDirective = this;
   }
 
-  SummaryDirective(TemplateRef ref, ViewContainerRef viewContainerRef)
-      : super(ref, viewContainerRef);
+  SummaryDirective(super.ref, super.viewContainerRef);
 }

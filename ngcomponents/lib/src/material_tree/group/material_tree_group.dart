@@ -190,8 +190,8 @@ class MaterialTreeGroupComponent<T> extends MaterialTreeNode<T?>
   /// specified.
   @Input()
   @override
-  set group(OptionGroup _group) {
-    super.group = _group as OptionGroup<T>;
+  set group(OptionGroup group) {
+    super.group = group as OptionGroup<T>;
 
     if (_maxInitialOptionsShown == null) {
       _visibleGroup = group;

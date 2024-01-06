@@ -18,7 +18,7 @@ class LabeledList<T> extends collection.DelegatingList<T>
   @override
   String? get uiDisplayName => _labelFcn != null ? _labelFcn!() : null;
 
-  LabeledList(List<T> items, [this._labelFcn]) : super(items);
+  LabeledList(super.items, [this._labelFcn]);
 
   LabeledList.withLabelFunction(List<T> items, [LabelFunction? labelFcn])
       : this(items, labelFcn);

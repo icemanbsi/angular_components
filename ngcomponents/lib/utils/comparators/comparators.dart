@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:quiver/core.dart' as quiver;
+
 /// Use this as a mixin to be able to use arithmetic comparison operators
 /// in your class.
 abstract class Comparators<T> implements Comparable<T> {
@@ -18,6 +20,9 @@ abstract class Comparators<T> implements Comparable<T> {
       other is T &&
       runtimeType == other.runtimeType &&
       compareTo(other as T) == 0;
+
+  @override
+  int get hashCode => quiver.hash2(this, runtimeType);
 }
 
 /// This can be extended in classes that are using const constructors.
@@ -36,4 +41,7 @@ abstract class ConstComparators<T> implements Comparable<T> {
       other is T &&
       runtimeType == other.runtimeType &&
       compareTo(other as T) == 0;
+
+  @override
+  int get hashCode => quiver.hash2(this, runtimeType);
 }

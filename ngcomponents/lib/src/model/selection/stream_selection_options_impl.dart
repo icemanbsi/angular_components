@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-part of angular_components.model.selection.selection_options;
+part of '../../../model/selection/selection_options.dart';
 
 class _StreamSelectionOptions<T> extends SelectionOptions<T> {
   StreamSubscription? _streamSub;

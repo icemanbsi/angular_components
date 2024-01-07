@@ -89,7 +89,7 @@ class StringSelectionOptions<T> extends SelectionOptions<T>
             shouldSort: shouldSort,
             shouldFilterEmpty: shouldFilterEmpty);
 
-  StringSelectionOptions.withOptionGroups(List<OptionGroup<T>> optionGroups,
+  StringSelectionOptions.withOptionGroups(super.optionGroups,
       {ItemRenderer<T>? toFilterableString,
       StringSuggestionFilter<T>? suggestionFilter,
       ItemRenderer<String> sanitizeString = _stringFormatSuggestion,
@@ -99,8 +99,7 @@ class StringSelectionOptions<T> extends SelectionOptions<T>
             toFilterableString ?? _defaultRenderer(sanitizeString),
         _shouldSort = shouldSort,
         _shouldFilterEmpty = shouldFilterEmpty,
-        _sanitizeString = sanitizeString,
-        super(optionGroups) {
+        _sanitizeString = sanitizeString {
     _suggestionFilter = suggestionFilter ?? filterOption;
   }
 

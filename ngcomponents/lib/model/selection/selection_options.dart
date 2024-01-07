@@ -27,18 +27,17 @@ class OptionGroup<T> extends LabeledList<T> {
 
   bool get hasEmptyLabel => _emptyLabelFcn != null;
 
-  OptionGroup(List<T> items, [LabelFunction? labelFcn])
-      : super(items, labelFcn);
+  OptionGroup(super.items, [super.labelFcn]);
 
-  OptionGroup.withLabelFunction(List<T> items,
-      [LabelFunction? labelFcn, this._emptyLabelFcn])
-      : super.withLabelFunction(items, labelFcn);
+  OptionGroup.withLabelFunction(super.items,
+      [super.labelFcn, this._emptyLabelFcn])
+      : super.withLabelFunction();
 
   /// An option group with a label is recommended when multiple option groups
   /// exist in a selection list.
-  OptionGroup.withLabel(List<T> items, [String? label, String? emptyLabel])
+  OptionGroup.withLabel(super.items, [super.label, String? emptyLabel])
       : _emptyLabelFcn = emptyLabel != null ? (() => emptyLabel) : null,
-        super.withLabel(items, label);
+        super.withLabel();
 
   /// Creates a new option group with options from [start] inclusive to [end]
   /// exclusive, other properties stay the same.

@@ -4,7 +4,6 @@
 
 import 'package:ngdart/angular.dart';
 import 'package:ngcomponents/laminate/ruler/dom_ruler.dart';
-import 'package:ngcomponents/laminate/ruler/ng_ruler.dart';
 import 'package:ngcomponents/utils/angular/managed_zone/angular_2.dart';
 import 'package:ngcomponents/utils/browser/dom_service/angular_2.dart';
 import 'package:ngcomponents/utils/browser/window/module.dart';

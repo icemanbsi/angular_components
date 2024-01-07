@@ -305,9 +305,8 @@ abstract class ScrollHostBase implements ScrollHost {
 class WindowScrollHostBase extends ScrollHostBase {
   final Window _window;
 
-  WindowScrollHostBase(DomService domService, NgZone managedZone,
-      GestureListenerFactory gestureListenerFactory, this._window)
-      : super(domService, managedZone, gestureListenerFactory);
+  WindowScrollHostBase(super.domService, super.managedZone,
+      super.gestureListenerFactory, this._window);
 
   @override
   GlobalEventHandlers get scrollbarHost => _window;
@@ -356,11 +355,10 @@ class WindowScrollHostBase extends ScrollHostBase {
 class ElementScrollHostBase extends ScrollHostBase {
   final Element element;
 
-  ElementScrollHostBase(DomService domService, NgZone managedZone,
-      GestureListenerFactory gestureListenerFactory, this.element,
+  ElementScrollHostBase(super.domService, super.managedZone,
+      super.gestureListenerFactory, this.element,
       {bool usePositionSticky = false, useTouchGestureListener = true})
-      : super(domService, managedZone, gestureListenerFactory,
-            usePositionSticky: usePositionSticky,
+      : super(usePositionSticky: usePositionSticky,
             useTouchGestureListener: useTouchGestureListener) {
     element.style.overflowY = 'auto';
 

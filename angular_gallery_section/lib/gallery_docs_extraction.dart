@@ -174,8 +174,8 @@ class _AllMemberDocsExtraction
     extends SimpleAstVisitor<Iterable<DartPropertyInfo?>> {
   final _MemberDocExtraction _propertyVisitor;
 
-  _AllMemberDocsExtraction(_filePath)
-      : this._propertyVisitor = _MemberDocExtraction(_filePath);
+  _AllMemberDocsExtraction(filePath)
+      : _propertyVisitor = _MemberDocExtraction(filePath);
 
   @override
   visitConstructorDeclaration(ConstructorDeclaration node) =>

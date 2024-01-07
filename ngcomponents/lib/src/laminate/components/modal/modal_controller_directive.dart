@@ -12,8 +12,7 @@ import 'package:ngcomponents/laminate/portal/portal.dart';
 )
 class ModalControllerDirective extends TemplatePortal implements OnDestroy {
   ModalControllerDirective(
-      TemplateRef templateRef, ViewContainerRef viewContainerRef)
-      : super(templateRef, viewContainerRef);
+      super.templateRef, super.viewContainerRef);
 
   @override
   void ngOnDestroy() {

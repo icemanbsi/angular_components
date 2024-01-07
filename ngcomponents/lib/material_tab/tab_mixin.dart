@@ -7,7 +7,7 @@ import 'dart:html';
 import 'package:ngdart/angular.dart';
 
 /// A mixin for use by tab button component and tab dropdown menu component.
-abstract class TabMixin {
+abstract mixin class TabMixin {
   String? _label;
   int _textWidth = 0;
 

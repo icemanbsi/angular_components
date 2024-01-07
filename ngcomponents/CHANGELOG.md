@@ -2,7 +2,7 @@
 
 ## 3.0.0-dev.1
 
-* [Breaking] Required Dart >= 2.17
+* [Breaking] Required Dart >= 3.0
 * [Breaking] Updated to use `ngdart`, `ngrouter` and `ngforms`
 
 ## 2.0.0-dev.1

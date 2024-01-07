@@ -25,8 +25,7 @@ import 'base_material_input.dart';
 class MaterialInputDefaultValueAccessor
     extends BaseMaterialInputValueAccessor<String> {
   MaterialInputDefaultValueAccessor(
-      BaseMaterialInput input, @Self() @Optional() NgControl? control)
-      : super(input, control);
+      super.input, @Self() @Optional() super.control);
 
   @override
   void registerOnChange(callback) {
@@ -44,8 +43,7 @@ class MaterialInputDefaultValueAccessor
 class MaterialInputBlurValueAccessor
     extends BaseMaterialInputValueAccessor<String> {
   MaterialInputBlurValueAccessor(
-      BaseMaterialInput input, @Self() @Optional() NgControl? control)
-      : super(input, control);
+      super.input, @Self() @Optional() super.control);
 
   @override
   void registerOnChange(callback) {
@@ -63,8 +61,7 @@ class MaterialInputBlurValueAccessor
 class MaterialInputChangeValueAccessor
     extends BaseMaterialInputValueAccessor<String> {
   MaterialInputChangeValueAccessor(
-      BaseMaterialInput input, @Self() @Optional() NgControl? control)
-      : super(input, control);
+      super.input, @Self() @Optional() super.control);
 
   @override
   void registerOnChange(callback) {

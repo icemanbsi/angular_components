@@ -239,7 +239,7 @@ typedef MenuAction = void Function();
 typedef ActionWithContext = void Function(dynamic context);
 
 /// Mixin to implement trivial getters on [MenuItem].
-abstract class MenuItemMixin implements _MenuItemBase {
+abstract mixin class MenuItemMixin implements _MenuItemBase {
   bool get hasIcon => icon != null;
 
   String get uiDisplayName => label;
@@ -272,11 +272,10 @@ class ActiveMenuItemModel<T> extends ActiveItemModel<T> {
   /// This means the active item model will skip over any non-enabled items.
   final bool _filterOutUnselectableItems;
 
-  ActiveMenuItemModel(IdGenerator idGenerator,
+  ActiveMenuItemModel(IdGenerator super.idGenerator,
       {MenuModel<T>? menu, bool filterOutUnselectableItems = false})
       : _filterOutUnselectableItems = filterOutUnselectableItems,
-        super(idGenerator,
-            items: _createEnabledItemGroupList(
+        super(items: _createEnabledItemGroupList(
                 menu?.itemGroups, filterOutUnselectableItems),
             loop: true);
 

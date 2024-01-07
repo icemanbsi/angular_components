@@ -20,8 +20,7 @@ class TreePropagationSelectionModel<T>
   final TreeSelectionOptions<T> _treeOptions;
 
   TreePropagationSelectionModel(
-      MultiSelectionModel<T> delegateModel, this._treeOptions)
-      : super(delegateModel);
+      super.delegateModel, this._treeOptions);
 
   /// When given a selected entity, this will check the
   /// treeoptions for children and select them all.

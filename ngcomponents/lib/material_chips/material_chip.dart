@@ -34,7 +34,7 @@ class MaterialChipComponent<T> extends RootFocusable implements HasRenderer<T> {
   @HostBinding('class')
   static const hostClass = 'themeable';
 
-  MaterialChipComponent(Element root) : super(root);
+  MaterialChipComponent(Element super.root);
 
   static final chipDeleteButtonMessage = Intl.message('Delete',
       name: 'chipDeleteButtonMessage',

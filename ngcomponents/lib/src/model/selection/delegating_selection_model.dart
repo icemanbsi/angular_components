@@ -95,8 +95,7 @@ class DelegatingSelectionModel<T> extends Object
 /// A delegating implementation of [SingleSelectionModel].
 class DelegatingSingleSelectionModel<T> extends DelegatingSelectionModel<T>
     implements SingleSelectionModel<T> {
-  DelegatingSingleSelectionModel(SingleSelectionModel<T> delegateModel)
-      : super(delegateModel);
+  DelegatingSingleSelectionModel(SingleSelectionModel<T> super.delegateModel);
 
   @override
   T? get selectedValue =>
@@ -106,8 +105,7 @@ class DelegatingSingleSelectionModel<T> extends DelegatingSelectionModel<T>
 /// A delegating implementation of [MultiSelectionModel].
 class DelegatingMultiSelectionModel<T> extends DelegatingSelectionModel<T>
     implements MultiSelectionModel<T> {
-  DelegatingMultiSelectionModel(MultiSelectionModel<T> delegateModel)
-      : super(delegateModel);
+  DelegatingMultiSelectionModel(MultiSelectionModel<T> super.delegateModel);
 
   @override
   void selectAll(Iterable<T> values) {

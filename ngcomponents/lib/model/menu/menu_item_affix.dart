@@ -42,9 +42,8 @@ class IconWithAction extends Icon {
   /// If true, close the menu upon triggering the [action].
   final bool shouldCloseMenuOnTrigger;
 
-  IconWithAction(String name, this.action, this.ariaLabel, this.keyCode,
-      {this.shouldCloseMenuOnTrigger = false})
-      : super(name);
+  IconWithAction(String super.name, this.action, this.ariaLabel, this.keyCode,
+      {this.shouldCloseMenuOnTrigger = false});
 }
 
 /// Specifies the visibility state of an icon.

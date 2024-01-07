@@ -9,7 +9,6 @@ import 'package:ngcomponents/material_checkbox/material_checkbox.dart';
 import 'package:ngcomponents/material_radio/material_radio.dart';
 import 'package:ngcomponents/material_radio/material_radio_group.dart';
 import 'package:ngcomponents/src/material_tree/material_tree_node.dart';
-import 'package:ngcomponents/src/material_tree/material_tree_root.dart';
 import 'package:ngcomponents/mixins/material_dropdown_base.dart';
 import 'package:ngcomponents/model/selection/selection_model.dart';
 
@@ -26,8 +25,7 @@ import 'package:ngcomponents/model/selection/selection_model.dart';
 )
 class MaterialTreeGroupFlatListComponent<T> extends MaterialTreeNode<T> {
   MaterialTreeGroupFlatListComponent(
-      MaterialTreeRoot<T> root, ChangeDetectorRef changeDetector)
-      : super(root, changeDetector);
+      super.root, super.changeDetector);
 
   // This is only used to standardize all the different group components.
   @HostBinding('class.material-tree-group')
@@ -59,10 +57,9 @@ class MaterialTreeGroupFlatRadioComponent<T> extends MaterialTreeNode<T> {
   SelectionModel selectionModel = SelectionModel.empty();
 
   MaterialTreeGroupFlatRadioComponent(
-      MaterialTreeRoot<T> root, ChangeDetectorRef changeDetector,
+      super.root, super.changeDetector,
       [@Optional() this._dropdownHandle])
-      : this.selectionModel = root.selection,
-        super(root, changeDetector);
+      : this.selectionModel = root.selection;
 
   // This is only used to standardize all the different group components.
   @HostBinding('class.material-tree-group')
@@ -97,9 +94,8 @@ class MaterialTreeGroupFlatCheckComponent<T> extends MaterialTreeNode<T> {
   final DropdownHandle? _dropdownHandle;
 
   MaterialTreeGroupFlatCheckComponent(
-      MaterialTreeRoot<T> root, ChangeDetectorRef changeDetector,
-      [@Optional() this._dropdownHandle])
-      : super(root, changeDetector);
+      super.root, super.changeDetector,
+      [@Optional() this._dropdownHandle]);
 
   // This is only used to standardize all the different group components.
   @HostBinding('class.material-tree-group')

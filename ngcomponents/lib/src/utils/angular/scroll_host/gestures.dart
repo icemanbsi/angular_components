@@ -79,8 +79,7 @@ Map<GestureDirection, bool> innerScrollableDirections(
 class GestureEvent extends ScrollHostEventImpl {
   final EventTarget? startingTarget;
 
-  GestureEvent(int deltaX, int deltaY, this.startingTarget)
-      : super(deltaX, deltaY);
+  GestureEvent(super.deltaX, super.deltaY, this.startingTarget);
 }
 
 /// Listens to touch events on an element and exposes a [scrollStream] of

@@ -275,15 +275,11 @@ class LastStateStream<T> extends SimpleStream<T?> {
   T? _lastItem;
 
   LastStateStream(
-      {bool isSync = false,
-      bool runInZone = false,
-      SubscriptionChangeListener<dynamic>? onListen,
-      SubscriptionChangeListener<dynamic>? onCancel})
-      : super.broadcast(
-            isSync: isSync,
-            runInZone: runInZone,
-            onListen: onListen,
-            onCancel: onCancel);
+      {super.isSync,
+      super.runInZone,
+      SubscriptionChangeListener<dynamic>? super.onListen,
+      SubscriptionChangeListener<dynamic>? super.onCancel})
+      : super.broadcast();
 
   @override
   void add(T? item) {
@@ -424,15 +420,11 @@ class SimpleStreamSubscription<T> implements StreamSubscription<T> {
 /// that returns the stream for Angular.
 class SimpleEmitter<T> extends SimpleStream<T> {
   SimpleEmitter(
-      {bool isSync = true,
-      bool runInZone = true,
-      SubscriptionChangeListener<dynamic>? onListen,
-      SubscriptionChangeListener<dynamic>? onCancel})
-      : super.broadcast(
-            isSync: isSync,
-            runInZone: runInZone,
-            onListen: onListen,
-            onCancel: onCancel);
+      {super.isSync = true,
+      super.runInZone = true,
+      SubscriptionChangeListener<dynamic>? super.onListen,
+      SubscriptionChangeListener<dynamic>? super.onCancel})
+      : super.broadcast();
 
   /// Returns `this`.
   EventSink<T> get sink => this;

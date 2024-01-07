@@ -9,7 +9,7 @@ String g3docMarkdownToHtml(String markdown) {
   if (markdown.isEmpty) return markdown;
 
   // Taken directly from http://cs/symbol:kAfterHostName.
-  String _afterHostName = r'[\w!#-&(-;=?@^\|-~]*[\w!#$%&(*+/=@^_`|~-]';
+  String afterHostName = r'[\w!#-&(-;=?@^\|-~]*[\w!#$%&(*+/=@^_`|~-]';
 
   // This list is based off of the g3doc autolinking source code:
   // http://cs/f:render_links.cc.
@@ -20,16 +20,16 @@ String g3docMarkdownToHtml(String markdown) {
         r'\b(?:changelist\s+|cr/|cl(?:\s+|/))(\d+)\b', 'http://cl/$_sub'),
     // TODO(google): o/ links.
     G3docLinkSyntax(
-        '\\b(?:teams|who)/($_afterHostName)\\b', 'http://teams/$_sub'),
-    G3docLinkSyntax('\\bg/($_afterHostName)\\b', 'http://g/$_sub'),
+        '\\b(?:teams|who)/($afterHostName)\\b', 'http://teams/$_sub'),
+    G3docLinkSyntax('\\bg/($afterHostName)\\b', 'http://g/$_sub'),
     // TODO(google): plzr/ links.
     // TODO(google): g3doc/, mdb/ links.
-    G3docLinkSyntax('\\bgo(?:to)?/($_afterHostName)\\b', 'http://go/$_sub'),
-    G3docLinkSyntax('\\bcs/($_afterHostName)\\b', 'http://cs/$_sub'),
+    G3docLinkSyntax('\\bgo(?:to)?/($afterHostName)\\b', 'http://go/$_sub'),
+    G3docLinkSyntax('\\bcs/($afterHostName)\\b', 'http://cs/$_sub'),
     WrappedG3docLinkSyntax(r'\b(TODO\()(b/(\d+))(\))', 'http://b/$_sub'),
     WrappedG3docLinkSyntax(r'\b(TODO\()((\d+))(\))', 'http://b/$_sub'),
     WrappedG3docLinkSyntax(
-        '\\b(TODO\\()(($_afterHostName))(\\))', 'http://teams/$_sub'),
+        '\\b(TODO\\()(($afterHostName))(\\))', 'http://teams/$_sub'),
     // TODO(google): launch/, ariane/ links.
     // TODO(google): google3/, depot/, java/com/google, javatests/com/google,
     //                 j/c/g, jt/c/g links.
@@ -65,7 +65,7 @@ class G3docLinkSyntax extends InlineSyntax {
   /// [pattern] needs to have one matching group which contains the "id" of
   /// the shortlink. This id will replace [_sub] in [substitution] to form
   /// the final link destination.
-  G3docLinkSyntax(String pattern, this.substitution) : super(pattern);
+  G3docLinkSyntax(super.pattern, this.substitution);
 
   @override
   bool onMatch(InlineParser parser, Match match) {
@@ -94,7 +94,7 @@ class WrappedG3docLinkSyntax extends InlineSyntax {
   /// left alone as plain text. The second will be the text to be turned into a
   /// link. The third contains the "id" of the shortlink. This id will replace
   /// [_sub] in [substitution] to form the final link destination.
-  WrappedG3docLinkSyntax(String pattern, this.substitution) : super(pattern);
+  WrappedG3docLinkSyntax(super.pattern, this.substitution);
 
   @override
   bool onMatch(InlineParser parser, Match match) {

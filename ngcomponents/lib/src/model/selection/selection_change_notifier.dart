@@ -22,7 +22,7 @@ abstract class SelectionObservable<T> {
 }
 
 /// Mixin for providing [SelectionModel.selectionChanges].
-abstract class SelectionChangeNotifier<T> implements SelectionModel<T> {
+abstract mixin class SelectionChangeNotifier<T> implements SelectionModel<T> {
   StreamController<List<SelectionChangeRecord<T>>>? _selectionChangeController;
   List<SelectionChangeRecord<T>>? _selectionChangeRecords;
 

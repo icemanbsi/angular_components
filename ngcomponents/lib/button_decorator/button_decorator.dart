@@ -37,14 +37,13 @@ class ButtonDirective extends RootFocusable
   final String? _nonTabbableIndex;
   bool _shouldHandleSpaceKey;
 
-  ButtonDirective(Element element, @Attribute('role') String? role,
+  ButtonDirective(Element super.element, @Attribute('role') String? role,
       {bool addTabIndexWhenNonTabbable = false, bool handleSpacePresses = true})
       : this.role = (role ?? 'button'),
         // Allow the subclass to define how the element should be made
         // untabbable.
         _nonTabbableIndex = addTabIndexWhenNonTabbable ? '-1' : null,
-        _shouldHandleSpaceKey = handleSpacePresses,
-        super(element);
+        _shouldHandleSpaceKey = handleSpacePresses;
 
   /// Role of this component used for a11y.
   @Input()

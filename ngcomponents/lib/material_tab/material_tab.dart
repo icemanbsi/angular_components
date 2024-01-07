@@ -53,9 +53,8 @@ class MaterialTabComponent extends RootFocusable
   final _visible = StreamController<bool>.broadcast(sync: true);
 
   MaterialTabComponent(
-      HtmlElement element, @Optional() IdGenerator? idGenerator)
-      : _uuid = (idGenerator ?? SequentialIdGenerator.fromUUID()).nextId(),
-        super(element);
+      HtmlElement super.element, @Optional() IdGenerator? idGenerator)
+      : _uuid = (idGenerator ?? SequentialIdGenerator.fromUUID()).nextId();
 
   @ViewChild('content')
   set content(DivElement? div) {

@@ -15,7 +15,7 @@ export 'range.dart' show DatepickerDateRange;
 /// injection easier.
 @Injectable()
 class DatepickerModel extends ObservableReference<DatepickerComparison?> {
-  DatepickerModel([DatepickerComparison? value]) : super(value);
+  DatepickerModel([super.value]);
 }
 
 /// Possible date range picker configurations.

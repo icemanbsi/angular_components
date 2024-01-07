@@ -128,10 +128,7 @@ class GalleryInfoBuilder extends Builder {
 
     if (assetId.extension == '.scss') {
       return extractSassDocs(
-          'Sass: ' +
-              basenameWithoutExtension(assetId.path)
-                  .replaceAll('_', ' ')
-                  .trim(),
+          'Sass: ${basenameWithoutExtension(assetId.path).replaceAll('_', ' ').trim()}',
           assetId,
           assetReader);
     }
@@ -188,7 +185,8 @@ class GalleryInfoBuilder extends Builder {
       if (docs == null) {
         // The super class must be defined in the library as a part file.
         for (var part in classElement.library.parts) {
-          if (part.children.contains((c) => c.name == classElement.name)) {
+          //if (part.children.contains((c) => c.name == classElement.name)) {
+          if (part.children.contains(classElement)) {
             libraryId = AssetId.resolve(part.source.uri);
             docs = await extractDocumentation(
                 classElement.name, libraryId, assetReader);
@@ -243,7 +241,7 @@ class GalleryInfoBuilder extends Builder {
 
     final classes = <InterfaceElement>[];
     for (var i in interfaces) {
-      classes.add(i.element2);
+      classes.add(i.element);
     }
 
     // Add the leaf class at the beginning of the hierarchy.
@@ -278,7 +276,7 @@ class GalleryInfoBuilder extends Builder {
   /// files with [assetReader] during the search.
   Iterable<Future<DemoInfo?>> _resolveDemos(Iterable<String> demoClassNames,
       LibraryElement rootLibrary, AssetReader assetReader) {
-    if (demoClassNames == '') return const Iterable.empty();
+    if (demoClassNames.isEmpty) return const Iterable.empty();
     return demoClassNames.map((demoClassName) async =>
         _resolveDemoFromRootLibrary(demoClassName, rootLibrary, assetReader));
   }

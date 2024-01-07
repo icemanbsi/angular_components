@@ -21,10 +21,9 @@ class FocusItemDirective extends RootFocusable implements FocusableItem {
   @HostBinding('attr.role')
   final String role;
 
-  FocusItemDirective(HtmlElement element, this._changeDetectorRef,
+  FocusItemDirective(HtmlElement super.element, this._changeDetectorRef,
       @Attribute('role') String? role)
-      : this.role = role ?? 'listitem',
-        super(element);
+      : this.role = role ?? 'listitem';
 
   @HostBinding('attr.tabindex')
   String tabIndex = '0';

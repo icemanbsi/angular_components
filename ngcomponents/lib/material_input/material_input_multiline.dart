@@ -82,12 +82,11 @@ class MaterialMultilineInputComponent extends BaseMaterialInput
   int _inputLineHeight = 16;
 
   MaterialMultilineInputComponent(
-      @Self() @Optional() NgControl? cd,
-      ChangeDetectorRef changeDetector,
-      DeferredValidator validator,
+      @Self() @Optional() super.cd,
+      super.changeDetector,
+      super.validator,
       this._domService)
-      : _changeDetector = changeDetector,
-        super(cd, changeDetector, validator);
+      : _changeDetector = changeDetector;
 
   // Overridden to add a HostListener event.
   @HostListener('focus')

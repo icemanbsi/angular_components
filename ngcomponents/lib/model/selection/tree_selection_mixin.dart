@@ -12,7 +12,7 @@ import 'package:ngcomponents/model/selection/selection_options.dart';
 ///
 /// When mixin this component, one should override the getHierarchyMap()
 /// method in order for the functionality to work.
-abstract class TreeSelectionMixin<T>
+abstract mixin class TreeSelectionMixin<T>
     implements Parent<T, List<OptionGroup<T>>> {
   /// Flatten all the OptionGroups of the tree into one long list.
   List<OptionGroup<T>> flatOptionGroup() {

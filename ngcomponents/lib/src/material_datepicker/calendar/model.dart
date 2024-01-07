@@ -356,4 +356,9 @@ class CalendarState {
       previewAnchoredAtStart == o.previewAnchoredAtStart &&
       resolution == o.resolution &&
       _setEq(selections, o.selections);
+
+  @override
+  int get hashCode =>
+      quiver.hash4(currentSelection, cause, preview, previewAnchoredAtStart) ^
+      quiver.hash2(resolution, selections);
 }

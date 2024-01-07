@@ -357,9 +357,8 @@ class ElementScrollHostBase extends ScrollHostBase {
 
   ElementScrollHostBase(super.domService, super.managedZone,
       super.gestureListenerFactory, this.element,
-      {bool usePositionSticky = false, useTouchGestureListener = true})
-      : super(usePositionSticky: usePositionSticky,
-            useTouchGestureListener: useTouchGestureListener) {
+      {bool usePositionSticky = false, super.useTouchGestureListener = true})
+      : super(usePositionSticky: usePositionSticky) {
     element.style.overflowY = 'auto';
 
     // Allows scroll host which contains huge iframe be able to scroll on iOS.

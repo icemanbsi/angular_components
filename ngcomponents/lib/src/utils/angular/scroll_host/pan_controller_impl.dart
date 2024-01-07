@@ -10,6 +10,7 @@ import 'package:ngcomponents/utils/angular/scroll_host/interface.dart';
 import 'package:ngcomponents/utils/async/async.dart';
 import 'package:ngcomponents/utils/browser/dom_service/dom_service.dart';
 import 'package:ngcomponents/utils/disposer/disposer.dart';
+import 'package:quiver/core.dart' as quiver;
 
 /// A non-touchscreen version of pan controller, as it relies on wheel events
 /// that are not present on touchscreen displays.
@@ -247,4 +248,7 @@ class PanEventImpl implements PanEvent {
   @override
   String toString() => '$isPanning ${isTop ? "t" : ""}'
       '${isRight ? "r" : ""}${isBottom ? "b" : ""}${isLeft ? "l" : ""}';
+
+  @override
+  int get hashCode => quiver.hash4(isTop, isRight, isBottom, isLeft);
 }

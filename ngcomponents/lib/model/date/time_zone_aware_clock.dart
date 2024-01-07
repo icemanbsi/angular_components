@@ -82,10 +82,10 @@ class SettableTimeZone {
   /// case, [Clock.now()] will print an error and return system time.
   Duration? get offsetFromUtc => _offsetFromUtc;
   set offsetFromUtc(Duration? newOffset) {
-    if (newOffset != null && newOffset.inMicroseconds == null) {
-      throw ArgumentError.value(
-          newOffset, 'newOffset' 'holds a null or undefined value');
-    }
+    //if (newOffset != null && newOffset.inMicroseconds == null) {
+    //  throw ArgumentError.value(
+    //      newOffset, 'newOffset' 'holds a null or undefined value');
+    //}
     if (newOffset != null && newOffset.inMicroseconds.isNaN) {
       throw ArgumentError.value(newOffset, 'newOffset' 'is NaN!');
     }

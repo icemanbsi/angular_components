@@ -66,7 +66,7 @@ String getDefaultContainerName(
     @Optional()
     @SkipSelf()
     @Inject(overlayContainerName)
-        Object? containerName) {
+    Object? containerName) {
   return containerName as String? ?? 'default';
 }
 
@@ -85,7 +85,7 @@ HtmlElement getOverlayContainerParent(
     @Optional()
     @SkipSelf()
     @Inject(overlayContainerParent)
-        Object? containerParent) {
+    Object? containerParent) {
   return containerParent as HtmlElement? ??
       document.querySelector('body') as HtmlElement;
 }

@@ -84,7 +84,7 @@ import 'package:ngcomponents/utils/id_generator/id_generator.dart';
   templateUrl: 'material_dropdown_select.html',
   styleUrls: ['material_dropdown_select.scss.css'],
   visibility: Visibility.all, // injected by directives
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialDropdownSelectComponent<T> extends MaterialSelectBase<T>
     with

@@ -28,7 +28,7 @@ import 'material_tree_impl.dart';
 /// A button-triggered dropdown containing a [MaterialTreeComponent].
 @Component(
   selector: 'material-tree-dropdown',
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [
     DeferredContentDirective,
     KeyboardOnlyFocusIndicatorDirective,

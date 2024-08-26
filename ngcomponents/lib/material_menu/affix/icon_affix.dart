@@ -22,7 +22,7 @@ import 'package:ngcomponents/model/ui/icon.dart';
       MaterialIconComponent,
       NgClass,
     ],
-    changeDetection: ChangeDetectionStrategy.onPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['icon_affix.scss.css'],
     template: r'''
       <material-icon

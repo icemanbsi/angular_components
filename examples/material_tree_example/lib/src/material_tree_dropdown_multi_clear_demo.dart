@@ -33,7 +33,7 @@ import 'package:ngcomponents/model/selection/selection_options.dart';
       </div>
     ''',
   styleUrls: ['material_shadow.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeDropdownMultiClearDemoComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

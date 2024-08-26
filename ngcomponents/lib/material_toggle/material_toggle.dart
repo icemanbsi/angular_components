@@ -23,7 +23,7 @@ import 'package:ngcomponents/utils/browser/events/events.dart';
   templateUrl: 'material_toggle.html',
   directives: [NgIf],
   providers: [ExistingProvider(HasDisabled, MaterialToggleComponent)],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialToggleComponent
     implements AfterViewInit, HasDisabled, ControlValueAccessor<bool> {

@@ -26,7 +26,7 @@ import 'menu_item_groups.dart';
 /// A fab menu item with optional sub menu.
 @Component(
   selector: 'material-fab-menu',
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [
     AutoFocusDirective,
     DeferredContentDirective,

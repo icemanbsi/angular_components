@@ -14,7 +14,7 @@ import 'package:ngcomponents/model/ui/has_renderer.dart';
         <material-icon icon="android" size="small"></material-icon> {{value}}
     ''',
   styles: [':host {display: inline-block;}'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class ComponentRendererExample implements RendersValue<String> {
   @override

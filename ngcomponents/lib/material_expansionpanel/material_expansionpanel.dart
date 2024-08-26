@@ -73,7 +73,7 @@ import 'package:intl/intl.dart';
   ],
   templateUrl: 'material_expansionpanel.html',
   styleUrls: ['material_expansionpanel.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   visibility: Visibility.all, // injected
 )
 class MaterialExpansionPanel

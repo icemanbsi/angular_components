@@ -38,7 +38,7 @@ import 'package:ngcomponents/model/ui/has_renderer.dart';
       </div>
     ''',
   styleUrls: ['material_shadow.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeNestedItemRenderingComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

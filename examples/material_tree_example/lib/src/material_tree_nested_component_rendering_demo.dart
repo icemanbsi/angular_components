@@ -39,7 +39,7 @@ import 'material_tree_component_renderer.template.dart' as tree;
       </div>
     ''',
   styleUrls: ['material_shadow.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialTreeNestedComponentRenderingComponent {
   final SelectionOptions nestedOptions = data.nestedOptions;

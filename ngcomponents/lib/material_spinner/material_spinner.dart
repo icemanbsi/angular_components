@@ -18,6 +18,6 @@ import 'package:ngdart/angular.dart';
   selector: 'material-spinner',
   templateUrl: 'material_spinner.html',
   styleUrls: ['material_spinner.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialSpinnerComponent {}

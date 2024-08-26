@@ -52,7 +52,7 @@ import 'tooltip_target.dart';
           </div>
         </material-popup>''',
   styleUrls: ['ink_tooltip.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [DeferredContentDirective, NgIf, MaterialPopupComponent],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
   preserveWhitespace: true,

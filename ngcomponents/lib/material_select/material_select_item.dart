@@ -38,7 +38,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
     DynamicComponent
   ],
   templateUrl: 'material_select_item.html',
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialSelectItemComponent<T> extends ButtonDirective
     implements

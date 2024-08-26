@@ -23,7 +23,7 @@ import 'package:ngcomponents/model/ui/highlighted_text_model.dart';
   templateUrl: 'highlighted_text.html',
   styleUrls: ['highlighted_text.scss.css'],
   directives: [NgFor],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class HighlightedTextComponent {
   /// List of [HighlightedTextSegment]s to present.

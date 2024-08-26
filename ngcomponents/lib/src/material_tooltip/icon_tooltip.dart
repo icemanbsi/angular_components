@@ -63,7 +63,7 @@ import 'tooltip_target.dart';
       <ng-content></ng-content>
     </material-tooltip-card>''',
   styleUrls: ['icon_tooltip.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [
     ClickableTooltipTargetDirective,
     MaterialIconComponent,

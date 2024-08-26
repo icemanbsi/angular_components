@@ -18,7 +18,7 @@ import 'material_drawer_base.dart';
   ],
   templateUrl: 'material_temporary_drawer.html',
   styleUrls: ['material_temporary_drawer.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   visibility: Visibility.all, // Injected by child elements.
 )
 class MaterialTemporaryDrawerComponent extends MaterialDrawerBase {

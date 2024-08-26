@@ -33,7 +33,7 @@ import 'package:ngcomponents/utils/angular/css/css.dart';
     ],
     templateUrl: 'menu_popup.html',
     styleUrls: ['menu_popup.scss.css'],
-    changeDetection: ChangeDetectionStrategy.onPush)
+    changeDetection: ChangeDetectionStrategy.OnPush)
 class MenuPopupComponent extends Object with FocusableMixin, MenuPopupWrapper {
   HtmlElement element;
 

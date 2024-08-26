@@ -22,7 +22,7 @@ import 'package:ngcomponents/model/observable/observable.dart';
 // TODO(google): Do the start/end date inputs need to be reversed in RTL
 // locales?
 @Component(
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'date-range-input',
   template: r'''
 <material-input dateParsing

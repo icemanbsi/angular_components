@@ -42,7 +42,7 @@ class MaterialPopupDemoComponent {}
   ],
   templateUrl: 'material_popup_example.html',
   styleUrls: ['material_popup_example.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialPopupExample {
   static final _initialPosition = RelativePosition.OffsetBottomRight;

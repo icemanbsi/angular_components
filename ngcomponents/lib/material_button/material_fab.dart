@@ -52,7 +52,7 @@ import 'material_button_base.dart';
   directives: [MaterialRippleComponent],
   templateUrl: 'material_button.html',
   styleUrls: ['material_fab.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialFabComponent extends MaterialButtonBase {
   final ChangeDetectorRef _changeDetector;

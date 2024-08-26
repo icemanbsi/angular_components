@@ -19,7 +19,7 @@ import 'package:ngcomponents/material_tab/tab_mixin.dart';
           <material-ripple></material-ripple>
         ''',
   styleUrls: ['tab_button.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [MaterialRippleComponent],
 )
 class TabButtonComponent extends MaterialButtonBase with TabMixin {

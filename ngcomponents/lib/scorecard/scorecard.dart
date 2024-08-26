@@ -30,7 +30,7 @@ import 'package:ngcomponents/utils/color/material_chart_colors.dart';
   directives: [MaterialIconComponent, MaterialRippleComponent, NgIf],
   templateUrl: 'scorecard.html',
   styleUrls: ['scorecard.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class ScorecardComponent extends KeyboardOnlyFocusIndicatorDirective {
   @HostBinding('class')

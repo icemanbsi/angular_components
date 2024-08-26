@@ -23,7 +23,7 @@ const Map<String, double> _indeterminateTiming = {
   selector: 'material-progress',
   templateUrl: 'material_progress.html',
   styleUrls: ['material_progress.scss.css'],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialProgressComponent implements AfterViewInit, OnDestroy {
   final ChangeDetectorRef _changeDetector;

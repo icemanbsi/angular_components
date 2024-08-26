@@ -25,7 +25,7 @@ import 'package:ngcomponents/material_progress/material_progress.dart';
   styleUrls: ['delayed_content.scss.css'],
   directives: [MaterialProgressComponent, NgIf],
   // TODO(google): Change preserveWhitespace to false to improve codesize.
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespace: true,
 )
 class DelayedContentComponent implements OnInit {

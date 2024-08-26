@@ -28,7 +28,7 @@ import 'package:ngcomponents/utils/id_generator/id_generator.dart';
   templateUrl: 'material_chip.html',
   styleUrls: ['material_chip.scss.css'],
   directives: [ButtonDirective, NgIf],
-  changeDetection: ChangeDetectionStrategy.onPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class MaterialChipComponent<T> extends RootFocusable implements HasRenderer<T> {
   @HostBinding('class')

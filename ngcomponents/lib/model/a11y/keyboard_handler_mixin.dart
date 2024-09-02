@@ -35,7 +35,7 @@ typedef KeyboardEventHandler = void Function(KeyboardEvent event);
 ///       close();
 ///     }
 ///   }
-class KeyboardHandlerMixin {
+mixin KeyboardHandlerMixin {
   /// Whether the direction of the component is RTL.
   ///
   /// When this value is true, the LEFT keycode is handled by handleRightKey,

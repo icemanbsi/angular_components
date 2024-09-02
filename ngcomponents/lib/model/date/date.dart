@@ -253,7 +253,7 @@ class DateRangeComparison {
 /// so that dependency injection can be used without going through all that
 /// TypeLiteral unpleasantness. Having an actual implementation around is also
 /// handy in tests.
-class DatepickerSelection extends ObservableViewMixin<DateRangeComparison?> {
+class DatepickerSelection with ObservableViewMixin<DateRangeComparison?> {
   final ObservableView<DateRangeComparison?> _ref;
   DatepickerSelection.wrap(this._ref);
 

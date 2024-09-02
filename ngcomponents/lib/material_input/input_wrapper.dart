@@ -12,7 +12,7 @@ import 'base_material_input.dart';
 // values aren't copied.
 /// Properties for a component which wants to expose typical options for a
 /// input. See MaterialInput for fields definition.
-class MaterialInputWrapper implements HasDisabled {
+mixin MaterialInputWrapper implements HasDisabled {
   /// A custom character counter function.
   ///
   /// Takes in the input text; returns how many characters the text should be

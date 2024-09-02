@@ -187,8 +187,8 @@ class GalleryInfoBuilder extends Builder {
 
       if (docs == null) {
         // The super class must be defined in the library as a part file.
-        for (var part in classElement.library.parts) {
-          if (part.children.contains((c) => c.name == classElement.name)) {
+        for (var part in classElement.library.parts2) {
+          if (part.library.units.contains((c) => c.name == classElement.name)) {
             libraryId = AssetId.resolve(part.source.uri);
             docs = await extractDocumentation(
                 classElement.name, libraryId, assetReader);

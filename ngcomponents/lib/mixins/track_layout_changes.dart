@@ -6,7 +6,7 @@ import 'package:ngdart/angular.dart';
 
 /// Mixin for trackLayoutChanges property pass through to material popup to
 /// avoid duplicate code in multiple components.
-class TrackLayoutChangesMixin {
+mixin TrackLayoutChangesMixin {
   /// Sets whether the suggestion list scrolls with the input box.
   ///
   /// This is a pass through property, as defined in [PopupInterface].

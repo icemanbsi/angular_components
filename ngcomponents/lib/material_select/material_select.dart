@@ -71,9 +71,10 @@ class MaterialSelectComponent<T> extends MaterialSelectBase<T>
   /// The [SelectionOptions] instance providing options to render.
   @Input()
   @override
-  set options(SelectionOptions<T> value) {
-    super.options = value;
-  }
+  SelectionOptions<T> options = SelectionOptions.fromList(<T>[]);
+  // set options(SelectionOptions<T> value) {
+  //   this.options = value;
+  // }
 
   /// The width of the rendered list, from 1 to 5.
   @Input()
@@ -101,20 +102,22 @@ class MaterialSelectComponent<T> extends MaterialSelectBase<T>
   /// from a given option allowing for a more expressive option.
   @Input()
   @override
-  set factoryRenderer(FactoryRenderer<RendersValue, T>? value) {
-    super.factoryRenderer = value;
-  }
+  FactoryRenderer<RendersValue, T>? factoryRenderer;
+  // set factoryRenderer(FactoryRenderer<RendersValue, T>? value) {
+  //   super.factoryRenderer = value;
+  // }
 
   /// The [SelectionModel] for this container.
   @Input()
   @override
-  set selection(SelectionModel<T> value) {
-    super.selection = value;
-    _refreshItems();
-  }
+  SelectionModel<T> selection = SelectionModel.empty();
+  // set selection(SelectionModel<T> value) {
+  //   super.selection = value;
+  //   _refreshItems();
+  // }
 
-  @override
-  SelectionModel<T> get selection => super.selection;
+  // @override
+  // SelectionModel<T> get selection => super.selection;
 
   /// If selectionOptions implements Selectable, it is called to decided
   /// whether an item is disabled.
@@ -182,15 +185,17 @@ class MaterialSelectComponent<T> extends MaterialSelectBase<T>
   void ngOnInit() {
     if (!_listAutoFocus) return;
 
-    _autoFocusIndex = selection.isNotEmpty
-        ? options.optionsList.indexOf(selection.selectedValues.first)
+    _autoFocusIndex = (selection?.isNotEmpty ?? false)
+        ? (options?.optionsList.indexOf((selection?.selectedValues as List<T>).first) ?? 0)
         : 0;
   }
 
   void _refreshItems() {
     if (_selectItems.isEmpty) return;
     for (SelectionItem<T> item in _selectItems) {
-      item.selection = selection;
+      if(selection != null){
+        item.selection = selection!;
+      }
     }
     if (itemRenderer != null) {
       for (SelectionItem<T> item in _selectItems) {

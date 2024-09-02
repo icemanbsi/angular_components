@@ -34,7 +34,7 @@ import 'package:ngcomponents/utils/disposer/disposer.dart';
   templateUrl: 'material_time_picker.html',
   styleUrls: ['material_time_picker.scss.css'],
 )
-class MaterialTimePickerComponent extends KeyboardHandlerMixin
+class MaterialTimePickerComponent with KeyboardHandlerMixin
     implements HasDisabled, OnInit, OnDestroy {
   static const minutesInDay = 24 * 60;
   static DateTime _utcTime(int hour, [int minute = 0]) => DateTime.utc(

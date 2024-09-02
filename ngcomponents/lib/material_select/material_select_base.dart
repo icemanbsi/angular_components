@@ -21,7 +21,7 @@ import 'package:ngcomponents/utils/angular/properties/properties.dart';
 /// __Expected Binding:__
 ///
 /// `HasRenderer`
-abstract class MaterialSelectBase<T> extends SelectionContainer<T>
+abstract class MaterialSelectBase<T> with SelectionContainer<T>
     implements AcceptsWidth {
   bool get isMultiSelect => selection is MultiSelectionModel;
   bool get isSingleSelect => !isMultiSelect;

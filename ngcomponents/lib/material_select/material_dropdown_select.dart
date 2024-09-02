@@ -544,7 +544,7 @@ class MaterialDropdownSelectComponent<T> extends MaterialSelectBase<T>
 
 // TODO(google): Move it to a common home to increase reusability.
 // TODO(google): Better comparison of characters to better support i18n.
-class ActivateItemOnKeyPressMixin<T> {
+mixin ActivateItemOnKeyPressMixin<T> {
   static final Map<int, String> _charCodeMap = <int, String>{};
 
   String _enteredKeys = '';

@@ -239,7 +239,7 @@ typedef MenuAction = void Function();
 typedef ActionWithContext = void Function(dynamic context);
 
 /// Mixin to implement trivial getters on [MenuItem].
-abstract class MenuItemMixin implements _MenuItemBase {
+mixin MenuItemMixin implements _MenuItemBase {
   bool get hasIcon => icon != null;
 
   String get uiDisplayName => label;

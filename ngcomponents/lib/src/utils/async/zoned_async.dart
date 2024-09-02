@@ -8,7 +8,7 @@ import 'dart:async';
 typedef RunInZoneFn = Function(Function() fn);
 
 /// Generic zone-running helper mixin.
-abstract class _ZoneRunner {
+mixin _ZoneRunner {
   RunInZoneFn get _runInZoneFn;
 
   S _runInZone<S>(S fn()) => _runInZoneFn(fn) as S;
@@ -36,7 +36,7 @@ abstract class _ZoneRunner {
 ///         });
 ///       });
 ///     }
-class ZonedFuture<T> extends _ZoneRunner implements Future<T> {
+class ZonedFuture<T> with _ZoneRunner implements Future<T> {
   final Future<T> _innerFuture;
   @override
   final RunInZoneFn _runInZoneFn;

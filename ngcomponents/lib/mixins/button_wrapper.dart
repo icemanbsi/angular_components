@@ -8,7 +8,7 @@ import 'package:ngcomponents/model/ui/icon.dart';
 
 /// Properties for a component which wants to expose typical options for a
 /// button: `buttonText`, `buttonAriaLabel`, `disabled`, `icon` and `raised`.
-class MaterialButtonWrapper implements HasDisabled {
+mixin MaterialButtonWrapper implements HasDisabled {
   /// Text on the button.
   @Input()
   String? buttonText;

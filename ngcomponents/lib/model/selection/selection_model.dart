@@ -31,7 +31,7 @@ typedef MatchCallback = Future<List> Function(String string);
 Object? _defaultKeyProvider(Object? o) => o;
 
 /// A mixin that provides the implementation of [castIterable].
-class CastIterable<T> {
+mixin CastIterable<T> {
   /// Casts [values] into an Iterable<T>.
   Iterable<T> castIterable(Iterable values) => values.cast<T>();
 }

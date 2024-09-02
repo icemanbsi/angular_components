@@ -7,7 +7,7 @@ import 'package:ngcomponents/model/selection/selection_container.dart';
 import 'package:ngcomponents/model/ui/has_factory.dart';
 
 /// An limited interface for child groups to use to access the tree.
-abstract class MaterialTreeRoot<T>
+mixin MaterialTreeRoot<T>
     implements
         SelectionContainer<T>,
         //HasComponentRenderer<RendersValue, Object>,

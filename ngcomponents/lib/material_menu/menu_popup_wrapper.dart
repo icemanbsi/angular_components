@@ -30,7 +30,7 @@ class ExpandAction {
 }
 
 /// A mixin for classes that wrap a [MenuPopupComponent].
-class MenuPopupWrapper implements AcceptsWidth {
+mixin MenuPopupWrapper implements AcceptsWidth {
   final _expandAction = ObservableReference<ExpandAction?>(null);
 
   /// The displayed menu.
@@ -127,7 +127,7 @@ class MenuPopupWrapper implements AcceptsWidth {
 ///
 /// Should be a mixin, but cannot because of ACX gallery compilation limitation
 /// See b/130170577 for details.
-abstract class MenuPopupTrigger {
+mixin MenuPopupTrigger {
   final _onTriggerAction = StreamController<void>();
 
   /// If true, the menu popup will be closed if the trigger button is clicked

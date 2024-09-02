@@ -21,7 +21,7 @@ Predicate alwaysFalse = (_) => false;
 /// operation was successful or if it failed.  It does not provide the list
 /// of items that are filtered.  This allows the trigger to not have a
 /// dependency on having to act on the results.
-abstract class Filterable {
+mixin Filterable {
   /// The query passed in on the last call to filter.
   ///
   /// It is null if filter has never been called.

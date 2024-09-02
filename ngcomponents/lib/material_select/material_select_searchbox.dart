@@ -23,7 +23,7 @@ import 'package:ngforms/ngforms.dart';
   styleUrls: ['material_select_searchbox.scss.css'],
   templateUrl: 'material_select_searchbox.html',
 )
-class MaterialSelectSearchboxComponent extends FocusableMixin
+class MaterialSelectSearchboxComponent with FocusableMixin
     implements OnDestroy {
   Filterable? _filterable;
   String _inputText = '';

@@ -84,7 +84,7 @@ abstract class PopupInterface {
 ///     class MyPopupComponent extends PopupEvents implements PopupInterface {}
 // TODO(google): Consider moving these into material_popup as there aren't
 // any other users of these streams.
-abstract class PopupEvents {
+mixin PopupEvents {
   Stream<void> get onOpen => onOpenController.stream;
   final StreamController<void> onOpenController =
       StreamController<void>.broadcast(sync: true);
@@ -99,7 +99,7 @@ abstract class PopupEvents {
 }
 
 /// A partial that implements the setters of [PopupBase] by writing to [state].
-abstract class PopupBase implements PopupInterface {
+mixin PopupBase implements PopupInterface {
   /// The state of the [PopupRef] that is manipulated by this component.
   PopupState get state;
 

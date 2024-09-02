@@ -141,7 +141,7 @@ class PopupHierarchy {
 }
 
 /// An electable element for the [PopupHierarchy].
-abstract class PopupHierarchyElement {
+mixin PopupHierarchyElement {
   PopupHierarchy get hierarchy;
   bool? get autoDismiss;
 

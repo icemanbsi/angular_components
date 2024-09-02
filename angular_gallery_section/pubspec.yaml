@@ -5,8 +5,8 @@ environment:
   sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  analyzer: ^5.10.0
-  ngdart: ^8.0.0-dev.1
+  analyzer: ^4.7.0
+  ngdart: ^7.1.1
   ngcomponents: 
     path: ../ngcomponents
   angular_gallery:

@@ -36,7 +36,7 @@ enum BottomPanelState {
 }
 
 /// Base class for behavior that is shared between material input components.
-class BaseMaterialInput extends FocusableMixin
+class BaseMaterialInput with FocusableMixin
     implements HasDisabled, Focusable, AfterViewInit, OnDestroy {
   final ChangeDetectorRef _changeDetector;
   final _disposer = Disposer.oneShot();

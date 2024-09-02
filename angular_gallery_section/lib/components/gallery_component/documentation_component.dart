@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:ngdart/angular.dart';
-import 'package:ngdart/security.dart';
+// import 'package:ngdart/security.dart';
 import 'package:angular_gallery_section/components/gallery_component/gallery_info.dart';
 import 'package:sanitize_html/sanitize_html.dart' show sanitizeHtml;
 
@@ -31,7 +31,7 @@ class DocumentationComponent {
   directives: [
     NgFor,
     NgIf,
-    SafeInnerHtmlDirective,
+    // SafeInnerHtmlDirective,
   ],
   templateUrl: 'dart_doc_component.html',
   styleUrls: ['documentation_component.scss.css'],
@@ -80,7 +80,7 @@ class MarkdownDocComponent extends DocumentationComponent {
   directives: [
     NgFor,
     NgIf,
-    SafeInnerHtmlDirective,
+    // SafeInnerHtmlDirective,
   ],
   templateUrl: 'sass_doc_component.html',
   styleUrls: ['documentation_component.scss.css'],

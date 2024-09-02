@@ -14,7 +14,7 @@ import 'package:ngcomponents/model/selection/selection_options.dart';
 //
 // This class must support handling the deselect item as well as normal items,
 // so it cannot implement [ActivationHandler<T>].
-abstract class ShiftClickSelectionMixin<T>
+mixin ShiftClickSelectionMixin<T>
     implements ActivationHandler<dynamic /* T | String */ > {
   T? _pivot;
 
